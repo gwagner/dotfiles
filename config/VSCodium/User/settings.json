@@ -1,0 +1,11 @@
+{
+    "sync.gist": "e0770749b6b3fcb08c1c8c27cd420acc",
+    "sync.autoUpload": true,
+    "sync.forceUpload": true,
+    "files.autoSave": "onFocusChange",
+    "editor.fontFamily": "\"mononoki Nerd Font Mono\", 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "explorer.confirmDelete": false,
+    "window.titleBarStyle": "custom",
+    "git.autofetch": true,
+    "clangd.path": "/home/gwagner/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/12.0.0/clangd_12.0.0/bin/clangd"
+}

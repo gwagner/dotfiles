@@ -1,0 +1,17 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.bashrc: bashrc
+    ~/.config: config
+    ~/.gitconfig: gitconfig
+    ~/polybar.sh: polybar.sh
+    ~/.xinitrc: xinitrc
+    ~/.zshrc: zshrc
+    
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
