@@ -2,6 +2,7 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 
-[submodule "polybar-scripts"]
+
+[submodule "config/polybar-scripts"]
 	path = config/polybar-scripts
 	url = git@github.com:polybar/polybar-scripts.git
