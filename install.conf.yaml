@@ -7,7 +7,7 @@
 - link:
     ~/.bashrc: bashrc
     ~/.config: config
-    /bin/dwm-startup: dwm-startup
+    /bin/dwm-startup: bin/dwm-startup
     ~/.gitconfig: gitconfig
     ~/.local/share/dwm: local/share/dwm
     ~/polybar.sh: polybar.sh
