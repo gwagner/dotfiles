@@ -19,10 +19,10 @@ startApp() {
 
 sleep 1
 
-/usr/bin/nitrogen --restore &
-
+startApp "/usr/bin/nitrogen --restore"
 startApp picom
 startApp dunst
 startApp firefox
 startApp teams
 startApp slack
+startApp numlockx
