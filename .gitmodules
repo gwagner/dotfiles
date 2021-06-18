@@ -6,3 +6,4 @@
 [submodule "config/polybar-scripts"]
 	path = config/polybar-scripts
 	url = git@github.com:polybar/polybar-scripts.git
+	ignore = dirty

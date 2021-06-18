@@ -26,3 +26,4 @@ startApp firefox
 startApp teams
 startApp slack
 startApp numlockx
+startApp solaar -w hide

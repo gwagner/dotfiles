@@ -9,7 +9,7 @@ margin-top = 0
 
 [bar/main]
 modules-left = arch dwm
-modules-right = wireless-network updates-pacman cpu memory date
+modules-right = wireless-network updates-pacman cpu memory mouse-battery keyboard-battery date
 enable-ipc=true
 font-0 = "mononoki Nerd Font Mono:antialias=true:style=Regular:weight=bold:size=12;4"
 font-1 = "mononoki Nerd Font Mono:antialias=true:style=Regular:weight=bold:size=18;4"
@@ -23,12 +23,12 @@ tray-position = right
 width=3432
 height=24
 offset-x = 4
-offset-y = 4
+offset-y = 4n
 tray-detached=true
 tray-offset-x=-6
 locale = en_US.UTF-8
 padding-right = 10
-module-margin-right = 2
+module-margin-right = 1
 
 
 [colors]
@@ -143,7 +143,7 @@ date = %m-%d %X
 date-alt = %A, %d %B %Y %X
 
 format = <label>
-label = "%{T3} %date%"
+label = "%{T3}[ %date%]"
 format-underline = ${colors.secondary}
 
 [module/arch]
@@ -157,7 +157,7 @@ type = internal/cpu
 ; Default: 1
 interval = 0.5
 
-label = ﬙ %percentage%%
+label = [﬙ %percentage%%]
 label-font=3
 format-underline = ${colors.secondary}
 
@@ -168,7 +168,7 @@ type = internal/memory
 ; Default: 1
 interval = 3
 
-label =  %percentage_free:2%%
+label = [ %percentage_free:2%%]
 label-font=3
 format-underline = ${colors.secondary}
 
@@ -181,7 +181,7 @@ format-underline = ${colors.secondary}
 ; Default: 1
 interval = 3.0
 
-label-connected = 直  %upspeed%   %downspeed%
+label-connected = [直  %upspeed%   %downspeed%]
 label-disconnected = 睊
 label-connected-font=3
 label-disconnected-font=3
@@ -191,6 +191,24 @@ type = custom/script
 exec = ~/.config/polybar-scripts/polybar-scripts/updates-pacman/updates-pacman.sh
 interval = 600
 format = <label>
-label =  %output%
+label =[ %output%]
+label-font = 3
+format-underline = ${colors.secondary}
+
+[module/mouse-battery]
+type = custom/script
+exec = ~/.config/polybar-scripts-gwagner/battery-peripheral/battery.sh /org/freedesktop/UPower/devices/mouse_hidpp_battery_5
+interval = 600
+format = <label>
+label = [ %output%]
+label-font = 3
+format-underline = ${colors.secondary}
+
+[module/keyboard-battery]
+type = custom/script
+exec = ~/.config/polybar-scripts-gwagner/battery-peripheral/battery.sh /org/freedesktop/UPower/devices/keyboard_hidpp_battery_4
+interval = 600
+format = <label>
+label = [ %output%]
 label-font = 3
 format-underline = ${colors.secondary}
