@@ -8,6 +8,8 @@ margin-bottom = 0
 margin-top = 0
 
 [bar/main]
+monitor = ${env:MONITOR:}
+#monitor = HDMI-1
 modules-left = arch dwm
 modules-right = wireless-network updates-pacman cpu memory mouse-battery keyboard-battery date
 enable-ipc=true
@@ -17,7 +19,6 @@ font-2 = "mononoki Nerd Font Mono:antialias=true:style=Regular:weight=bold:size=
 font-3 = "mononoki Nerd Font Mono:antialias=true:style=Regular:weight=bold:size=18;4"
 override-redirect=false
 padding = 0
-monitor = HDMI-1
 radius = 3
 tray-position = right
 width=3432
