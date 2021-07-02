@@ -181,7 +181,7 @@ format-underline = ${colors.secondary}
 ; Default: 1
 interval = 3.0
 
-label-connected = [直  %upspeed%   %downspeed%]
+label-connected = [直  %upspeed% |  %downspeed%]
 label-disconnected = 睊
 label-connected-font=3
 label-disconnected-font=3
