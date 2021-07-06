@@ -1,10 +1,13 @@
 #!/bin/bash
 
-killall -q picom
 killall -q nitroen
+killall -q picom
 killall -q dunst
+killall -q firefox
 killall -q teams
 killall -q slack
+killall -q numlockx
+killall -q solaar
 
 startApp() {
     if pgrep -x "$1" >/dev/null
