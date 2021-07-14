@@ -8,3 +8,4 @@ config/Microsoft/
 config/Microsoft*
 config/pulse
 config/teams
+config/VSCodium
