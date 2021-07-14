@@ -7,5 +7,6 @@
     "explorer.confirmDelete": false,
     "window.titleBarStyle": "custom",
     "git.autofetch": true,
-    "clangd.path": "/home/gwagner/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/12.0.0/clangd_12.0.0/bin/clangd"
+    "clangd.path": "/home/gwagner/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/12.0.0/clangd_12.0.0/bin/clangd",
+    "git.confirmSync": false
 }

@@ -9,3 +9,5 @@ config/Microsoft*
 config/pulse
 config/teams
 config/VSCodium
+!config/VSCodium/User/keybindings.json
+!config/VSCodium/User/settings.json
