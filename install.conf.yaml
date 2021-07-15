@@ -9,8 +9,6 @@
     ~/.bin: bin
     /bin/dwm-startup: bin/dwm-startup
     ~/.config: config
-    /etc/modprobe.d/v4l2loopback.conf: modprobe.d/v4l2loopback.conf
-    /etc/modules-load.d/v4l2loopback.conf: modules-load.d/v4l2loopback.conf
     ~/.gitconfig: gitconfig
     ~/.local/share/dwm: local/share/dwm
     ~/polybar.sh: polybar.sh
