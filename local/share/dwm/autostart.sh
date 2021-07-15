@@ -27,9 +27,6 @@ sleep 1
 startApp "nitrogen --restore"
 startApp picom
 startApp dunst
-startApp "obs --startvirtualcam"
 startApp firefox
-startApp teams
-startApp slack
 startApp numlockx
 startApp "solaar -w hide"
