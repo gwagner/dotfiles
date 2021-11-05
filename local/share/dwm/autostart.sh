@@ -9,6 +9,7 @@ killall -q teams
 killall -q slack
 killall -q numlockx
 killall -q solaar
+killall -q scream
 
 startApp() {
     CMD="$(echo $1 | cut -f1 -d ' ' )"
@@ -30,3 +31,4 @@ startApp dunst
 startApp firefox
 startApp numlockx
 startApp "solaar -w hide"
+startApp "scream -m /dev/shm/scream-ivshmem"

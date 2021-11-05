@@ -1,0 +1,14 @@
+[Unit]
+Description=Noisetorch Noise Cancelling
+After=pipewire.service
+After=pipewire-pulse.service
+After=pipewire-media-session.service
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=/bin/scream -m /dev/shm/scream-ivshmem
+
+
+[Install]
+WantedBy=default.target

@@ -106,3 +106,9 @@ alias yt="mpv --autofit=\"25%x25%\""
 export VIRSH_DEFAULT_CONNECT_URI='qemu:///system'
 
 export PATH=$PATH:/home/gwagner/.bin
+export PATH=$PATH:/home/gwagner/go/bin
+
+tts() {
+  echo "$@" | festival --tts
+}
+

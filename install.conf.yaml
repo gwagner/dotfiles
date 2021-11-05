@@ -7,10 +7,11 @@
 - link:
     ~/.bashrc: bashrc
     ~/.bin: bin
-    /bin/dwm-startup: bin/dwm-startup
     ~/.config: config
+    /bin/dwm-startup: bin/dwm-startup
     ~/.gitconfig: gitconfig
     ~/.local/share/dwm: local/share/dwm
+    ~/.looking-glass-client.ini: looking-glass-client.ini
     ~/polybar.sh: polybar.sh
     ~/.xinitrc: xinitrc
     ~/.zshrc: zshrc

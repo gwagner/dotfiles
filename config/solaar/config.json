@@ -29,6 +29,10 @@
   "408A:7976FA42": {
     "_modelId": "B35B408A0000",
     "_name": "MX Keys Keyboard",
+    "_sensitive": {
+      "backlight": true,
+      "multiplatform": true
+    },
     "_serial": "7976FA42",
     "_unitId": "7976FA42",
     "backlight": true,

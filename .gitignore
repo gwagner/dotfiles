@@ -8,6 +8,11 @@ config/Microsoft/
 config/Microsoft*
 config/pulse
 config/teams
+config/configstore/*.json
 config/VSCodium
+config/QtProject.conf
+config/Synergy/Synergy.conf
+**/*.pyc
+
 !config/VSCodium/User/keybindings.json
 !config/VSCodium/User/settings.json

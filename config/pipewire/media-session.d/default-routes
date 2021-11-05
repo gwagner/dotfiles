@@ -1,0 +1,14 @@
+{
+ "default.route.alsa_card.usb-Sonix_Technology_Co.__Ltd._Webcam_1080P_HDR_SN0001-03:profile:off": [ ],
+ "default.route.alsa_card.pci-0000_0a_00.1:profile:off": [ ],
+ "default.route.alsa_card.pci-0000_0c_00.4:profile:off": [ ],
+ "default.route.alsa_card.usb-Sonix_Technology_Co.__Ltd._Webcam_1080P_HDR_SN0001-03:profile:input:analog-stereo": [ ],
+ "default.route.alsa_card.pci-0000_0a_00.1:profile:output:hdmi-stereo-extra3": [ ],
+ "default.route.alsa_card.pci-0000_0c_00.4:profile:output:iec958-stereo": [ ],
+ "default.route.alsa_card.usb-Sonix_Technology_Co.__Ltd._Webcam_1080P_HDR_SN0001-03:profile:input:stereo-fallback": [ ],
+ "default.route.alsa_card.pci-0000_05_00.1:profile:off": [ ],
+ "default.route.alsa_card.pci-0000_0d_00.1:profile:off": [ ],
+ "default.route.alsa_card.pci-0000_0f_00.4:profile:off": [ ],
+ "default.route.alsa_card.pci-0000_05_00.1:profile:output:hdmi-stereo-extra3": [ ],
+ "default.route.alsa_card.pci-0000_0f_00.4:profile:output:iec958-stereo": [ ]
+}
