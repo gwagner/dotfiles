@@ -1,7 +1,7 @@
 from libqtile import layout
 
 tile_conf = {
-    "border_focus": "#ff0000",
+    "border_focus": "#A3BE8C",
     "margin": 4,
     "ratio": 0.7,
 }

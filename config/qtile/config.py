@@ -46,10 +46,12 @@ def autostart():
     home = os.path.expanduser('~/.local/share/dwm/autostart.sh')
     subprocess.call([home])
 
+
 widget_defaults = dict(
-    font='sans',
+    font='JetBrains Mono',
     fontsize=12,
     padding=3,
+    background="#2e3440",
 )
 extension_defaults = widget_defaults.copy()
 
@@ -59,7 +61,10 @@ screens = [
             [
                 widget.CurrentLayout(),
                 widget.GroupBox(
+                    borderwidth=1,
                     disable_drag=True,
+                    this_current_screen_border="#A3BE8C",
+                    use_mouse_wheel=False,
                 ),
                 widget.Prompt(),
                 widget.WindowName(),
@@ -70,9 +75,15 @@ screens = [
                     name_transform=lambda name: name.upper(),
                 ),
                 widget.CPUGraph(
+                    border_color="#A3BE8C",
+                    graph_color="#A3BE8C",
+                    fill_color="#A3BE8C.3",
                     samples=60,
                 ),
                 widget.MemoryGraph(
+                    border_color="#A3BE8C",
+                    graph_color="#A3BE8C",
+                    fill_color="#A3BE8C.3",
                     samples=60,
                 ),
                 widget.CheckUpdates(

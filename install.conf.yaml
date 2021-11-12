@@ -11,6 +11,7 @@
     /bin/dwm-startup: bin/dwm-startup
     ~/.gitconfig: gitconfig
     ~/.local/share/dwm: local/share/dwm
+    ~/.local/share/rofi: local/share/rofi
     ~/.looking-glass-client.ini: looking-glass-client.ini
     ~/polybar.sh: polybar.sh
     ~/.xinitrc: xinitrc
