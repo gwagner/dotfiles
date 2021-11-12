@@ -49,7 +49,7 @@ def autostart():
 
 widget_defaults = dict(
     font='JetBrains Mono',
-    fontsize=12,
+    fontsize=16,
     padding=3,
     background="#2e3440",
 )
@@ -59,9 +59,12 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
+                widget.CurrentLayoutIcon(),
                 widget.GroupBox(
-                    borderwidth=1,
+                    block_highlight_text_color="#A3BE8C",
+                    fontsize=34,
+                    padding=2,
+                    borderwidth=0,
                     disable_drag=True,
                     this_current_screen_border="#A3BE8C",
                     use_mouse_wheel=False,
@@ -95,7 +98,7 @@ screens = [
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
             ],
-            24,
+            30,
         ),
     ),
 ]
