@@ -1,0 +1,10 @@
+[Unit]
+Description=Synergy Server Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/synergys -f -d INFO --config /home/gwagner/code/github.com/gwagner/dotfiles/config/Synergy/gwagner.conf
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
