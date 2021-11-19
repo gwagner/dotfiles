@@ -12,6 +12,7 @@ config/configstore/*.json
 config/VSCodium
 config/QtProject.conf
 config/Synergy/Synergy.conf
+config/OpenRGB/logs/**
 **/*.pyc
 
 !config/VSCodium/User/keybindings.json

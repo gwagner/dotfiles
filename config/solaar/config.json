@@ -26,6 +26,18 @@
       "93": 93
     }
   },
+  "4086:6C4A9A21": {
+    "_modelId": "4086C0900000",
+    "_name": "G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO",
+    "_sensitive": {
+      "dpi": false,
+      "report_rate": false
+    },
+    "_serial": "3B577BF0",
+    "_unitId": "3B577BF0",
+    "dpi": 800,
+    "report_rate": 1
+  },
   "408A:7976FA42": {
     "_modelId": "B35B408A0000",
     "_name": "MX Keys Keyboard",
@@ -70,5 +82,5 @@
     "fn-swap": false,
     "multiplatform": 1
   },
-  "_version": "1.0.6"
+  "_version": "1.0.7"
 }
