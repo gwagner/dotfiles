@@ -29,6 +29,5 @@ startApp "nitrogen --restore"
 startApp picom
 startApp dunst
 startApp firefox
-startApp numlockx
 startApp "solaar -w hide"
-startApp "scream -m /dev/shm/scream-ivshmem"
+startApp "openrgb --startminimized -p Default"
