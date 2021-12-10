@@ -55,7 +55,7 @@ configuration {
 /*	window-format: "{w}    {c}   {t}";*/
 /*	click-to-exit: true;*/
 /*	show-match: true;*/
-	theme:			"~/.local/share/rofi/nord";
+/*	theme:			"~/.local/share/rofi/nord";*/
 /*	color-normal: ;*/
 /*	color-urgent: ;*/
 /*	color-active: ;*/
@@ -151,3 +151,4 @@ configuration {
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
 /*@import "/usr/share/rofi/themes/android_notification.rasi"*/
+@theme "~/.local/share/rofi/nord.rasi"

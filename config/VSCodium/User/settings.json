@@ -10,5 +10,8 @@
     "clangd.path": "/home/gwagner/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/12.0.0/clangd_12.0.0/bin/clangd",
     "git.confirmSync": false,
     "workbench.colorTheme": "Nord",
-    "terminal.integrated.fontFamily": "monospace"
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.smoothScrolling": true
 }

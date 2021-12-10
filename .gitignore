@@ -1,5 +1,6 @@
 config/autostart/teams.desktop
 config/bashtop/error.log
+config/coc/extensions/**
 config/dconf
 config/discord
 config/Electron

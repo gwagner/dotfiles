@@ -47,7 +47,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod], "Tab", lazy.screen.toggle_group(), desc="Toggle between groups"),
     Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
     
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),

@@ -23,6 +23,9 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
+# Swap win and alt keys
+setxkbmap -option altwin:swap_lalt_lwin
+
 # start some nice programs
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then

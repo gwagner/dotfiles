@@ -112,3 +112,5 @@ tts() {
   echo "$@" | festival --tts
 }
 
+source ~/.bashrc
+

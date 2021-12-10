@@ -10,6 +10,7 @@
     ~/.config: config
     /bin/dwm-startup: bin/dwm-startup
     ~/.gitconfig: gitconfig
+    ~/.icons: icons
     ~/.local/share/dwm: local/share/dwm
     ~/.local/share/rofi: local/share/rofi
     ~/.looking-glass-client.ini: looking-glass-client.ini
