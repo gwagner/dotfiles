@@ -16,6 +16,7 @@
     ~/.looking-glass-client.ini: looking-glass-client.ini
     ~/polybar.sh: polybar.sh
     ~/.xinitrc: xinitrc
+    ~/.xsessionrc: xsessionrc
     ~/.zshrc: zshrc
     
 

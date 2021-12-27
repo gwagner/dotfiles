@@ -26,7 +26,7 @@
       "93": 93
     }
   },
-  "4086:3B577BF0": {
+  "4086:6C4A9A21": {
     "_modelId": "4086C0900000",
     "_name": "G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO",
     "_sensitive": {
@@ -84,5 +84,5 @@
     "fn-swap": false,
     "multiplatform": "0"
   },
-  "_version": "1.0.7"
+  "_version": "1.1.0"
 }

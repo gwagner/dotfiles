@@ -1,0 +1,2 @@
+# Swap win and alt keys
+setxkbmap -option altwin:swap_lalt_lwin

@@ -13,5 +13,17 @@
     "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
     "editor.cursorBlinking": "smooth",
     "editor.cursorSmoothCaretAnimation": true,
-    "editor.smoothScrolling": true
+    "editor.smoothScrolling": true,
+    "explorer.confirmDragAndDrop": false,
+    "todo-tree.tree.showScanModeButton": false,
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]"
+    ],
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)"
 }

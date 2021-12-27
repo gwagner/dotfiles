@@ -2,6 +2,7 @@
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
+userxsession=$HOME/.xsessionrc
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
@@ -23,8 +24,9 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# Swap win and alt keys
-setxkbmap -option altwin:swap_lalt_lwin
+if [ -f "$userxsession" ]; then
+    . "$userxsession"
+fi
 
 # start some nice programs
 
