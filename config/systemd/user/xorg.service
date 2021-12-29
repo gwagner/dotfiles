@@ -1,0 +1,12 @@
+[Unit]
+
+Description=is xorg running?
+After=default.target
+Requires=default.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/gwagner/scripts/is-xorg-running.sh
+
+[Install]
+RequiredBy=xorg.target

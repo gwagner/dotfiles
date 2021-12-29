@@ -15,10 +15,10 @@
     ~/.local/share/rofi: local/share/rofi
     ~/.looking-glass-client.ini: looking-glass-client.ini
     ~/polybar.sh: polybar.sh
+    ~/scripts: scripts
     ~/.xinitrc: xinitrc
     ~/.xsessionrc: xsessionrc
     ~/.zshrc: zshrc
     
-
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

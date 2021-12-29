@@ -56,8 +56,9 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "p", lazy.spawn('rofi -show run'),
         desc="Spawn a command using rofi"),
-    #Key([mod], "p", lazy.spawn('ulauncher'),
-    #    desc="Spawn a command using ulauncher"),
+    
+
+    Key([mod, "control"], "l", lazy.spawn("betterlockscreen --lock"), desc="Lock Screen"),
 
     # Go to the next group (tag)
     Key(["control"], "Left", lazy.function(prevscreen),
