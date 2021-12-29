@@ -1,7 +1,6 @@
 [Unit]
 Description=Scream audio server
-After=pipewire.service
-After=pipewire-pulse.service
+Requires=pipewire-media-session.service
 After=pipewire-media-session.service
 
 [Service]

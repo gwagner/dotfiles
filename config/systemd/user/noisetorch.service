@@ -1,11 +1,6 @@
 [Unit]
 Description=Noisetorch Noise Cancelling
-Requires=sys-devices-pci0000:00-0000:00:03.1-0000:0a:00.1-sound-card0-controlC0.device
-Requires=sys-devices-pci0000:00-0000:00:01.2-0000:02:00.0-0000:03:08.0-0000:07:00.1-usb1-1\x2d2-1\x2d2:1.3-sound-card2-controlC2.device
-After=sys-devices-pci0000:00-0000:00:03.1-0000:0a:00.1-sound-card0-controlC0.device
-After=sys-devices-pci0000:00-0000:00:01.2-0000:02:00.0-0000:03:08.0-0000:07:00.1-usb1-1\x2d2-1\x2d2:1.3-sound-card2-controlC2.device
-After=pipewire.service
-After=pipewire-pulse.service
+Requires=pipewire-media-session.service
 After=pipewire-media-session.service
 
 [Service]

@@ -46,7 +46,6 @@ def autostart():
     home = os.path.expanduser('~/.local/share/dwm/autostart.sh')
     subprocess.call([home])
 
-
 widget_defaults = dict(
     font='JetBrains Mono',
     fontsize=16,
@@ -70,7 +69,9 @@ screens = [
                     use_mouse_wheel=False,
                 ),
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.TaskList(
+                    borderwidth=0,
+                ),
                 widget.Chord(
                     chords_colors={
                         'launch': ("#ff0000", "#ffffff"),
@@ -89,10 +90,17 @@ screens = [
                     fill_color="#A3BE8C.3",
                     samples=60,
                 ),
+                widget.NetGraph(
+                    border_color="#A3BE8C",
+                    graph_color="#A3BE8C",
+                    fill_color="#A3BE8C.3",
+                    samples=60,
+                    interface="wlan0",
+                ),
                 widget.CheckUpdates(
                     display_format="↻ {updates}",
                     distro="Arch_yay",
-                    no_update_string="👍",
+                    no_update_string="",
                     update_interval=60,
                 ),
                 widget.Systray(),

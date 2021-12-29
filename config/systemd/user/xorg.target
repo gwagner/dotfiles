@@ -1,5 +1,0 @@
-[Unit]
-Description=is xorg running?
-After=default.target
-Requires=default.target
-

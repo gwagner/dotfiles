@@ -1,23 +1,28 @@
+# Ensure the IDE is not pushed
 .idea
 
+# Target specific directories
 config/autostart/teams.desktop
 config/bashtop/error.log
 config/coc/extensions/**
+config/configstore/*.json
 config/dconf
 config/discord
 config/Electron
 config/JetBrains
-config/Slack
 config/Microsoft/
 config/Microsoft*
 config/pulse
 config/teams
-config/configstore/*.json
+config/Slack
 config/VSCodium
+
+# Target specific files
 config/QtProject.conf
 config/Synergy/Synergy.conf
 config/OpenRGB/logs/**
 **/*.pyc
 
+# Ensure we add back some files which our rules above are overly aggressive
 !config/VSCodium/User/keybindings.json
 !config/VSCodium/User/settings.json
