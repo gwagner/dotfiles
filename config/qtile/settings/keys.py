@@ -14,8 +14,7 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.next(), desc="Move focus next"),
     Key([mod], "k", lazy.layout.previous(), desc="Move focus previous"),
-    Key([mod], "space", lazy.layout.next(),
-        desc="Move window focus to other window"),
+
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -54,8 +53,10 @@ keys = [
     
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "p", lazy.spawn('rofi -show run'),
+    Key([mod], "p", lazy.spawn('rofi -show combi -modi combi,calc'),
         desc="Spawn a command using rofi"),
+    Key([mod, "shift"], "p", lazy.spawn('rofi -show calc -modi calc,combi'),
+            desc="Spawn a command using rofi"),
     
 
     Key([mod, "control"], "l", lazy.spawn("betterlockscreen --lock"), desc="Lock Screen"),

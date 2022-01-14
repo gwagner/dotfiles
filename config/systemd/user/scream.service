@@ -5,7 +5,10 @@ After=pipewire-media-session.service
 
 [Service]
 Type=simple
+ExecStartPre=/bin/sleep 30
 ExecStart=/bin/scream -m /dev/shm/scream-ivshmem
+Restart=always
+RestartSec=30
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical.target

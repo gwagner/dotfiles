@@ -1,8 +1,8 @@
 Threshold = 95
-DisplayMonitorSources = false
+DisplayMonitorSources = true
 EnableUpdates = true
 GuiltTripped = false
 FilterInput = true
 FilterOutput = false
-LastUsedInput = "alsa_input.usb-Sonix_Technology_Co.__Ltd._Webcam_1080P_HDR_SN0001-03.analog-stereo"
+LastUsedInput = "alsa_input.usb-Razer_Inc_Razer_Kiyo_Pro-02.analog-stereo"
 LastUsedOutput = ""

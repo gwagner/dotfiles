@@ -10,6 +10,7 @@ killall -q slack
 killall -q numlockx
 killall -q solaar
 killall -q scream
+killall -q xss-lock
 
 startApp() {
     CMD="$(echo $1 | cut -f1 -d ' ' )"
@@ -17,7 +18,7 @@ startApp() {
     then
         echo "$CMD is running"
     else
-        $1 &
+        eval $1 &
         echo "$CMD is starting"
     fi
 }
@@ -31,3 +32,4 @@ startApp dunst
 startApp firefox
 startApp "solaar -w hide"
 startApp "openrgb --startminimized -p Default"
+startApp "/usr/bin/xss-lock -- /usr/bin/betterlockscreen -l"

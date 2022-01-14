@@ -7,4 +7,4 @@ ExecStart=/usr/bin/synergys -f -d INFO --config /home/gwagner/code/github.com/gw
 Restart=on-failure
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical.target

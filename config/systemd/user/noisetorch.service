@@ -6,8 +6,10 @@ After=pipewire-media-session.service
 [Service]
 Type=simple
 RemainAfterExit=yes
-ExecStart=/usr/bin/noisetorch -i alsa_input.usb-Sonix_Technology_Co.__Ltd._Webcam_1080P_HDR_SN0001-03.analog-stereo -o alsa_output.pci-0000_0a_00.1.hdmi-stereo-extra3 -t 95
+ExecStartPre=/bin/sleep 30
+ExecStart=/usr/bin/noisetorch -i alsa_input.usb-Razer_Inc_Razer_Kiyo_Pro-02.analog-stereo -o alsa_output.pci-0000_05_00.1.hdmi-stereo-extra -t 95
 ExecStop=/usr/bin/noisetorch -u
+ExecReload=/usr/bin/noisetorch -u
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical.target
