@@ -135,7 +135,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
     Match(wm_class='looking-glass-client'),  # Looking-glass-client
-])
+], border_focus="#A3BE8C")
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True

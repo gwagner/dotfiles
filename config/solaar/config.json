@@ -26,7 +26,7 @@
       "93": 93
     }
   },
-  "4086:6C4A9A21": {
+  "4086:3B577BF0": {
     "_modelId": "4086C0900000",
     "_name": "G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO",
     "_sensitive": {
@@ -49,7 +49,7 @@
     },
     "_serial": "7976FA42",
     "_unitId": "7976FA42",
-    "backlight": true,
+    "backlight": false,
     "disable-keyboard-keys": {
       "1": false,
       "16": false,
@@ -84,5 +84,5 @@
     "fn-swap": false,
     "multiplatform": "0"
   },
-  "_version": "1.1.0"
+  "_version": "1.1.1"
 }

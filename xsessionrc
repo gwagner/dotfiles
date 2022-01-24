@@ -1,3 +1,4 @@
+#!/bin/bash
 # Swap win and alt keys
-setxkbmap -option altwin:swap_lalt_lwin                                                                                                                                                                                                                                                                                                                      ──(Wed,Jan12)─┘
+setxkbmap -option altwin:swap_lalt_lwin
 setxkbmap -option altwin:meta_win

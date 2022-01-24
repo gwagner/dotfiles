@@ -1,6 +1,11 @@
-from libqtile.config import Group, Match
+from libqtile.config import Group, ScratchPad, DropDown, Match
 
 groups = [
+    ScratchPad("scratchpad", [
+        # define a drop down terminal.
+        # it is placed in the upper third of screen by default.
+        DropDown("term", "alacritty", opacity=0.8),
+    ]),
     Group("", layout="stack", matches=[Match(wm_class=["firefox"])]),
     Group("", layout="tile", matches=[Match(wm_class=["Alacritty"])]),
     Group("", layout="tile",matches=[Match(wm_class=["VSCodium", "jetbrains-idea"])]),
