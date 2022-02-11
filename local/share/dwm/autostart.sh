@@ -33,3 +33,4 @@ startApp firefox
 startApp "solaar -w hide"
 startApp "openrgb --startminimized -p Default"
 startApp "/usr/bin/xss-lock -- /usr/bin/betterlockscreen -l"
+startApp "/bin/scream -m /dev/shm/scream-ivshmem"
