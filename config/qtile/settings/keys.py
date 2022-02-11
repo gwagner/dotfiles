@@ -1,12 +1,13 @@
 from libqtile.config import Key
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
-from libqtile.log_utils import logger
-from .keys_funcs import prevscreen, nextscreen
-from .groups import groups
+from keys_funcs import prev_screen, next_screen
+from groups import groups
+from screens import set_primary_screens, set_streaming_screens
 
 mod = "mod4"
 terminal = guess_terminal()
+
 
 keys = [
     # Switch between windows
@@ -46,6 +47,7 @@ keys = [
     #Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
     #    desc="Toggle between split and unsplit sides of stack"),
     Key([mod, "shift"], "Return", lazy.group['scratchpad'].dropdown_toggle('term')),
+
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # Toggle between different layouts as defined below
@@ -59,18 +61,21 @@ keys = [
     Key([mod, "shift"], "p", lazy.spawn('rofi -show calc -modi calc,combi'),
             desc="Spawn a command using rofi"),
     
+    Key([mod, "control"], "0", lazy.function(set_primary_screens), desc="Set screen layout to a single screen"),
+    Key([mod, "control"], "9", lazy.function(set_streaming_screens), desc="Set screen layout to a streaming layout"),
 
     Key([mod, "control"], "l", lazy.spawn("betterlockscreen --lock"), desc="Lock Screen"),
 
     # Go to the next group (tag)
-    Key(["control"], "Left", lazy.function(prevscreen),
+    Key(["control"], "Left", lazy.function(prev_screen),
         desc="Switch to previous group"),
 
-    Key(["control"], "Right", lazy.function(nextscreen),
+    Key(["control"], "Right", lazy.function(next_screen),
         desc="Switch to next group"),
 ]
 
-for idx, i in enumerate(groups):
+#start at index 1 to align with the visuals since we have a scratchpad
+for idx, i in enumerate(groups[1:6]):
     keys.extend([
         # mod1 + letter of group = switch to group
         Key([mod], str(idx+1), lazy.group[i.name].toscreen(),

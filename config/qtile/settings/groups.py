@@ -1,4 +1,5 @@
 from libqtile.config import Group, ScratchPad, DropDown, Match
+from layouts import layouts
 
 groups = [
     ScratchPad("scratchpad", [
@@ -10,6 +11,7 @@ groups = [
     Group("", layout="tile", matches=[Match(wm_class=["Alacritty"])]),
     Group("", layout="tile",matches=[Match(wm_class=["VSCodium", "jetbrains-idea"])]),
     Group("", layout="stack", matches=[Match(wm_class=["looking-glass-client"])]),
-    Group(""),    
+    Group(""),
+    Group("main", layout="stack", layouts=layouts),
+    Group("right", layout="stack", layouts=layouts),
 ]
-

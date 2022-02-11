@@ -25,20 +25,27 @@
 # SOFTWARE.
 
 import os
+import sys
 import subprocess
 
 from typing import List  # noqa: F401
 
-from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile import hook, layout
+from libqtile.config import Click, Drag, Match
 from libqtile.lazy import lazy
-from libqtile import hook
 
-from settings.keys import mod, terminal, keys
-from settings.layouts import layouts
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'settings/')))
+
+from settings.keys import mod, keys
+from settings.screens import widget_defaults, extension_defaults, screens
 from settings.groups import groups
 
+
 keys = keys
+widget_defaults = widget_defaults
+extension_defaults = extension_defaults
+screens = screens
+groups = groups
 
 
 @hook.subscribe.startup_once
@@ -46,70 +53,6 @@ def autostart():
     home = os.path.expanduser('~/.local/share/dwm/autostart.sh')
     subprocess.call([home])
 
-widget_defaults = dict(
-    font='JetBrains Mono',
-    fontsize=16,
-    padding=3,
-    background="#2e3440",
-)
-extension_defaults = widget_defaults.copy()
-
-screens = [
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.CurrentLayoutIcon(),
-                widget.GroupBox(
-                    block_highlight_text_color="#A3BE8C",
-                    fontsize=34,
-                    padding=2,
-                    borderwidth=0,
-                    disable_drag=True,
-                    this_current_screen_border="#A3BE8C",
-                    use_mouse_wheel=False,
-                ),
-                widget.Prompt(),
-                widget.TaskList(
-                    borderwidth=0,
-                ),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.CPUGraph(
-                    border_color="#A3BE8C",
-                    graph_color="#A3BE8C",
-                    fill_color="#A3BE8C.3",
-                    samples=60,
-                ),
-                widget.MemoryGraph(
-                    border_color="#A3BE8C",
-                    graph_color="#A3BE8C",
-                    fill_color="#A3BE8C.3",
-                    samples=60,
-                ),
-                widget.NetGraph(
-                    border_color="#A3BE8C",
-                    graph_color="#A3BE8C",
-                    fill_color="#A3BE8C.3",
-                    samples=60,
-                    interface="wlan0",
-                ),
-                widget.CheckUpdates(
-                    display_format="↻ {updates}",
-                    distro="Arch_yay",
-                    no_update_string="",
-                    update_interval=60,
-                ),
-                widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-            ],
-            30,
-        ),
-    ),
-]
 
 # Drag floating layouts.
 mouse = [
