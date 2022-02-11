@@ -219,9 +219,12 @@ def set_primary_screens(qtile: Qtile):
         for group in groups:  # follow on auto-move
             match = next((m for m in group.matches if m.compare(existing_window)), None)
             if match:
-                logger.info(f"Moving window {existing_window.name} to {group.name} group")
+                logger.info(f"Moving window {existing_window.name} to group {group.name}")
                 existing_window.togroup(group_name=group.name)
                 break
+            else:
+                logger.info(f"Moving window {existing_window.name} to group ")
+                existing_window.togroup(group_name="")
 
     logger.info("Reload the main config")
     qtile.load_config()
