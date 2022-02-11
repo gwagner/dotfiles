@@ -198,6 +198,7 @@ def set_primary_screens(qtile: Qtile):
     screen_layout = "primary"
     logger.info("Setting Primary Screens")
 
+    # Stop widgets
     logger.info("Finalize widgets")
     for wdgt in qtile.widgets_map.values():
         logger.info(f"Finalize existing widget: {wdgt.name}")
@@ -208,14 +209,18 @@ def set_primary_screens(qtile: Qtile):
 
     for existing_window in list(qtile.windows_map.values()):
         logger.info(f"Found window: {existing_window.name}")
+
+        # I dont actually know why i need to skip these, but i do becasue they throw an error if moved
         if isinstance(existing_window, Systray) or isinstance(existing_window, Icon):
             continue
 
+        # Kill off any internal windows, this mainly focuses on killing bars
         if isinstance(existing_window, Internal):
             logger.info(f"Found internal window: {existing_window.name}")
             existing_window.kill()
             continue
 
+        # Send the windows back to their original match groups, all other windows go to group 5
         for group in groups:  # follow on auto-move
             match = next((m for m in group.matches if m.compare(existing_window)), None)
             if match:
@@ -223,14 +228,15 @@ def set_primary_screens(qtile: Qtile):
                 existing_window.togroup(group_name=group.name)
                 break
             else:
-                logger.info(f"Moving window {existing_window.name} to group ")
-                existing_window.togroup(group_name="")
+                logger.info(f"Moving window {existing_window.name} to group {groups[5].name}")
+                existing_window.togroup(group_name=groups[5].name)
 
+    # Reload the config to get things fully reset
     logger.info("Reload the main config")
     qtile.load_config()
 
-    logger.info("Reconfigure Screens")
-    qtile.update_desktops()
+    # Set the screen back to the first group
+    qtile.screens[0].set_group(qtile.groups_map[groups[1].name], save_prev=False, warp=True)
 
     logger.info("Restart Qtile")
     qtile.restart()
@@ -290,21 +296,6 @@ def set_streaming_screens(qtile: Qtile):
         logger.info(f"Moving window to main group: {existing_window.name}")
         existing_window.togroup(group_name="main")
 
-    logger.info("Remove existing groups")
-    for existing_group in list(qtile.groups_map.values()):
-        logger.info(f"Existing group: {existing_group.name}")
-
-        # Dont kill off the scratchpad
-        if existing_group.name == "scratchpad":
-            continue
-
-        # Skip the new main group we just added
-        if existing_group.name == "main" or existing_group.name == "right":
-            continue
-
-        logger.info(f"Hiding existing group: {existing_group.name}")
-        existing_group.hide()
-
     logger.info("Finalize widgets")
     for wdgt in qtile.widgets_map.values():
         logger.info(f"Finalize existing widget: {wdgt.name}")
@@ -325,10 +316,6 @@ def set_streaming_screens(qtile: Qtile):
     logger.info("Reconfigure Screens 2")
     qtile.cmd_reconfigure_screens()
 
-    # qtile.keys_map.clear()
-    # for key in keys:
-    #     qtile.grab_key(key)
-
     # Add a hook to send OBS to the right fake screen
     def new_client_hook_streamer_screens(c):
         """
@@ -340,6 +327,8 @@ def set_streaming_screens(qtile: Qtile):
                 logger.info("Found OBS sending it to the right")
                 c.togroup("right")
                 c.cmd_toscreen(1)
+        else:
+            hook.unsubscribe.client_new(new_client_hook_streamer_screens)
 
     logger.info("Setup hooks")
     hook.subscribe.client_new(new_client_hook_streamer_screens)
