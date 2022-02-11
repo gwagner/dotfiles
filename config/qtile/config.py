@@ -38,7 +38,9 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'sett
 
 from settings.keys import mod, keys
 from settings.screens import widget_defaults, extension_defaults, screens
+from settings.layouts import layouts
 from settings.groups import groups
+
 
 
 keys = keys
