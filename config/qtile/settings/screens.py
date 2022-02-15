@@ -181,7 +181,7 @@ def get_streamer_screen(qtile):
             x=0,
             y=1084,
             width=3440,
-            height=336
+            height=356
         ),
 
     ]
