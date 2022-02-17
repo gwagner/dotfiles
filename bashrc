@@ -10,7 +10,8 @@ alias vi="nvim"
 alias vim="nvim"
 alias nano="nvim"
 alias qtile_log="tail -n 200 ~/.local/share/qtile/qtile.log"
-alias cam-loopback="~/.bin/process-watcher -config ~/.config/process-watcher-configs/loopback.yaml"
+alias cam-loopback="~/.bin/process-watcher -config ~/.config/process-watcher-configs/cam-loopback.yaml"
+alias cam-streaming="~/.bin/process-watcher -config ~/.config/process-watcher-configs/cam-streaming.yaml"
 
 export EDITOR=nvim
 export VISDUAL=nvim

@@ -30,6 +30,8 @@ def get_main_bar_widgets():
         widget.Prompt(),
         widget.TaskList(
             borderwidth=0,
+            icon_size=20,
+            padding_y=6,
         ),
         widget.Chord(
             chords_colors={
@@ -244,7 +246,7 @@ def set_primary_screens(qtile: Qtile):
 
 def set_streaming_screens(qtile: Qtile):
     global screen_layout
-    #qtile.cmd_info()
+    qtile.cmd_info()
 
     if screen_layout == "streamer":
         logger.info("Screen Layout already set to Streamer")
@@ -293,8 +295,12 @@ def set_streaming_screens(qtile: Qtile):
             existing_window.kill()
             continue
 
-        logger.info(f"Moving window to main group: {existing_window.name}")
-        existing_window.togroup(group_name="main")
+        if existing_window.group.name != "main" and existing_window.group.name != "right" and existing_window.group.name != groups[2].name:
+            logger.info(f"Moving window to main group: {existing_window.name}")
+            existing_window.togroup(group_name="main")
+            continue
+
+        logger.info(f"Not updating window: {existing_window.name}")
 
     logger.info("Finalize widgets")
     for wdgt in qtile.widgets_map.values():
