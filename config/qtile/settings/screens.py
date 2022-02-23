@@ -17,10 +17,15 @@ def get_main_bar_widgets():
     for group in groups[1:6]:
         visible_groups.append(group.name)
 
-    availableCards = os.listdir('/sys/class/net/')
-    networkCard = "wlan0"
-    if networkCard not in availableCards and "ens192" in availableCards:
-        networkCard = "ens192"
+    # List out the network card
+    available_cards = os.listdir('/sys/class/net/')
+
+    # Primary desktop uses wlan0
+    network_card = "wlan0"
+
+    # Test vm uses ens192
+    if network_card not in available_cards and "ens192" in available_cards:
+        network_card = "ens192"
 
     return [
         widget.CurrentLayoutIcon(),
@@ -63,7 +68,7 @@ def get_main_bar_widgets():
             graph_color="#A3BE8C",
             fill_color="#A3BE8C.3",
             samples=60,
-            interface=networkCard,
+            interface=network_card,
         ),
         widget.CheckUpdates(
             display_format="↻ {updates}",
