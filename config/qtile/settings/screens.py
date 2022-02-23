@@ -22,8 +22,6 @@ def get_main_bar_widgets():
     if networkCard not in availableCards and "ens192" in availableCards:
         networkCard = "ens192"
 
-    logger.warning(f"Visible groups: {os.listdir('/sys/class/net/')}")
-
     return [
         widget.CurrentLayoutIcon(),
         widget.GroupBox(
