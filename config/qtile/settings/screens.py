@@ -1,3 +1,5 @@
+import os
+
 from libqtile import bar, hook, widget
 from libqtile.backend.base import Internal, Window
 from libqtile.config import Screen
@@ -14,6 +16,13 @@ def get_main_bar_widgets():
     visible_groups = []
     for group in groups[1:6]:
         visible_groups.append(group.name)
+
+    availableCards = os.listdir('/sys/class/net/')
+    networkCard = "wlan0"
+    if networkCard not in availableCards and "ens192" in availableCards:
+        networkCard = "ens192"
+
+    logger.warning(f"Visible groups: {os.listdir('/sys/class/net/')}")
 
     return [
         widget.CurrentLayoutIcon(),
@@ -56,7 +65,7 @@ def get_main_bar_widgets():
             graph_color="#A3BE8C",
             fill_color="#A3BE8C.3",
             samples=60,
-            interface="wlan0",
+            interface=networkCard,
         ),
         widget.CheckUpdates(
             display_format="↻ {updates}",
