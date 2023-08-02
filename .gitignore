@@ -3,16 +3,22 @@
 
 # Target specific directories
 config/autostart/teams.desktop
+config/balena-etcher
 config/bashtop/error.log
+config/BraveSoftware
 config/coc/extensions/**
 config/configstore/*.json
 config/dconf
 config/discord
 config/Electron
+config/GIMP
+config/google-chrome
 config/JetBrains
 config/Microsoft/
 config/Microsoft*
+config/microsoft*
 config/pulse
+config/retroarch
 config/teams
 config/Slack
 config/VSCodium

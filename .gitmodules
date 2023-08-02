@@ -2,8 +2,3 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 
-
-[submodule "config/polybar-scripts"]
-	path = config/polybar-scripts
-	url = https://github.com/polybar/polybar-scripts.git
-	ignore = dirty
