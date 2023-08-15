@@ -1,0 +1,5 @@
+---
+commands:
+  - name: Start Scream
+    cmd: /bin/scream -m /dev/shm/scream-ivshmem
+    showLog: true

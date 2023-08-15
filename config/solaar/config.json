@@ -26,7 +26,37 @@
       "93": 93
     }
   },
-  "4086:6C4A9A21": {
+  "4086:3B577BF0": {
+    "_absent": [
+      "hi-res-scroll",
+      "lowres-smooth-scroll",
+      "hires-smooth-invert",
+      "hires-smooth-resolution",
+      "smart-shift",
+      "thumb-scroll-mode",
+      "thumb-scroll-invert",
+      "pointer_speed",
+      "dpi-sliding",
+      "speed-change",
+      "mouse-gestures",
+      "backlight",
+      "backlight-timed",
+      "fn-swap",
+      "reprogrammable-keys",
+      "persistent-remappable-keys",
+      "divert-keys",
+      "disable-keyboard-keys",
+      "divert-crown",
+      "crown-smooth",
+      "divert-gkeys",
+      "m-key-leds",
+      "mr-key-led",
+      "multiplatform",
+      "change-host",
+      "gesture2-gestures",
+      "gesture2-divert",
+      "gesture2-params"
+    ],
     "_modelId": "4086C0900000",
     "_name": "G703 LIGHTSPEED Wireless Gaming Mouse w/ HERO",
     "_sensitive": {
@@ -36,9 +66,43 @@
     "_serial": "3B577BF0",
     "_unitId": "3B577BF0",
     "dpi": 800,
+    "onboard_profiles": 1,
     "report_rate": 1
   },
   "408A:7976FA42": {
+    "_absent": [
+      "hi-res-scroll",
+      "lowres-smooth-scroll",
+      "hires-smooth-invert",
+      "hires-smooth-resolution",
+      "smart-shift",
+      "thumb-scroll-mode",
+      "thumb-scroll-invert",
+      "onboard_profiles",
+      "report_rate",
+      "pointer_speed",
+      "dpi",
+      "dpi-sliding",
+      "speed-change",
+      "mouse-gestures",
+      "backlight",
+      "backlight-timed",
+      "fn-swap",
+      "reprogrammable-keys",
+      "persistent-remappable-keys",
+      "divert-keys",
+      "disable-keyboard-keys",
+      "divert-crown",
+      "crown-smooth",
+      "divert-gkeys",
+      "m-key-leds",
+      "mr-key-led",
+      "multiplatform",
+      "change-host",
+      "gesture2-gestures",
+      "gesture2-divert",
+      "gesture2-params"
+    ],
     "_modelId": "B35B408A0000",
     "_name": "MX Keys Keyboard",
     "_sensitive": {
@@ -84,5 +148,5 @@
     "fn-swap": false,
     "multiplatform": "0"
   },
-  "_version": "1.1.1"
+  "_version": "1.1.2"
 }

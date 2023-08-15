@@ -1,0 +1,9 @@
+modmap:
+  - remap: 
+      KEY_LEFTALT: KEY_RIGHTCTRL
+    application:
+      only: VSCodium modmap:
+  - remap: 
+      KEY_LEFTALT: KEY_RIGHTCTRL
+    application:
+      only: VSCodium 

@@ -107,6 +107,12 @@ export VIRSH_DEFAULT_CONNECT_URI='qemu:///system'
 
 export PATH=$PATH:/home/gwagner/.bin
 export PATH=$PATH:/home/gwagner/go/bin
+export JAVA_HOME=/usr/lib/jvm/default-runtime/bin/
+
+# Setup node for global install
+export npm_config_prefix="$HOME/.local"
+PATH="$HOME/.local/bin:$PATH"
+
 
 tts() {
   echo "$@" | festival --tts
@@ -114,3 +120,7 @@ tts() {
 
 source ~/.bashrc
 
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PATH="$HOME/.pyenv/bin:$PATH"

@@ -6,12 +6,14 @@ config/autostart/teams.desktop
 config/balena-etcher
 config/bashtop/error.log
 config/BraveSoftware
+config/cef_user_data/**
 config/coc/extensions/**
 config/configstore/*.json
 config/dconf
 config/discord
 config/Electron
 config/GIMP
+config/grammarly-languageserver/**
 config/google-chrome
 config/JetBrains
 config/Microsoft/
@@ -23,12 +25,17 @@ config/teams
 config/Slack
 config/VSCodium
 
+
 # Target specific files
 config/QtProject.conf
 config/Synergy/Synergy.conf
 config/OpenRGB/logs/**
+config/zoomus.conf
 **/*.pyc
 
 # Ensure we add back some files which our rules above are overly aggressive
 !config/VSCodium/User/keybindings.json
 !config/VSCodium/User/settings.json
+config/hypr/hyprland.conf
+
+local/share/rofi/rofi_calc_history

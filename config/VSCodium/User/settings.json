@@ -12,7 +12,7 @@
     "workbench.colorTheme": "Nord",
     "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
     "editor.cursorBlinking": "smooth",
-    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorSmoothCaretAnimation": "on",
     "editor.smoothScrolling": true,
     "explorer.confirmDragAndDrop": false,
     "todo-tree.tree.showScanModeButton": false,
@@ -25,5 +25,19 @@
         "[ ]",
         "[x]"
     ],
-    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)"
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "go.toolsManagement.autoUpdate": true,
+    "redhat.telemetry.enabled": true,
+    "liveServer.settings.root": "public/",
+    "liveServer.settings.fullReload": true,
+    "liveServer.settings.file": "./404.html",
+    "cSpell.userWords": [
+        "Agilist",
+        "automagically",
+        "clickbaity",
+        "transformative"
+    ],
+    "markdown.editor.quickSuggestions": true,
+    "liveServer.settings.donotShowInfoMsg": true
 }

@@ -17,6 +17,7 @@
     ~/polybar.sh: polybar.sh
     ~/scripts: scripts
     ~/.xinitrc: xinitrc
+    ~/.Xmodmap: Xmodmap
     ~/.xsessionrc: xsessionrc
     ~/.zshrc: zshrc
     

@@ -1,8 +1,7 @@
 Threshold = 95
 DisplayMonitorSources = true
 EnableUpdates = true
-GuiltTripped = false
 FilterInput = true
 FilterOutput = false
-LastUsedInput = "alsa_input.usb-Razer_Inc_Razer_Kiyo_Pro-02.analog-stereo"
+LastUsedInput = "alsa_input.usb-DCMT_Technology_USB_Condenser_Microphone_214b206000000178-00.pro-input-0"
 LastUsedOutput = ""

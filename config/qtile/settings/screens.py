@@ -5,14 +5,24 @@ from libqtile.backend.base import Internal, Window
 from libqtile.config import Screen
 from libqtile.core.manager import Qtile
 from libqtile.log_utils import logger
-from libqtile.widget import Systray
+from qtile_extras import widget
+from qtile_extras.widget.decorations import RectDecoration
+#from libqtile.widget import Systray
 from libqtile.widget.systray import Icon
 from groups import groups
 
 screen_layout = "primary"
 
+decor = {
+    "decorations": [
+        RectDecoration(colour="#4c566a", radius=10, filled=True, padding_y=5)
+    ],
+    "padding_x": 6,
+}
 
 def get_main_bar_widgets():
+    global decor
+
     visible_groups = []
     for group in groups[1:6]:
         visible_groups.append(group.name)
@@ -28,28 +38,39 @@ def get_main_bar_widgets():
         network_card = "ens192"
 
     return [
-        widget.CurrentLayoutIcon(),
+        widget.CurrentLayoutIcon(
+            scale=.75,
+            **decor
+        ),
+        widget.Sep(
+            foreground="#2e3440",
+            padding=6,
+        ),
         widget.GroupBox(
             block_highlight_text_color="#A3BE8C",
-            fontsize=34,
+            fontsize=28,
             padding=2,
             borderwidth=0,
             disable_drag=True,
             this_current_screen_border="#A3BE8C",
             use_mouse_wheel=False,
             visible_groups=visible_groups,
+            **decor
         ),
-        widget.Prompt(),
+        widget.Sep(
+            foreground="#2e3440",
+            padding=6,
+        ),
         widget.TaskList(
+            fontsize=16,
             borderwidth=0,
-            icon_size=20,
+            icon_size=16,
             padding_y=6,
+            **decor
         ),
-        widget.Chord(
-            chords_colors={
-                'launch': ("#ff0000", "#ffffff"),
-            },
-            name_transform=lambda name: name.upper(),
+        widget.Sep(
+            foreground="#2e3440",
+            padding=6,
         ),
         widget.CPUGraph(
             border_color="#A3BE8C",
@@ -70,13 +91,26 @@ def get_main_bar_widgets():
             samples=60,
             interface=network_card,
         ),
+        widget.Sep(
+            foreground="#2e3440",
+            padding=6,
+        ),
         widget.CheckUpdates(
             display_format="↻ {updates}",
             distro="Arch_yay",
             no_update_string="",
             update_interval=60,
+            padding=2,
+        ),
+        widget.Sep(
+            foreground="#2e3440",
+            padding=6,
         ),
         widget.Systray(),
+        widget.Sep(
+            foreground="#2e3440",
+            padding=6,
+        ),
         widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
     ]
 

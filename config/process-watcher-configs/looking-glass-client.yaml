@@ -1,0 +1,8 @@
+---
+commands:
+  - name: Start looking-glass-client
+    cmd: /usr/bin/looking-glass-client
+    showLog: true
+  - name: Start Scream
+    cmd: /bin/scream -m /dev/shm/scream-ivshmem
+    showLog: true

@@ -1,9 +1,8 @@
 ---
 commands:
   - name: FFMPEG Video Loopback
-    cmd: "ffmpeg -f v4l2 -fflags nobuffer -flags low_delay -framerate 30 -video_size 1920x1080 -input_format h264 -i /dev/video0 -f v4l2 -framerate 60 -pix_fmt yuv420p -video_size 1920x1080 -vcodec rawvideo /dev/video11"
+    cmd: gst-launch-1.0 -v v4l2src device=/dev/video0 ! queue ! "video/x-h264,format=H264,width=1920,height=1080,framerate=30/1" ! vaapih264dec low-latency=true ! videoconvert ! v4l2sink device=/dev/video11 pulsesrc device=alsa_input.usb-Razer_Inc_Razer_Kiyo_Pro-02.analog-stereo  ! queue ! pulsesink device=GStreamerMic
     showLog: true
   - name: OBS Virtual Webcam
-    cmd: "obs --startvirtualcam --collection Standard --verbose --scene 'Fullscreen Webcam' --profile 'Cam-Loopback'"
+    cmd: "com.obsproject.Studio --startvirtualcam --collection Standard --verbose --scene 'Fullscreen Webcam' --profile 'Cam-Loopback'"
     sleep: 5
-    showLog: true
