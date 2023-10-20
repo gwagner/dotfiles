@@ -35,9 +35,13 @@
     "cSpell.userWords": [
         "Agilist",
         "automagically",
+        "Autoremediation",
         "clickbaity",
+        "inclusivity",
+        "seatbelts",
         "transformative"
     ],
     "markdown.editor.quickSuggestions": true,
-    "liveServer.settings.donotShowInfoMsg": true
+    "liveServer.settings.donotShowInfoMsg": true,
+    "files.autoSaveDelay": 2000
 }
