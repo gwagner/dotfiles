@@ -1,0 +1,14 @@
+[Unit]
+Description=User suspend actions
+Before=sleep.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/i3lock -i /home/gwagner/backgrounds/framework-exploded.jpg -F --ring-color=3b4252 --inside-color=2e3440 --insidever-color=2e3440 --ringver-color=2e3440 --insidewrong-color=2e3440 --ringwrong-color=2e3440 --keyhl-color=4c566a --bshl-color=4c566a --verif-color=FFFFFF --wrong-color=bf616a --modif-color=ebcb8b --noinput-text=""
+TimeoutSec=infinity
+#ExecStartPost=/usr/bin/sleep 1
+
+[Install]
+WantedBy=suspend.target
+
+#/usr/bin/systemctl --user --machine=framework@ start --wait suspend.target

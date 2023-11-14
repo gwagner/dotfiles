@@ -16,7 +16,6 @@ keys = [
     Key([mod], "j", lazy.layout.next(), desc="Move focus next"),
     Key([mod], "k", lazy.layout.previous(), desc="Move focus previous"),
 
-
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key([mod], "grave", lazy.layout.up(), desc="Move focus next"),
@@ -64,7 +63,7 @@ keys = [
     Key([mod, "control"], "0", lazy.function(set_primary_screens), desc="Set screen layout to a single screen"),
     Key([mod, "control"], "9", lazy.function(set_streaming_screens), desc="Set screen layout to a streaming layout"),
 
-    Key([mod, "control"], "l", lazy.spawn("betterlockscreen --lock"), desc="Lock Screen"),
+    Key([mod, "control"], "l", lazy.spawn("betterlockscreen --lock blur -- -verif-align=2"), desc="Lock Screen"),
 
     # Go to the next group (tag)
     Key(["control"], "Left", lazy.function(prev_screen),

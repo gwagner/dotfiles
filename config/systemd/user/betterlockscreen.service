@@ -1,0 +1,14 @@
+
+
+[Unit]
+Description=User suspend actions
+After=suspend.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/betterlockscreen --lock dim
+TimeoutSec=infinity
+ExecStartPost=/usr/bin/sleep 1
+
+[Install]
+WantedBy=suspend.target

@@ -19,6 +19,7 @@ config/JetBrains
 config/Microsoft/
 config/Microsoft*
 config/microsoft*
+config/obsidian
 config/pulse
 config/retroarch
 config/teams

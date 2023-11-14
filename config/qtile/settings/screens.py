@@ -48,7 +48,7 @@ def get_main_bar_widgets():
         ),
         widget.GroupBox(
             block_highlight_text_color="#A3BE8C",
-            fontsize=28,
+            fontsize=20,
             padding=2,
             borderwidth=0,
             disable_drag=True,
@@ -95,6 +95,10 @@ def get_main_bar_widgets():
             foreground="#2e3440",
             padding=6,
         ),
+        widget.Battery(
+            update_interval=60,
+            padding=2,
+        ),
         widget.CheckUpdates(
             display_format="↻ {updates}",
             distro="Arch_yay",
@@ -102,6 +106,7 @@ def get_main_bar_widgets():
             update_interval=60,
             padding=2,
         ),
+        
         widget.Sep(
             foreground="#2e3440",
             padding=6,

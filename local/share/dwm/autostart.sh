@@ -31,8 +31,13 @@ startApp "nitrogen --restore"
 startApp picom
 startApp dunst
 startApp firefox
-startApp "solaar -w hide"
-startApp "openrgb --startminimized -p Default"
-startApp "/usr/bin/xss-lock -- /usr/bin/betterlockscreen -l"
-#startApp "/bin/scream -m /dev/shm/scream-ivshmem"
-startApp "lxpolkit"
+
+## Start on the desktop, not framework laptop
+if [ "$HOSTNAME" != "framework" ]; then 
+    startApp "solaar -w hide"
+    startApp "openrgb --startminimized -p Default"
+    startApp "/usr/bin/xss-lock -- /usr/bin/betterlockscreen -l dim"
+    startApp "lxpolkit"
+fi
+
+# startApp "/bin/scream -m /dev/shm/scream-ivshmem"
