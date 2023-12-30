@@ -118,6 +118,9 @@ export PATH=$PATH:/home/gwagner/.bin
 export PATH=$PATH:/home/gwagner/go/bin
 export JAVA_HOME=/usr/lib/jvm/default-runtime/bin/
 
+# work aliases
+alias dowork="ffplay -f v4l2 -framerate 30  -fflags nobuffer -flags low_delay -input_format mjpeg  -video_size 1920x1080 -i /dev/video0"
+
 # Setup node for global install
 export npm_config_prefix="$HOME/.local"
 PATH="$HOME/.local/bin:$PATH"
