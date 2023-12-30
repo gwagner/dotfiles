@@ -37,6 +37,7 @@
         "automagically",
         "Autoremediation",
         "clickbaity",
+        "geoff",
         "inclusivity",
         "seatbelts",
         "transformative"
@@ -44,5 +45,11 @@
     "markdown.editor.quickSuggestions": true,
     "liveServer.settings.donotShowInfoMsg": true,
     "files.autoSaveDelay": 2000,
-    "window.zoomLevel": 3
+    "window.zoomLevel": 2,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

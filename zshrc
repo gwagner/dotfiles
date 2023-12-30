@@ -100,9 +100,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export FZF_DEFAULT_COMMAND='find .'
 export EDITOR='vim'
+alias f="fzf | xargs nvim"
 alias vs="vscode"
 alias yt="mpv --autofit=\"25%x25%\""
+alias kb="/bin/bash ~/.xsessionrc"
 export VIRSH_DEFAULT_CONNECT_URI='qemu:///system'
 
 export PATH=$PATH:/home/gwagner/.bin
@@ -113,6 +116,18 @@ export JAVA_HOME=/usr/lib/jvm/default-runtime/bin/
 export npm_config_prefix="$HOME/.local"
 PATH="$HOME/.local/bin:$PATH"
 
+#ZSH aliases
+alias reload="source ~/.zshrc"
+
+#TMUX aliases
+alias ta="tmux attach"
+function exit {
+  if [ ${TMUX} ]; then
+      tmux detach
+  else 
+      builtin exit
+  fi
+}
 
 tts() {
   echo "$@" | festival --tts
@@ -120,7 +135,19 @@ tts() {
 
 source ~/.bashrc
 
-export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PATH="$HOME/.pyenv/bin:$PATH"
+if command -v pyenv &> /dev/null
+then
+	export PYENV_ROOT="$HOME/.pyenv"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+	export PATH="$HOME/.pyenv/bin:$PATH"
+fi
+
+# Startup TMUX
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  tmux attach || tmux new-session
+fi
+
+fastfetch
+
+
