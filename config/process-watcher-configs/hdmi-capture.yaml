@@ -1,0 +1,15 @@
+---
+commands:
+  - name: FFMPEG Video Loopback
+    cmd: |
+      ffmpeg -f v4l2 -fflags nobuffer -flags low_delay -avioflags direct -framerate 30 -video_size 1920x1080 -input_format mjpeg -i /dev/video1 \
+      -f v4l2 -framerate 60 -pix_fmt yuv420p -video_size 1920x1080 -vcodec rawvideo /dev/video11
+    showLog: true
+  - name: Display Cam
+    cmd: |
+      ffplay -fflags nobuffer -flags low_delay -avioflags direct  -i /dev/video11 -vf fps=fps=60 -framerate 60
+    sleep: 2
+    showLog: true
+
+
+    
