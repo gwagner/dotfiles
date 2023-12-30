@@ -8,9 +8,9 @@ fx_list=(dim blur dimblur pixel dimpixel color)
 dim_level=40
 blur_level=1
 pixel_scale=10,1000
-solid_color=2e3440
+solid_color=333333
 wallpaper_cmd="nitrogen --restore"
-# i3lockcolor_bin="i3lock-color" # Manually set command for i3lock-color
+quiet=false
 
 # default theme
 loginbox=00000066
@@ -30,7 +30,25 @@ greetercolor=ffffffff
 layoutcolor=ffffffff
 keyhlcolor=d23c3dff
 bshlcolor=d23c3dff
+veriftext="Verifying  "
 verifcolor=ffffffff
+wrongtext="Failure!"
 wrongcolor=d23c3dff
 modifcolor=d23c3dff
-bgcolor=2e3440ff
+bgcolor=000000ff
+
+
+#
+# expert options (change at own risk!)
+#
+
+# i3lockcolor_bin="i3lock-color"      # Manually set command for i3lock-color
+# suspend_command="systemctl suspend" # Manually change action e.g. hibernate/suspend-command
+
+# i3lock-color - custom arguments
+lockargs=() 						  # overwriting default "(-n)"
+#lockargs+=(--ignore-empty-password) # appending new argument
+lockargs+=(--ind-pos="x+320:h-75") # appending new argument
+lockargs+=(--time-pos="ix-285:iy-5") # appending new argument
+lockargs+=(--greeter-pos="ix-285:iy+30") # appending new argument
+lockargs+=(--debug) # appending new argument

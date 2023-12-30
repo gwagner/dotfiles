@@ -16,6 +16,7 @@
     ~/.looking-glass-client.ini: looking-glass-client.ini
     ~/polybar.sh: polybar.sh
     ~/scripts: scripts
+    ~/.tmux.conf: tmux.conf
     ~/.xinitrc: xinitrc
     ~/.Xmodmap: Xmodmap
     ~/.xsessionrc: xsessionrc
