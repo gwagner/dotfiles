@@ -101,12 +101,18 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export FZF_DEFAULT_COMMAND='find .'
-export EDITOR='vim'
-alias f="fzf | xargs nvim"
+export EDITOR='nvim'
+export VISUAL='nvim'
+alias f="fzf | xargs -r nvim"
 alias vs="vscode"
 alias yt="mpv --autofit=\"25%x25%\""
 alias kb="/bin/bash ~/.xsessionrc"
 export VIRSH_DEFAULT_CONNECT_URI='qemu:///system'
+
+alias ls='ls -hal --color=auto'
+alias vi="nvim"
+alias vim="nvim"
+alias nano="nvim"
 
 export PATH=$PATH:/home/gwagner/.bin
 export PATH=$PATH:/home/gwagner/go/bin
@@ -132,8 +138,6 @@ function exit {
 tts() {
   echo "$@" | festival --tts
 }
-
-source ~/.bashrc
 
 if command -v pyenv &> /dev/null
 then
