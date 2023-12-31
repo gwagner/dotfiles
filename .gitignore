@@ -8,12 +8,14 @@ config/bashtop/error.log
 config/BraveSoftware
 config/cef_user_data/**
 config/coc/extensions/**
+config/Code - OSS/
 config/configstore/*.json
 config/dconf
 config/discord
 config/Electron
 config/GIMP
 config/grammarly-languageserver/**
+config/go/
 config/google-chrome
 config/JetBrains
 config/Microsoft/

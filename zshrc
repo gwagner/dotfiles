@@ -138,6 +138,10 @@ function exit {
   fi
 }
 
+# Productivity Aliases
+alias f="fzf | xargs -r nvim"
+alias sd='cd ~ && cd $(find * -type d | fzf)'
+
 tts() {
   echo "$@" | festival --tts
 }
