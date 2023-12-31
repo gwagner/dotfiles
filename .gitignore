@@ -18,9 +18,11 @@ config/grammarly-languageserver/**
 config/go/
 config/google-chrome
 config/JetBrains
+config/lutris/
 config/Microsoft/
 config/Microsoft*
 config/microsoft*
+config/miopen
 config/obsidian
 config/pulse
 config/retroarch
