@@ -27,3 +27,12 @@ vim.wo.relativenumber = true
 
 require("lazy").setup("plugins")
 
+-- Setup Theme
+require('onenord').setup()
+
+-- Setup Language Server
+require'lspconfig'.gopls.setup{}
+
+-- Auto format LUA
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+
