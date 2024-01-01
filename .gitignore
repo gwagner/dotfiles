@@ -15,7 +15,7 @@ config/discord
 config/Electron
 config/GIMP
 config/grammarly-languageserver/**
-config/go/
+config/go/**
 config/google-chrome
 config/JetBrains
 config/lutris/
