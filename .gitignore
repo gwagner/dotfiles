@@ -1,5 +1,6 @@
 # Ensure the IDE is not pushed
 .idea
+.github
 
 # Target specific directories
 config/autostart/teams.desktop
@@ -23,6 +24,8 @@ config/Microsoft/
 config/Microsoft*
 config/microsoft*
 config/miopen
+config/nitrogen
+config/nvim/lua/user
 config/obsidian
 config/pulse
 config/retroarch
