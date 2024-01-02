@@ -8,7 +8,7 @@ return {
       "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     keys = {
-      { "<leader>t", ":Neotree toggle filesystem reveal left dir=%:p:h:h<CR>", desc="Neotree Open"},
+      { "<leader>t", ":Neotree toggle filesystem reveal left dir=%:p:h git_base=HEAD<CR>", desc="Neotree Open"},
       { "<leader>u", ":Neotree dir=../<CR>", desc="Neotree up one directory" },
     }
 }

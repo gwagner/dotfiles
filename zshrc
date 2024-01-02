@@ -100,19 +100,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export FZF_DEFAULT_COMMAND='find .'
-export EDITOR='nvim'
-export VISUAL='nvim'
-alias f="fzf | xargs -r nvim"
-alias vs="vscode"
 alias yt="mpv --autofit=\"25%x25%\""
 alias kb="/bin/bash ~/.xsessionrc"
-export VIRSH_DEFAULT_CONNECT_URI='qemu:///system'
 
-alias ls='ls -hal --color=auto'
+## Setup Editors
+export EDITOR='nvim'
+export VISUAL='nvim'
 alias vi="nvim"
 alias vim="nvim"
 alias nano="nvim"
+
+## Virtualization Configs
+export VIRSH_DEFAULT_CONNECT_URI='qemu:///system'
 
 ## Runtime env vars
 export PATH=$PATH:/home/gwagner/.bin
@@ -142,8 +141,12 @@ function exit {
 }
 
 # Productivity Aliases
-alias f="fzf | xargs -r nvim"
-alias sd='cd ~ && cd $(find * -type d | fzf)'
+alias ls='ls -hal --color=auto'
+
+## fzf specific
+export FZF_DEFAULT_COMMAND='find . -type f'
+alias f="fzf-tmux -p 80%,80% --preview 'bat --style=numbers --color=always --line-range :500 {}' --preview-window=right:70%:wrap | xargs -r nvim"
+alias sd='cd ~ && cd $(find * -type d | fzf-tmux -p 80%,80%)'
 
 tts() {
   echo "$@" | festival --tts
