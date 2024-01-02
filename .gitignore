@@ -30,6 +30,7 @@ config/nvim/lua/user
 config/obsidian
 config/pulse
 config/retroarch
+config/rncbc.org
 config/teams
 config/Slack
 config/VSCodium
