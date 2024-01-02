@@ -19,6 +19,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "cff25ce621e6d15fae0b0bfe38c00be50ce38468" },
   "onenord.nvim": { "branch": "main", "commit": "879bc64ea4678bf32d2bfda47c4e3a04af52a448" },
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
+  "ripgrep": { "branch": "master", "commit": "3f2fe0afee0d1a1eeb3235904cfef4f35c4644dc" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "4bd5657b14b58e069287f5ac591a647bb860b2ed" },
   "telescope.nvim": { "branch": "master", "commit": "3466159b0fcc1876483f6f53587562628664d850" },
   "vim-airline": { "branch": "master", "commit": "ff7352e4bff02eb600a136b6fd741404f3195371" },
