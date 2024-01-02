@@ -32,6 +32,10 @@ require('onenord').setup()
 
 -- Setup Language Server
 require'lspconfig'.gopls.setup{}
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.jsonls.setup{}
+require'lspconfig'.lua_ls.setup{}
+require'lspconfig'.yamlls.setup{}
 
 -- Auto format LUA
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]

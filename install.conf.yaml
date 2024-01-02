@@ -20,7 +20,7 @@
     ~/.xinitrc: xinitrc
     ~/.Xmodmap: Xmodmap
     ~/.xsessionrc: xsessionrc
-    ~/.zshrc: zshrc
+    ~/.zshrc: zshrc.sh
     
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
