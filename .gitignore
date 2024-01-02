@@ -19,6 +19,7 @@ config/grammarly-languageserver/**
 config/go/**
 config/google-chrome
 config/JetBrains
+config/lazygit
 config/lutris/
 config/Microsoft/
 config/Microsoft*
