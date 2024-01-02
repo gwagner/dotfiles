@@ -21,9 +21,16 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.bo.softtabstop = 2
 
+-- Add highlighting to the line that the cursor is on
+vim.opt.cursorline = true
+
 -- Show Line Numbers
 vim.wo.number = true
 vim.wo.relativenumber = true
+
+-- Enable Spellcheck
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
 
 require("lazy").setup("plugins")
 
@@ -31,12 +38,12 @@ require("lazy").setup("plugins")
 require('onenord').setup()
 
 -- Setup Language Server
-require'lspconfig'.gopls.setup{}
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.jsonls.setup{}
-require'lspconfig'.lua_ls.setup{}
-require'lspconfig'.yamlls.setup{}
+require 'lspconfig'.gopls.setup {}
+require 'lspconfig'.bashls.setup {}
+require 'lspconfig'.jsonls.setup {}
+require 'lspconfig'.marksman.setup {}
+require 'lspconfig'.lua_ls.setup {}
+require 'lspconfig'.yamlls.setup {}
 
 -- Auto format LUA
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
-

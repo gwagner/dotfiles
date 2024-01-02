@@ -121,7 +121,7 @@ export GOPATH=$HOME/go/
 export GOBIN=$GOPATH/bin/
 
 # work aliases
-alias dowork="ffplay -f v4l2 -framerate 30  -fflags nobuffer -flags low_delay -input_format mjpeg  -video_size 1920x1080 -i /dev/video0"
+alias dowork="ffplay -f v4l2 -framerate 30 -fflags nobuffer -flags low_delay -sync ext -input_format mjpeg -video_size 1920x1080 -i /dev/video0 -vf \"tblend\" -stats -infbuf"
 
 # Setup node for global install
 export npm_config_prefix="$HOME/.local"
@@ -144,8 +144,11 @@ function exit {
 alias ls='ls -hal --color=auto'
 
 ## fzf specific
-export FZF_DEFAULT_COMMAND='find . -type f'
-alias f="fzf-tmux -p 80%,80% --preview 'bat --style=numbers --color=always --line-range :500 {}' --preview-window=right:70%:wrap | xargs -r nvim"
+export FZF_DEFAULT_COMMAND='find . -type f -not -path "*/\.git/*"' # Find files (excludes hidden files)
+alias fa="fzf-tmux -p 80%,80% --preview 'bat --style=numbers --color=always --line-range :500 {}' --preview-window=right:70%:wrap | xargs -r nvim"
+function f {
+  ag -g "" | fzf-tmux -p 80%,80% --preview 'bat --style=numbers --color=always --line-range :500 {}' --preview-window=right:70%:wrap | xargs -r nvim
+}
 alias sd='cd ~ && cd $(find * -type d | fzf-tmux -p 80%,80%)'
 
 tts() {
