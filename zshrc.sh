@@ -119,6 +119,7 @@ export PATH=$PATH:/home/gwagner/go/bin
 export JAVA_HOME=/usr/lib/jvm/default-runtime/bin/
 export GOPATH=$HOME/go/
 export GOBIN=$GOPATH/bin/
+export GOPROXY=on
 
 # work aliases
 alias dowork="ffplay -f v4l2 -framerate 30 -fflags nobuffer -flags low_delay -sync ext -input_format mjpeg -video_size 1920x1080 -i /dev/video0 -vf \"tblend\" -stats -infbuf"
