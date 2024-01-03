@@ -48,5 +48,8 @@ require'lspconfig'.jsonls.setup{}
 require'lspconfig'.lua_ls.setup{}
 require'lspconfig'.yamlls.setup{}
 
+local outdentKey = vim.api.nvim_replace_termcodes("<C-d>", true, false, true)
+vim.keymap.set("i", "<S-TAB>", function() vim.fn.feedkeys(outdentKey, "i") end)
+
 -- Auto format LUA
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
