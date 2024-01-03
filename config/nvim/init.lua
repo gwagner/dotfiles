@@ -43,6 +43,7 @@ require('onenord').setup()
 require'lspconfig'.ansiblels.setup{}
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.bashls.setup{}
+require'lspconfig'.html.setup{}
 require'lspconfig'.marksman.setup{}
 require'lspconfig'.jsonls.setup{}
 require'lspconfig'.lua_ls.setup{}
