@@ -9,6 +9,7 @@ return {
     'hrsh7th/cmp-cmdline',
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
+    'windwp/nvim-autopairs'
   },
   cond = not os.getenv("NVIM_DIFF"),
   config = function()
@@ -37,5 +38,26 @@ return {
         })),
       },
     })
+
+    local handlers = require('nvim-autopairs.completion.handlers')
+    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+    cmp.event:on(
+      'confirm_done',
+      cmp_autopairs.on_confirm_done({
+        filetypes = {
+          -- "*" is a alias to all filetypes
+          ["*"] = {
+            ["("] = {
+              kind = {
+                cmp.lsp.CompletionItemKind.Function,
+                cmp.lsp.CompletionItemKind.Method,
+              },
+              handler = handlers["*"]
+            }
+          },
+        }
+      })
+    )
+
   end,
 }
