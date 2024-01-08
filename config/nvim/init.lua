@@ -36,6 +36,9 @@ vim.opt.spell = true
 
 require("lazy").setup("plugins")
 
+-- Setup rooter to automatically change my root
+require("rooter")
+
 -- Setup Theme
 require('onenord').setup()
 
