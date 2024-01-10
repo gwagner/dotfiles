@@ -37,7 +37,7 @@ def get_main_bar_widgets():
     if network_card not in available_cards and "ens192" in available_cards:
         network_card = "ens192"
 
-    return [
+    widgetList = [
         widget.CurrentLayoutIcon(
             scale=.75,
             **decor
@@ -95,10 +95,26 @@ def get_main_bar_widgets():
             foreground="#2e3440",
             padding=6,
         ),
-        widget.Battery(
-            update_interval=60,
-            padding=2,
-        ),
+    ]
+
+    batExists = os.path.exists("/sys/class/power_supply/BAT1/capacity")
+    if batExists:
+        widgetList += [     
+            widget.Sep(
+                foreground="#2e3440",
+                padding=6,
+            ),
+            widget.Battery(
+                update_interval=60,
+                padding=2,
+            ),
+            widget.Sep(
+                foreground="#2e3440",
+                padding=6,
+            ),
+        ]
+    
+    widgetList += [
         widget.CheckUpdates(
             display_format="↻ {updates}",
             distro="Arch_yay",
@@ -118,6 +134,9 @@ def get_main_bar_widgets():
         ),
         widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
     ]
+
+    return widgetList
+
 
 
 def get_widget_defaults():
