@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  exit 0
+fi
+
 
 width=${2:-80%}
 height=${2:-80%}
