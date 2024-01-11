@@ -58,7 +58,21 @@ require 'lspconfig'.lua_ls.setup {}
 require 'lspconfig'.yamlls.setup {}
 
 -- Setup outdent key
-vim.keymap.set("i", "<S-Tab>", "<C-\\><C-N><<<C-\\><C-N>^i")
+vim.keymap.set("i", "<S-Tab>", function ()
+  local cmp = require('cmp')
+  if not cmp.visible() then
+    local keyCode = "<C-\\><C-N><<<C-\\><C-N>^i"
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keyCode, true, true, true), "n", false)
+  end
+end
+)
 
 -- Auto format LUA
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+
+-- Setup autoread from disk on change
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
