@@ -49,3 +49,4 @@ config/zoomus.conf
 config/hypr/hyprland.conf
 
 local/share/rofi/rofi_calc_history
+config/pavucontrol.ini
