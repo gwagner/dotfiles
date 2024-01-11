@@ -39,18 +39,23 @@ require("lazy").setup("plugins")
 -- Setup rooter to automatically change my root
 require("rooter")
 
+-- Setup LSP change when working on HUGO files
+--require("hugolsp")
+
 -- Setup Theme
 require('onenord').setup()
 
 -- Setup Language Server
-require'lspconfig'.ansiblels.setup{}
-require'lspconfig'.gopls.setup{}
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.html.setup{}
-require'lspconfig'.marksman.setup{}
-require'lspconfig'.jsonls.setup{}
-require'lspconfig'.lua_ls.setup{}
-require'lspconfig'.yamlls.setup{}
+require 'lspconfig'.ansiblels.setup {}
+require 'lspconfig'.gopls.setup {
+  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl', 'html' }
+}
+require 'lspconfig'.bashls.setup {}
+require 'lspconfig'.html.setup {}
+require 'lspconfig'.marksman.setup {}
+require 'lspconfig'.jsonls.setup {}
+require 'lspconfig'.lua_ls.setup {}
+require 'lspconfig'.yamlls.setup {}
 
 -- Setup outdent key
 vim.keymap.set("i", "<S-Tab>", "<C-\\><C-N><<<C-\\><C-N>^i")
