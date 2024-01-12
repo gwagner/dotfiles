@@ -57,15 +57,8 @@ require 'lspconfig'.jsonls.setup {}
 require 'lspconfig'.lua_ls.setup {}
 require 'lspconfig'.yamlls.setup {}
 
--- Setup outdent key
-vim.keymap.set("i", "<S-Tab>", function ()
-  local cmp = require('cmp')
-  if not cmp.visible() then
-    local keyCode = "<C-\\><C-N><<<C-\\><C-N>^i"
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keyCode, true, true, true), "n", false)
-  end
-end
-)
+-- enable shift-tab to outdent
+vim.keymap.set("i", "<S-Tab>", "<C-d>")
 
 -- Auto format LUA
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
