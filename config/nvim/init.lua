@@ -61,7 +61,7 @@ require 'lspconfig'.yamlls.setup {}
 vim.keymap.set("i", "<S-Tab>", "<C-d>")
 
 -- Auto format LUA
-vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 -- Setup autoread from disk on change
 vim.o.autoread = true

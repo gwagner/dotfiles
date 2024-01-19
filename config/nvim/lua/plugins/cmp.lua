@@ -43,14 +43,14 @@ return {
           else
             cmp.complete()
           end
-        end, {'i', 's'}),
+        end, { 'i', 's' }),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item(select_opts)
           else
             fallback()
           end
-        end, {'i', 's'}),
+        end, { 'i', 's' }),
         ["<CR>"] = cmp.mapping(cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Insert,
           select = true,
@@ -77,6 +77,5 @@ return {
         }
       })
     )
-
   end,
 }
