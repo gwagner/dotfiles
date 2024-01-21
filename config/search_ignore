@@ -1,0 +1,5 @@
+go
+go/*
+vendor
+yay
+*/node_modules/*
