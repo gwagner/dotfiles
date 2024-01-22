@@ -150,7 +150,8 @@ alias fa="fzf-tmux -p 80%,80% --preview 'bat --style=numbers --color=always --li
 function f {
   ag -g "" --silent | fzf-tmux -p 80%,80% --preview 'bat --style=numbers --color=always --line-range :500 {}' --preview-window=right:70%:wrap | xargs -r nvim
 }
-alias sd='cd ~ && cd $(find . -type d ! -path "*/\.*" ! -path "./Games/*" ! -path "./go/*" ! -path "./Downloads/*" ! -path "./Desktop/*" ! -path "./yay/*" ! -path "./.cache/*" ! -path "*/VSCodium/*" 2>&1 | grep -v "Permission denied" | fzf-tmux -p 80%,80%)'
+#alias sd='cd ~ && cd $(find . -type d ! -path "*/\.*" ! -path "./Games/*" ! -path "./go/*" ! -path "./Downloads/*" ! -path "./Desktop/*" ! -path "./yay/*" ! -path "./.cache/*" ! -path "*/VSCodium/*" 2>&1 | grep -v "Permission denied" | fzf-tmux -p 80%,80%)'
+alias sd='cd ~ && cd $(fd --type d --ignore-file ~/.config/search_ignore | fzf-tmux -p 80%,80%)'
 
 tts() {
   echo "$@" | festival --tts
