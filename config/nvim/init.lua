@@ -71,4 +71,10 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
 })
 
 -- always use the system clipboard
-vim.opt.clipboard="unnamedplus"
+vim.opt.clipboard = "unnamedplus"
+
+-- Set different text wrapping for markdown files
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = { '*.md' },
+  command = 'set textwidth=80'
+})
