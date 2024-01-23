@@ -55,7 +55,6 @@ require 'lspconfig'.html.setup {}
 require 'lspconfig'.marksman.setup {}
 require 'lspconfig'.jsonls.setup {}
 require 'lspconfig'.lua_ls.setup {}
-require 'lspconfig'.pylsp.setup {}
 require 'lspconfig'.yamlls.setup {}
 
 -- enable shift-tab to outdent
@@ -63,10 +62,6 @@ vim.keymap.set("i", "<S-Tab>", "<C-d>")
 
 -- Auto format LUA
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-
--- Auto format python
--- vim.g.python3_host_prog = '/home/gwagner/.pyenv/versions/neovim3/bin/python'
--- vim.cmd [[autocmd BufWritePre *.py python vim.lsp.buf.format()]]
 
 -- Setup autoread from disk on change
 vim.o.autoread = true
