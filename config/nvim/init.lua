@@ -37,7 +37,7 @@ vim.opt.spell = true
 require("lazy").setup("plugins")
 
 -- Setup rooter to automatically change my root
-require("rooter")
+--require("rooter")
 
 -- Setup LSP change when working on HUGO files
 --require("hugolsp")
@@ -48,13 +48,20 @@ require('onenord').setup()
 -- Setup Language Server
 require 'lspconfig'.ansiblels.setup {}
 require 'lspconfig'.gopls.setup {
-  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl', 'html' }
+  filetypes = { 'go', 'gomod', 'gowork' }
 }
 require 'lspconfig'.bashls.setup {}
 require 'lspconfig'.html.setup {}
-require 'lspconfig'.marksman.setup {}
+require 'lspconfig'.marksman.setup {
+  root_dir = function(fname)
+    local util = require 'lspconfig.util'
+    local root_files = { '.marksman.toml' }
+    return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
+  end,
+}
 require 'lspconfig'.jsonls.setup {}
 require 'lspconfig'.lua_ls.setup {}
+require 'lspconfig'.tailwindcss.setup {}
 require 'lspconfig'.yamlls.setup {}
 
 -- enable shift-tab to outdent
@@ -68,6 +75,32 @@ vim.o.autoread = true
 vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
   command = "if mode() != 'c' | checktime | endif",
   pattern = { "*" },
+})
+
+-- Disable running diags on node modules
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "**/node_modules/**", "node_modules", "/node_modules/*" },
+  callback = function()
+    vim.diagnostic.disable(0)
+  end,
+})
+
+-- Set text width
+vim.opt.formatoptions = 'jcroqlnt'
+vim.api.nvim_create_autocmd('BufWinEnter', {
+  pattern = { '*.md' },
+  callback = function()
+    vim.opt.colorcolumn = '120'
+    vim.opt.textwidth = 120
+  end,
+})
+
+vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
+  pattern = { '*.md' },
+  callback = function()
+    vim.opt.colorcolumn = ''
+    vim.opt.textwidth = 0
+  end,
 })
 
 -- always use the system clipboard

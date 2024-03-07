@@ -46,7 +46,6 @@ config/zoomus.conf
 # Ensure we add back some files which our rules above are overly aggressive
 !config/VSCodium/User/keybindings.json
 !config/VSCodium/User/settings.json
-config/hypr/hyprland.conf
 
 local/share/rofi/rofi_calc_history
 config/pavucontrol.ini

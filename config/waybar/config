@@ -5,11 +5,11 @@
 	"position": "bottom",
 
 	"modules-left": [
-		"wlr/workspaces",
+		"hyprland/workspaces",
 		"custom/right-arrow-dark",
-        "custom/right-arrow-light",
-        "hyprland/window",
-        "custom/right-arrow-dark"
+    "custom/right-arrow-light",
+    "hyprland/window",
+    "custom/right-arrow-dark"
 	],
 	"modules-center": [
 		"custom/left-arrow-dark",
@@ -28,31 +28,37 @@
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"memory",
-        "custom/left-arrow-light",
+    "custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"disk",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"network",
-        "custom/left-arrow-light",
+    "custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"pulseaudio",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"tray",
-        "custom/left-arrow-light",
+    "custom/left-arrow-light",
 		"custom/left-arrow-dark",
 	],
+    "hyprland/workspaces": {
+      "format": "{name}",
+      "on-click": "activate",
+      "persistent-workspaces": {
+        "*": 5
+      },
+      "sort-by-number": true
+    },
+
     "hyprland/window": {
         "max-length": 200,
+        "rewrite": {
+          "(.*) — Mozilla Firefox": "🌎 $1"
+      },
         "separate-outputs": true
     },
-    "wlr/workspaces": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "on-scroll-up": "hyprctl dispatch workspace e+1",
-        "on-scroll-down": "hyprctl dispatch workspace e-1"
-   },
 	"custom/left-arrow-dark": {
 		"format": "",
 		"tooltip": false
@@ -76,7 +82,7 @@
 	},
 
 	"clock#1": {
-		"format": "{:%a}",
+		"format": "{:%a} ",
 		"tooltip": false
 	},
 	"clock#2": {
@@ -84,7 +90,7 @@
 		"tooltip": false
 	},
 	"clock#3": {
-		"format": "{:%m-%d}",
+		"format": " {:%m-%d}",
 		"tooltip": false
 	},
 
