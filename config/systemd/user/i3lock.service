@@ -4,10 +4,8 @@ Before=sleep.target
 
 [Service]
 Type=forking
-PassEnvironemnt=XDG_SESSION_TYPE
 ExecStart=/bin/bash --login /home/gwagner/scripts/screen-locker.sh
 TimeoutSec=infinity
-#ExecStartPost=/usr/bin/sleep 1
 
 [Install]
 WantedBy=suspend.target
