@@ -5,7 +5,5 @@ if [ "$HOSTNAME" = framework ]; then
   WORKSPACE_ID="$(hyprctl activeworkspace -j | jq '.id')"
 
   hyprctl --batch "dispatch workspace 2; dispatch layoutmsg orientationleft; dispatch workspace 1; dispatch layoutmsg orientationleft; dispatch layoutmsg mfact .7; dispatch workspace $WORKSPACE_ID"
-else
-  hyprctl keyword monitor HDMI-A-1,3440x1440,auto,1
 fi
 

@@ -3,8 +3,11 @@
 {
 	"layer": "top",
 	"position": "bottom",
-
-	"modules-left": [
+  "margin-bottom": 8,
+  "margin-left": 8,
+  "margin-right": 8,
+	
+  "modules-left": [
 		"hyprland/workspaces",
 		"custom/right-arrow-dark",
     "custom/right-arrow-light",
