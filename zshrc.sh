@@ -165,6 +165,27 @@ then
 	export PATH="$HOME/.pyenv/bin:$PATH"
 fi
 
+if [ -n "$TMUX" ]; then                                                                               
+  function refresh { 
+    TMUX_HYPRLAND_INSTANCE_SIGNATURE=$(tmux show-environment | grep "^HYPRLAND_INSTANCE_SIGNATURE" | cut -f2 -d=)
+    
+    if [ "$HYPRLAND_INSTANCE_SIGNATURE" != "$TMUX_HYPRLAND_INSTANCE_SIGNATURE" ]; then
+      export $(tmux show-environment | grep "^HYPRLAND_INSTANCE_SIGNATURE")                                       
+      export $(tmux show-environment | grep "^WAYLAND_DISPLAY")
+      echo "hyprland env vars refreshed"
+    fi
+  }  
+
+  function hyprctl {
+    refresh
+
+    /usr/bin/hyprctl $@
+  }
+else                                                                                                  
+  function refresh { }                                                                              
+fi
+
+
 # Startup TMUX
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   tmux attach -t "primary" || tmux new-session -t "primary"
