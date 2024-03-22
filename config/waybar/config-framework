@@ -117,20 +117,26 @@
 	},
 	"memory": {
 		"interval": 5,
-		"format": "Mem {}%"
+		"format": "  {}%"
 	},
     "disk": {
 		"interval": 60,
-		"format": "Disk {percentage_used}%"
+		"format": "󰋊 {percentage_used}%"
 	},
 	"cpu": {
 		"interval": 5,
 		"on-click": "emacsclient -c -e '(proced)'",
-		"format": "CPU {usage:2}%"
+		"format": " {usage:2}%"
 	},
   "battery": {
+    "states": {
+      "critical": 15,
+      "warning": 30,
+    },
     "interval": 5,
-    "format": "Batt {}%"
+    "format": "{icon} {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-charging": "󰚥 {capacity}%",
   },
 	"tray": {
 		"icon-size": 20
@@ -138,11 +144,11 @@
 	"network": {
 		"interface": "wlan0",
 		"format": "{ifname}",
-		"format-wifi": "({signalStrength}%) ",
+		"format-wifi": "󰤨 {signalStrength}%",
 		"format-ethernet": "{ifname} ",
 		"format-disconnected": "{ifname} 󰤫", //An empty format will hide the module.
 		"tooltip-format": "{ifname}",
-		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%) 󰤨",
 		"tooltip-format-ethernet": "{ifname} ",
 		"tooltip-format-disconnected": "Disconnected",
 		"on-click": "emacsclient -c -e '(view-file \"~/Documents/tech-personal-notes/nmcli-help.org\")'",

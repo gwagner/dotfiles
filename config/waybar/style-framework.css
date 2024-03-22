@@ -24,14 +24,23 @@ window#waybar {
 #clock.2,
 #clock.3,
 #pulseaudio,
+#battery,
 #memory,
 #cpu,
 #battery,
 #disk,
 #network,
+#network.disabled,
+#network.disconnected,
+#network.linked,
+#network.ethernet,
+#network.wifi,
 #window,
 #tray {
 	background: #4c566a;
+	font-size: 12px;
+	font-family: monospace;
+	font-weight: bold;
 }
 
 #workspaces * {
