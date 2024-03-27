@@ -46,8 +46,6 @@
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"tray",
-    "custom/left-arrow-light",
-		"custom/left-arrow-dark",
 	],
     "hyprland/workspaces": {
       "format": "{name}",

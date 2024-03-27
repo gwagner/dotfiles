@@ -43,8 +43,6 @@
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"tray",
-    "custom/left-arrow-light",
-		"custom/left-arrow-dark",
 	],
     "hyprland/workspaces": {
       "format": "{name}",
@@ -129,7 +127,7 @@
 		"icon-size": 20
 	},
 	"network": {
-		"interface": "wlan0",
+		"interface": "wlan1",
 		"format": "{ifname}",
 		"format-wifi": "({signalStrength}%) ",
 		"format-ethernet": "{ifname} ",

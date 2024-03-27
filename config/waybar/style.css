@@ -6,6 +6,7 @@
 
 window#waybar {
 	background: #3b4252;
+  border-radius: 10px;
 	color: #fdf6e3;
 }
 

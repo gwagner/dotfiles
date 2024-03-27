@@ -45,24 +45,6 @@ require("lazy").setup("plugins")
 -- Setup Theme
 require('onenord').setup()
 
--- Setup Language Server
-require 'lspconfig'.ansiblels.setup {}
-require 'lspconfig'.gopls.setup {
-  filetypes = { 'go', 'gomod', 'gowork' }
-}
-require 'lspconfig'.bashls.setup {}
-require 'lspconfig'.html.setup {}
-require 'lspconfig'.marksman.setup {
-  root_dir = function(fname)
-    local util = require 'lspconfig.util'
-    local root_files = { '.marksman.toml' }
-    return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
-  end,
-}
-require 'lspconfig'.jsonls.setup {}
-require 'lspconfig'.lua_ls.setup {}
-require 'lspconfig'.tailwindcss.setup {}
-require 'lspconfig'.yamlls.setup {}
 
 -- enable shift-tab to outdent
 vim.keymap.set("i", "<S-Tab>", "<C-d>")

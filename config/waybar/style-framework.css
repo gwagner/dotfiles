@@ -7,6 +7,7 @@
 window#waybar {
 	background: #3b4252;
 	color: #fdf6e3;
+  border-radius: 10px;
 }
 
 #custom-right-arrow-dark,
