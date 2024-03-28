@@ -29,6 +29,7 @@ vim.opt.cursorline = true
 -- Show Line Numbers
 vim.wo.number = true
 vim.wo.relativenumber = true
+vim.opt.signcolumn = "yes"
 
 -- Enable Spellcheck
 vim.opt.spelllang = 'en_us'
