@@ -43,10 +43,6 @@ require("lazy").setup("plugins")
 -- Setup LSP change when working on HUGO files
 --require("hugolsp")
 
--- Setup Theme
-require('onenord').setup()
-
-
 -- enable shift-tab to outdent
 vim.keymap.set("i", "<S-Tab>", "<C-d>")
 
