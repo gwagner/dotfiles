@@ -127,7 +127,7 @@
 		"icon-size": 20
 	},
 	"network": {
-		"interface": "wlan1",
+		"interface": "wlan0",
 		"format": "{ifname}",
 		"format-wifi": "({signalStrength}%) ",
 		"format-ethernet": "{ifname} ",
