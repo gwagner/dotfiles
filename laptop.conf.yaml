@@ -1,0 +1,10 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/hypr/:
+      glob: true
+      path: config/hypr/laptop/*

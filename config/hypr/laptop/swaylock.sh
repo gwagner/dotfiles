@@ -1,0 +1,1 @@
+swayidle -w timeout 5 'swaylock -f -C ~/.config/swaylock/config' timeout 5 'echo "timeout 5"' resume 'echo "resume"'

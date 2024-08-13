@@ -4,10 +4,20 @@
 
 - clean: ['~']
 
+- create: 
+  - ~/.config
+  - ~/.config/hypr
+
 - link:
     ~/.bashrc: bashrc
     ~/.bin: bin
-    ~/.config: config
+    ~/.config/:
+      glob: true
+      path: config/*
+      exclude: [ config/hypr ]
+    ~/.config/hypr/:
+      glob: true
+      path: config/hypr/desktop/*
     /bin/dwm-startup: bin/dwm-startup
     ~/.gitconfig: gitconfig
     ~/.icons: icons
