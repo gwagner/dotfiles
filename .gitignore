@@ -53,3 +53,9 @@ config/zoomus.conf
 
 local/share/rofi/rofi_calc_history
 config/pavucontrol.ini
+config/Cuperino
+config/godot
+config/obs-studio
+config/pipewire
+config/solaar
+config/wireplumber
