@@ -4,54 +4,54 @@
 
 # Target specific directories
 config/Arduino*
+config/BraveSoftware
+config/Code - OSS/
+config/Cuperino
+config/Electron
+config/GIMP
+config/JetBrains
+config/Microsoft*
+config/Microsoft/
+config/Slack
+config/VSCodium
 config/arduino*
 config/autostart/teams.desktop
 config/balena-etcher
 config/bashtop/error.log
-config/BraveSoftware
 config/cef_user_data/**
 config/coc/extensions/**
-config/Code - OSS/
 config/configstore/*.json
 config/dconf
 config/discord
-config/Electron
-config/GIMP
-config/grammarly-languageserver/**
 config/go/**
+config/godot
 config/google-chrome
-config/hypr/*.conf
-config/hypr/*.sh
-config/JetBrains
+config/grammarly-languageserver/**
 config/lazygit
 config/lutris/
-config/Microsoft/
-config/Microsoft*
 config/microsoft*
 config/miopen
 config/nitrogen
 config/nvim/lua/user
+config/obs-studio
 config/obsidian
+config/pavucontrol.ini
+config/pipewire
 config/pulse
 config/retroarch
 config/rncbc.org
-config/teams
-config/Slack
-config/VSCodium
-config/pavucontrol.ini
-config/Cuperino
-config/godot
-config/obs-studio
-config/pipewire
 config/solaar
+config/teams
 config/wireplumber
 
 # Target specific files
+**/*.pyc
+config/OpenRGB/logs/**
 config/QtProject.conf
 config/Synergy/Synergy.conf
-config/OpenRGB/logs/**
+config/hypr/*.conf
+config/hypr/*.sh
 config/zoomus.conf
-**/*.pyc
 
 # Ensure we add back some files which our rules above are overly aggressive
 !config/VSCodium/User/keybindings.json
