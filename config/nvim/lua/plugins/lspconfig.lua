@@ -19,15 +19,15 @@ return {
   config = function()
     local lspconfig = require("lspconfig")
     local mason = require("mason")
-    local ih = require("inlay-hints")
+    --local ih = require("inlay-hints")
     mason.setup()
 
     -- Setup Language Server
     lspconfig.ansiblels.setup {}
     lspconfig.gopls.setup {
-      on_attach = function(c, b)
-        ih.on_attach(c, b)
-      end,
+      --on_attach = function(c, b)
+      --  ih.on_attach(c, b)
+      --end,
       filetypes = { 'go', 'gomod', 'gowork' },
       settings = {
         gopls = {
