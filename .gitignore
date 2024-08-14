@@ -3,6 +3,8 @@
 .github
 
 # Target specific directories
+config/Arduino*
+config/arduino*
 config/autostart/teams.desktop
 config/balena-etcher
 config/bashtop/error.log
@@ -18,6 +20,8 @@ config/GIMP
 config/grammarly-languageserver/**
 config/go/**
 config/google-chrome
+config/hypr/*.conf
+config/hypr/*.sh
 config/JetBrains
 config/lazygit
 config/lutris/
