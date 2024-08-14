@@ -38,7 +38,13 @@ config/rncbc.org
 config/teams
 config/Slack
 config/VSCodium
-
+config/pavucontrol.ini
+config/Cuperino
+config/godot
+config/obs-studio
+config/pipewire
+config/solaar
+config/wireplumber
 
 # Target specific files
 config/QtProject.conf
@@ -52,10 +58,3 @@ config/zoomus.conf
 !config/VSCodium/User/settings.json
 
 local/share/rofi/rofi_calc_history
-config/pavucontrol.ini
-config/Cuperino
-config/godot
-config/obs-studio
-config/pipewire
-config/solaar
-config/wireplumber
