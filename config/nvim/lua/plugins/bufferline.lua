@@ -6,7 +6,7 @@ return {
     vim.opt.termguicolors = true
     require("bufferline").setup({
       options = {
-        mode = "tabs",
+        mode = "buffers",
         offsets = {
           {
             filetype = "neo-tree",
