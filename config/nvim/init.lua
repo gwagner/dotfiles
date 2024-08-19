@@ -84,3 +84,25 @@ vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
 
 -- always use the system clipboard
 vim.opt.clipboard = "unnamedplus"
+
+-- always start neotree
+vim.api.nvim_create_augroup("neotree", {})
+vim.api.nvim_create_autocmd("VimEnter", {
+  desc = "Open Neotree automatically",
+  group = "neotree",
+  callback = function()
+    if vim.fn.argc() == 0 then
+      vim.cmd "Neotree show"
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd("TabEnter", {
+  desc = "Open Neotree automatically",
+  group = "neotree",
+  callback = function()
+    if vim.fn.argc() == 0 then
+      vim.cmd "Neotree show"
+    end
+  end,
+})

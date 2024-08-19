@@ -57,4 +57,5 @@ config/zoomus.conf
 !config/VSCodium/User/keybindings.json
 !config/VSCodium/User/settings.json
 
+# why would i sync this?
 local/share/rofi/rofi_calc_history
