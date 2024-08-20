@@ -100,6 +100,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Install the nord theme
+if [ ! -d $ZSH/themes/nord-extended ]; then
+  git clone https://github.com/fxbrit/nord-extended $ZSH/themes/nord-extended
+fi
+
 alias yt="mpv --autofit=\"25%x25%\""
 alias kb="/bin/bash ~/.xsessionrc"
 
