@@ -15,7 +15,7 @@ return {
         then
           require("trouble").toggle("document_diagnostics")
         else
-          require("trouble").toggle("workspace_diagnostics")
+          require("trouble").toggle("diagnostics")
         end
       end,
       desc = "Open Trouble"

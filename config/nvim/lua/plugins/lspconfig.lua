@@ -2,16 +2,16 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     inlay_hints = { enabled = true },
+    servers = {
+      setup = {
+        clangd = function(_, opts)
+          local clangd_ext_opts = LazyVim.opts("clangd_extensions.nvim")
+          require("clangd_extensions").setup(vim.tbl_deep_extend("force", clangd_ext_opts or {}, { server = opts }))
+          return false
+        end
+      }
+    }
   },
-  keys = {
-    --{ "<leader>ca", vim.lsp.buf.code_action, desc = "LSP Code Action" },
-    --    { "<leader>hh", vim.lsp.buf.hover,       desc = "LSP Type Definition" },
-  },
-  --  on_attach = function(c, b)
-  --    if c.server_capabilities.inlayHintProvider then
-  --      vim.lsp.inlay_hint.enable(b, true)
-  --    end
-  --  end,
   dependencies = {
     "williamboman/mason.nvim",
     'simrat39/inlay-hints.nvim'
@@ -24,6 +24,7 @@ return {
 
     -- Setup Language Server
     lspconfig.ansiblels.setup {}
+    lspconfig.clangd.setup {}
     lspconfig.gopls.setup {
       --on_attach = function(c, b)
       --  ih.on_attach(c, b)
