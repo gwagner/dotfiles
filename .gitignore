@@ -59,3 +59,4 @@ config/zoomus.conf
 
 # why would i sync this?
 local/share/rofi/rofi_calc_history
+config/composer
