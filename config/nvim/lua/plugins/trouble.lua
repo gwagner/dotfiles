@@ -6,11 +6,12 @@ return {
     padding = false,
   },
   keys = {
-    --{ "<leader>tt", ":TroubleToggle<CR>", desc = "Open Trouble" },
+    {
+      "<leader>ttf", ":lua vim.diagnostic.open_float()<CR>", "Open Diagnostics in a Floating Window"
+    },
     {
       "<leader>tt",
       function()
-        --if (vim.bo.filetype == "markdown" or vim.bo.filetype == "html")
         if (vim.bo.filetype == "markdown")
         then
           require("trouble").toggle("document_diagnostics")
