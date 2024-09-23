@@ -18,6 +18,13 @@ laptopDisplayOn() {
   hyprctl dispatch dpms on eDP-1
   hyprctl keyword monitor eDP-1,2256x1504@60,0x0,1.566667
   resetWaybar
+
+
+  echo "    Moving workspaces to monitor 1" >> $LOG_FILE
+  workspaces=$(hyprctl workspaces -j | jq '.[] | .id')
+  for workspace in ${workspaces}; do
+    hyprctl dispatch moveworkspacetomonitor $workspace 1
+  done
 }
 
 laptopDisplayOff() {
@@ -29,6 +36,12 @@ laptopDisplayOff() {
   hyprctl dispatch dpms off eDP-1
   hyprctl keyword monitor eDP-1,disabled
   resetWaybar
+
+  echo "    Moving Workspaces to Monitor 0" >> $LOG_FILE
+  workspaces=$(hyprctl workspaces -j | jq '.[] | .id')
+  for workspace in ${workspaces}; do
+    hyprctl dispatch moveworkspacetomonitor $workspace 0
+  done
 }
 
 handle() {
