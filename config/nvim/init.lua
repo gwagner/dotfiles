@@ -15,6 +15,9 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Setup a python provider
+vim.g.python3_host_prog = "$HOME/.pyenv/versions/venv/bin/python"
+
 -- Setup tabs to only be 2 spaces instead of 4-5
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2

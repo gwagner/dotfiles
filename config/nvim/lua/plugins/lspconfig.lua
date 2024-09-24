@@ -77,6 +77,7 @@ return {
       }
     }
     lspconfig.bashls.setup {}
+    --    lspconfig.blade.setup {}
     lspconfig.html.setup {}
     lspconfig.intelephense.setup {}
     lspconfig.marksman.setup {
@@ -86,6 +87,7 @@ return {
         return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
       end,
     }
+    lspconfig.nginx_language_server.setup {}
     lspconfig.jsonls.setup {}
     lspconfig.lua_ls.setup {}
     lspconfig.tailwindcss.setup {}
