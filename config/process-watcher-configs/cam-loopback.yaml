@@ -1,5 +1,10 @@
 ---
 commands:
-  - name: FFMPEG Video Loopback
-    cmd: gst-launch-1.0 v4l2src device=/dev/video0 ! tee name=t ! queue ! v4l2sink device=/dev/video10 t. ! queue ! v4l2sink device=/dev/video11
+  - name: GStreamer Video Loopback (Vid Cap)
+    cmd: gst-launch-1.0 v4l2src device=/dev/v4l/by-id/usb-ASUS_CU4K30_UVC_UHD_Video_902D003090700131-video-index0 ! tee name=vt ! queue ! v4l2sink device=/dev/video10 vt. ! queue ! v4l2sink device=/dev/video11
     showLog: true
+    sleep: 10
+  - name: GStreamer Video Loopback (Webcam Cap)
+    cmd: gst-launch-1.0 v4l2src device=/dev/v4l/by-id/usb-Razer_Inc_Razer_Kiyo_Pro-video-index0 ! tee name=wt ! queue ! v4l2sink device=/dev/video12 wt. ! queue ! v4l2sink device=/dev/video13
+    showLog: true
+    sleep: 10

@@ -56,6 +56,7 @@ return {
 
     -- Setup Language Server
     lspconfig.ansiblels.setup {}
+    lspconfig.dockerls.setup {}
     lspconfig.clangd.setup {}
     lspconfig.gopls.setup {
       --on_attach = function(c, b)
@@ -77,7 +78,6 @@ return {
       }
     }
     lspconfig.bashls.setup {}
-    --    lspconfig.blade.setup {}
     lspconfig.html.setup {}
     lspconfig.intelephense.setup {}
     lspconfig.marksman.setup {

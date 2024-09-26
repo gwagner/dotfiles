@@ -170,6 +170,22 @@ then
 	export PATH="$HOME/.pyenv/bin:$PATH"
 fi
 
+# Symfony PHP Development CLI in a docker container
+function symfony-cli {
+  if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    return
+  fi  
+
+  PROJECT_ROOT=$(git rev-parse --show-toplevel)
+
+  # Create the symfony application inside the project directory
+  docker run --rm \
+    -v $PROJECT_ROOT:/app \
+    -v ${HOME}/.gitconfig:/root/.gitconfig \
+    -w /app \
+    chrisshennan/symfony-cli $@
+}
+
 if [ -n "$TMUX" ]; then                                                                               
   function refresh { 
     TMUX_HYPRLAND_INSTANCE_SIGNATURE=$(tmux show-environment | grep "^HYPRLAND_INSTANCE_SIGNATURE" | cut -f2 -d=)
