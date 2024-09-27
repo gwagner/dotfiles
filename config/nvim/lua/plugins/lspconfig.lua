@@ -80,6 +80,7 @@ return {
     lspconfig.bashls.setup {}
     lspconfig.html.setup {}
     lspconfig.intelephense.setup {}
+    lspconfig.twiggy_language_server.setup {}
     lspconfig.marksman.setup {
       root_dir = function(fname)
         local util = require 'lspconfig.util'

@@ -177,10 +177,18 @@ function symfony-cli {
   fi  
 
   PROJECT_ROOT=$(git rev-parse --show-toplevel)
+  if [ -f $PROJECT_ROOT/.symfony-app ]; then
+    PROJECT_ROOT=$PROJECT_ROOT/$(cat $PROJECT_ROOT/.symfony-app)
+  fi
+
+  ADDTL_PARAMS=""
+  if [[ $@ == *"server"* ]]; then
+    ADDTL_PARAMS='-p8000:8000'
+  fi
 
   # Create the symfony application inside the project directory
   docker run --rm \
-    -v $PROJECT_ROOT:/app \
+    $ADDTL_PARAMS -v $PROJECT_ROOT:/app \
     -v ${HOME}/.gitconfig:/root/.gitconfig \
     -w /app \
     chrisshennan/symfony-cli $@
