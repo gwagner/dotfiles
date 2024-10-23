@@ -5,6 +5,7 @@ return {
     "BurntSushi/ripgrep",
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
+    "nvim-telescope/telescope-media-files.nvim",
     "nvim-tree/nvim-web-devicons",
   },
   keys = {
@@ -24,5 +25,6 @@ return {
     }
 
     require("telescope").load_extension("file_browser")
+    require("telescope").load_extension("media_files")
   end
 }
