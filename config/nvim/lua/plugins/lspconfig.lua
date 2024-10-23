@@ -46,25 +46,50 @@ return {
   },
   dependencies = {
     "williamboman/mason.nvim",
-    'simrat39/inlay-hints.nvim'
+    "williamboman/mason-lspconfig.nvim",
+    --    'simrat39/inlay-hints.nvim'
   },
   config = function()
     local lspconfig = require("lspconfig")
     local mason = require("mason")
+    local masonLspConfig = require("mason-lspconfig")
+    local util = require("lspconfig.util")
     --local ih = require("inlay-hints")
     mason.setup()
+    masonLspConfig.setup({
+      ensure_installed = { "ansiblels", "clangd", "dockerls", "emmet_language_server", "eslint", "gopls",
+        "html", "intelephense", "jsonls", "lua_ls", "marksman", "nginx_language_server", "pylsp",
+        "tailwindcss", "twiggy_language_server", "ts_ls", "yamlls" }
+    })
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
 
     -- Setup Language Server
-    lspconfig.ansiblels.setup {}
-    lspconfig.dockerls.setup {}
-    lspconfig.clangd.setup {}
+    lspconfig.ansiblels.setup {
+      capabilities = capabilities,
+    }
+    lspconfig.dockerls.setup {
+      capabilities = capabilities,
+    }
+    lspconfig.clangd.setup {
+      capabilities = capabilities,
+    }
     lspconfig.gopls.setup {
+      capabilities = capabilities,
       --on_attach = function(c, b)
       --  ih.on_attach(c, b)
       --end,
-      filetypes = { 'go', 'gomod', 'gowork' },
+      filetypes = { "go", "gomod", "gowork", "gotmpl" },
       settings = {
         gopls = {
+          usePlaceholders = true,
+          analyses = {
+            unusedvariable = true,
+            unusedparams = true,
+          },
+          staticcheck = true,
+          gofumpt = true,
           hints = {
             rangeVariableTypes = true,
             parameterNames = true,
@@ -77,21 +102,52 @@ return {
         }
       }
     }
-    lspconfig.bashls.setup {}
-    lspconfig.html.setup {}
-    lspconfig.intelephense.setup {}
-    lspconfig.twiggy_language_server.setup {}
+    lspconfig.bashls.setup {
+      capabilities = capabilities,
+    }
+
+    lspconfig.html.setup {
+      capabilities = capabilities,
+      filetypes = { 'html', 'templ', 'twig' },
+      root_dir = util.root_pattern('composer.json', 'package.json', '.git'),
+    }
+    --    lspconfig.emmet_language_server.setup {
+    --     capabilities = capabilities,
+    --   }
+    lspconfig.eslint.setup {
+      capabilities = capabilities,
+    }
+    lspconfig.ts_ls.setup {
+      capabilities = capabilities,
+    }
+    lspconfig.intelephense.setup {
+      capabilities = capabilities,
+    }
+    lspconfig.twiggy_language_server.setup {
+      capabilities = capabilities,
+    }
     lspconfig.marksman.setup {
+      capabilities = capabilities,
       root_dir = function(fname)
         local util = require 'lspconfig.util'
         local root_files = { '.marksman.toml' }
         return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
       end,
     }
-    lspconfig.nginx_language_server.setup {}
-    lspconfig.jsonls.setup {}
-    lspconfig.lua_ls.setup {}
-    lspconfig.tailwindcss.setup {}
-    lspconfig.yamlls.setup {}
+    lspconfig.nginx_language_server.setup {
+      capabilities = capabilities,
+    }
+    lspconfig.jsonls.setup {
+      capabilities = capabilities,
+    }
+    lspconfig.lua_ls.setup {
+      capabilities = capabilities,
+    }
+    lspconfig.tailwindcss.setup {
+      capabilities = capabilities,
+    }
+    lspconfig.yamlls.setup {
+      capabilities = capabilities,
+    }
   end,
 }

@@ -7,19 +7,10 @@ return {
   },
   keys = {
     {
-      "<leader>ttf", ":lua vim.diagnostic.open_float()<CR>", "Open Diagnostics in a Floating Window"
+      "<leader>e", ":lua vim.diagnostic.open_float()<CR>", desc = "Open Diagnostics in a Floating Window"
     },
     {
-      "<leader>tt",
-      function()
-        if (vim.bo.filetype == "markdown")
-        then
-          require("trouble").toggle("document_diagnostics")
-        else
-          require("trouble").toggle("diagnostics")
-        end
-      end,
-      desc = "Open Trouble"
+      "<leader>tt", "<cmd>Trouble diagnostics toggle<cr>", desc = "Open Trouble"
     },
   },
 }

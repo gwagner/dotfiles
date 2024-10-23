@@ -7,9 +7,9 @@ return {
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
-    'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
-    'windwp/nvim-autopairs'
+    'windwp/nvim-autopairs',
+    "Snikimonkd/cmp-go-pkgs",
   },
   cond = not os.getenv("NVIM_DIFF"),
   config = function()
@@ -29,11 +29,13 @@ return {
         ghost_text = true,
       },
       sources = {
-        { name = "path" },
         { name = "nvim_lsp" },
+        { name = "nvim_lua" },
         { name = "nvim_lsp_signature_help" },
         { name = "buffer" },
+        { name = "path" },
         { name = "luasnip" },
+        { name = "go_pkgs" },
       },
       mapping = {
         ['<C-Space>'] = cmp.mapping.complete(),

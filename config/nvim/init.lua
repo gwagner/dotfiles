@@ -40,17 +40,135 @@ vim.opt.spell = true
 
 require("lazy").setup("plugins")
 
--- Setup rooter to automatically change my root
---require("rooter")
-
--- Setup LSP change when working on HUGO files
---require("hugolsp")
+-- always use the system clipboard
+vim.opt.clipboard = "unnamedplus"
 
 -- enable shift-tab to outdent
 vim.keymap.set("i", "<S-Tab>", "<C-d>")
 
+-- Enable hjkl in insert mode
+vim.keymap.set("i", "<C-h>", "<Left>", { silent = true, nowait = true })
+vim.keymap.set("i", "<C-j>", "<Down>", { silent = true, nowait = true })
+vim.keymap.set("i", "<C-k>", "<Up>", { noremap = true, silent = true, nowait = true })
+vim.keymap.set("i", "<C-l>", "<Right>", { silent = true, nowait = true })
+
+
+-- Enable wb in insert mode
+vim.keymap.set("i", "<C-w>", "<C-o>w", { silent = true, nowait = true })
+vim.keymap.set("i", "<C-b>", "<C-o>b", { silent = true, nowait = true })
+
+
+vim.keymap.set("i", "<C-f>",
+  function()
+    vim.ui.input({ prompt = 'Jump to Next: ' }, function(search)
+      if not search then
+        return
+      end
+      local keys = vim.api.nvim_replace_termcodes("<C-o>/" .. search .. "<CR>", true, false,
+        true)
+      vim.api.nvim_feedkeys(keys, "m", true)
+    end
+    )
+  end
+)
+
+vim.keymap.set("i", "<C-g>",
+  function()
+    vim.ui.input({ prompt = 'Jump to Previous: ' }, function(search)
+      if not search then
+        return
+      end
+      local keys = vim.api.nvim_replace_termcodes("<C-o>?" .. search .. "<CR>", true, false, true)
+      vim.api.nvim_feedkeys(keys, "m", true)
+    end
+    )
+  end
+)
+
 -- Auto format LUA
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+
+-- Auto format html.twig
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { '*.html', '*.html.twig', '*.js' },
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
+
+-- Recenter the screen on entering insert
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = vim.api.nvim_create_augroup('center_on_insert', {}),
+  pattern = '*',
+  callback = function()
+    vim.cmd.normal({ bang = true, "zz" })
+  end,
+})
+
+local isValidBuffer = function(buf)
+  if not buf.bufnr or buf.bufnr < 1 then return false end
+  local valid = vim.api.nvim_buf_is_valid(buf.bufnr)
+  if not valid then return false end
+  return buf.listed == 1
+end
+
+local isBufferEmpty = function(buf)
+  if vim.api.nvim_buf_is_loaded(buf.bufnr)
+      and vim.api.nvim_buf_get_lines(buf.bufnr, 0, -1, true)[1] == ''
+      and vim.api.nvim_buf_get_name(buf.bufnr) == ''
+      and not vim.api.nvim_buf_get_option(buf.bufnr, 'modified') then
+    -- Close the buffer (force delete it)
+    return true
+  end
+
+  return false
+end
+
+-- Function to iterate over all buffers and close unnamed, unedited ones
+-- vim.api.nvim_create_autocmd("WinEnter", {
+--   callback = function()
+--     local buffers = vim.fn.getbufinfo()
+--     local valid_buffers = {}
+--     local named_buffers = 0
+--     -- Find out how many loaded active buffers we have
+--     for _, buf in ipairs(buffers) do
+--       if isValidBuffer(buf) then
+--         table.insert(valid_buffers, buf)
+--         if vim.api.nvim_buf_get_name(buf.bufnr) ~= "" then
+--           named_buffers = named_buffers + 1
+--         end
+--       end
+--     end
+--
+--     local current_buffer_name = vim.api.nvim_buf_get_name(0)
+--     if current_buffer_name ~= "" then
+--       named_buffers = named_buffers + 1
+--     end
+--
+--     --print("")
+--     --print("Num Buffers: " .. #valid_buffers)
+--     --print("Num Named Buffers: " .. named_buffers)
+--
+--     if named_buffers <= 1 then
+--       return
+--     end
+--
+--     -- If we have more than X buffers active, then we should start to prune
+--     -- Get the list of all buffer numbers
+--     for _, buf in ipairs(valid_buffers) do
+--       --if vim.api.nvim_buf_is_loaded(bufnr) then
+--       --print("  Buffer Name(" .. buf.bufnr .. "): " .. vim.api.nvim_buf_get_name(buf.bufnr))
+--       --print("    Buffer Lines: " .. #vim.api.nvim_buf_get_lines(buf.bufnr, 0, -1, true))
+--       --print("    Buffer Type: " .. vim.api.nvim_buf_get_option(buf.bufnr, "buftype"))
+--       --print("    Buffer FT: " .. vim.api.nvim_buf_get_option(buf.bufnr, "filetype"))
+--       --end
+--       if isBufferEmpty(buf) then
+--         --print("Delete empty buffer: " .. buf.bufnr)
+--         vim.api.nvim_buf_delete(buf.bufnr, { force = true })
+--       end
+--     end
+--   end,
+-- })
 
 -- Setup autoread from disk on change
 vim.o.autoread = true
@@ -85,27 +203,69 @@ vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
   end,
 })
 
--- always use the system clipboard
-vim.opt.clipboard = "unnamedplus"
+-- clear FileExplorer appropriately to prevent netrw from launching on folders
+-- netrw may or may not be loaded before telescope-file-browser config
+-- conceptual credits to nvim-tree
+pcall(vim.api.nvim_clear_autocmds, { group = "FileExplorer" })
+vim.api.nvim_create_autocmd("VimEnter", {
+  pattern = "*",
+  once = true,
+  callback = function()
+    pcall(vim.api.nvim_clear_autocmds, { group = "FileExplorer" })
+  end,
+})
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = vim.api.nvim_create_augroup("telescope-file-browser.nvim", { clear = true }),
+  pattern = "*",
+  callback = function()
+    vim.schedule(function()
+      if vim.bo[0].filetype == "netrw" then
+        return
+      end
+      local bufname = vim.api.nvim_buf_get_name(0)
+      if vim.fn.isdirectory(bufname) == 0 then
+        _, netrw_bufname = pcall(vim.fn.expand, "#:p:h")
+        return
+      end
+
+      -- prevents reopening of file-browser if exiting without selecting a file
+      if netrw_bufname == bufname then
+        netrw_bufname = nil
+        return
+      else
+        netrw_bufname = bufname
+      end
+
+      -- ensure no buffers remain with the directory name
+      vim.api.nvim_buf_set_option(0, "bufhidden", "wipe")
+
+      require("telescope.builtin").find_files({
+        cwd = vim.fn.expand "%:p:h",
+      })
+    end)
+  end,
+  desc = "telescope.builtin.find_files replacement for netrw",
+})
+
 
 -- always start neotree
-vim.api.nvim_create_augroup("neotree", {})
-vim.api.nvim_create_autocmd("VimEnter", {
-  desc = "Open Neotree automatically",
-  group = "neotree",
-  callback = function()
-    if vim.fn.argc() == 0 then
-      vim.cmd "Neotree show"
-    end
-  end,
-})
+-- vim.api.nvim_create_augroup("neotree", {})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   desc = "Open Neotree automatically",
+--   group = "neotree",
+--   callback = function()
+--     if vim.fn.argc() == 0 then
+--       vim.cmd "Neotree show"
+--     end
+--   end,
+-- })
 
-vim.api.nvim_create_autocmd("TabEnter", {
-  desc = "Open Neotree automatically",
-  group = "neotree",
-  callback = function()
-    if vim.fn.argc() == 0 then
-      vim.cmd "Neotree show"
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd("TabEnter", {
+--   desc = "Open Neotree automatically",
+--   group = "neotree",
+--   callback = function()
+--     if vim.fn.argc() == 0 then
+--       vim.cmd "Neotree show"
+--     end
+--   end,
+-- })

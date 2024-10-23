@@ -7,6 +7,7 @@ return {
     require("bufferline").setup({
       options = {
         mode = "buffers",
+        diagnostics = "nvim_lsp",
         offsets = {
           {
             filetype = "neo-tree",
