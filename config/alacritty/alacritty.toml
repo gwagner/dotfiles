@@ -1,5 +1,6 @@
 import = [
-  "~/.config/alacritty/nord-theme.toml"
+#  "~/.config/alacritty/nord-theme.toml",
+  "~/.config/alacritty/tokyonight-night.toml"
 ]
 
 [colors.cursor]

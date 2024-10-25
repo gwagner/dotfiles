@@ -43,6 +43,10 @@ require("lazy").setup("plugins")
 -- always use the system clipboard
 vim.opt.clipboard = "unnamedplus"
 
+-- set ignorecase/smartcase for searching
+vim.opt.ignorecase = true -- Ignore case letters when search
+vim.opt.smartcase = true  -- Ignore lowercase for the whole pattern
+
 -- enable shift-tab to outdent
 vim.keymap.set("i", "<S-Tab>", "<C-d>")
 
