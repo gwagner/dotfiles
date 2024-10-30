@@ -1,0 +1,13 @@
+[Unit]
+Description=Start capture card loopback
+Requires=xdg-desktop-portal.service
+After=xdg-desktop-portal.service
+
+[Service]
+Type=simple
+ExecStart=gst-launch-1.0 v4l2src device=/dev/v4l/by-id/usb-ASUS_CU4K30_UVC_UHD_Video_902D003090700131-video-index0 ! tee name=vt ! queue ! v4l2sink device=/dev/video10 vt. ! queue ! v4l2sink device=/dev/video11
+TimeoutSec=infinity
+Restart=always
+
+[Install]
+WantedBy=graphical.target

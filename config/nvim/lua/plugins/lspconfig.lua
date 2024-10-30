@@ -59,7 +59,7 @@ return {
     masonLspConfig.setup({
       ensure_installed = { "ansiblels", "clangd", "dockerls", "emmet_language_server", "eslint", "gopls",
         "html", "intelephense", "jsonls", "lua_ls", "marksman", "nginx_language_server", "pylsp",
-        "tailwindcss", "twiggy_language_server", "ts_ls", "yamlls" }
+        "tailwindcss", "twiggy_language_server", "ts_ls", "yamlls", "zls" }
     })
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -147,6 +147,9 @@ return {
       capabilities = capabilities,
     }
     lspconfig.yamlls.setup {
+      capabilities = capabilities,
+    }
+    lspconfig.zls.setup {
       capabilities = capabilities,
     }
   end,

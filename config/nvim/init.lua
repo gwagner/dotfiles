@@ -89,6 +89,27 @@ vim.keymap.set("i", "<C-g>",
   end
 )
 
+-- Exit terminal and move back to other open window
+vim.keymap.set('t', '<ESC>', "<C-\\><C-N><C-W>w", { silent = true })
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+  pattern = { "*" },
+  callback = function()
+    if vim.opt.buftype:get() == "terminal" then
+      vim.cmd(":setlocal nonumber norelativenumber")
+    end
+  end
+})
+
+-- Automatically enter insert mode when moving to a terminal
+vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
+  pattern = { "*" },
+  callback = function()
+    if vim.opt.buftype:get() == "terminal" then
+      vim.cmd(":startinsert")
+    end
+  end
+})
+
 -- Auto format LUA
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
