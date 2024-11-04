@@ -66,6 +66,11 @@ mods = "Command"
 #key = "K"
 #mode = "~Vi|~Search"
 #mods = "Control"
+
+[[keyboard.bindings]]
+key = "/"
+mods = "Control|Shift"
+action = "ReceiveChar"
 [[keyboard.bindings]]
 key = "f"
 mods = "Control|Shift"

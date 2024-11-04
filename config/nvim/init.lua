@@ -10,6 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+package.path = package.path .. ";" .. vim.fn.stdpath("config") .. "/?.lua;"
 
 -- Change the leader key from the default ; to <space>
 vim.g.mapleader = ' '
@@ -61,33 +62,77 @@ vim.keymap.set("i", "<C-l>", "<Right>", { silent = true, nowait = true })
 vim.keymap.set("i", "<C-w>", "<C-o>w", { silent = true, nowait = true })
 vim.keymap.set("i", "<C-b>", "<C-o>b", { silent = true, nowait = true })
 
-
+-- Jump to next in insert mode
+local previous_search = ""
 vim.keymap.set("i", "<C-f>",
   function()
     vim.ui.input({ prompt = 'Jump to Next: ' }, function(search)
       if not search then
-        return
+        search = previous_search
       end
-      local keys = vim.api.nvim_replace_termcodes("<C-o>/" .. search .. "<CR>", true, false,
-        true)
-      vim.api.nvim_feedkeys(keys, "m", true)
+
+      vim.api.nvim_command("/" .. search)
+      vim.api.nvim_command("noh")
+
+      previous_search = search
     end
     )
   end
 )
 
+-- Jump to previous in insert mode
 vim.keymap.set("i", "<C-g>",
   function()
     vim.ui.input({ prompt = 'Jump to Previous: ' }, function(search)
       if not search then
-        return
+        search = previous_search
       end
-      local keys = vim.api.nvim_replace_termcodes("<C-o>?" .. search .. "<CR>", true, false, true)
-      vim.api.nvim_feedkeys(keys, "m", true)
+      vim.api.nvim_command("?" .. search)
+      vim.api.nvim_command("noh")
+
+      previous_search = search
     end
     )
   end
 )
+
+-- Comment and Uncomment code block
+local single_line_comments = require("data.single_line_comments")
+function get_escaped_comment_characters(ft)
+  -- lookup the comment by file type, otherwise use //
+  return string.gsub(get_comment_characters(ft), ":", "\\:")
+end
+
+function get_comment_characters(ft)
+  return single_line_comments[ft] or "//"
+end
+
+local function comment_toggle(opts)
+  local start = math.min(opts.line1, opts.line2)
+  local finish = math.max(opts.line1, opts.line2)
+  local buf = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_get_lines(buf, start - 1, finish, false)
+  local comment_chars = get_comment_characters(vim.bo.filetype)
+  local escaped_comment_chars = get_escaped_comment_characters(vim.bo.filetype)
+
+  for i, line in ipairs(lines) do
+    if string.sub(line, 1, #comment_chars) == comment_chars then
+      -- uncomment code
+      vim.api.nvim_command((i - 1 + start) .. "s:^" .. escaped_comment_chars .. " ::")
+    else
+      -- comment code
+      vim.api.nvim_command((i - 1 + start) .. "s:^:" .. escaped_comment_chars .. " :")
+    end
+  end
+
+  vim.api.nvim_command("noh")
+end
+
+vim.api.nvim_create_user_command("CommentToggle", comment_toggle, { range = true })
+vim.keymap.set('v', '<leader>/', ":CommentToggle<CR>", { silent = true })
+vim.keymap.set('n', '<leader>/', ":CommentToggle<CR>", { silent = true })
+vim.keymap.set('i', '<C-_>', function() vim.api.nvim_command(":CommentToggle") end,
+  { noremap = true, silent = true, nowait = true })
 
 -- Exit terminal and move back to other open window
 vim.keymap.set('t', '<ESC>', "<C-\\><C-N><C-W>w", { silent = true })
