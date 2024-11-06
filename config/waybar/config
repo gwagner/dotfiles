@@ -2,8 +2,8 @@
   "layer": "top",
   "position": "bottom",
   "margin-bottom": 8,
-  "margin-left": 8,
-  "margin-right": 8,
+  "margin-left": 0,
+  "margin-right": 0,
   "modules-left": [
     "hyprland/workspaces"
   ],
