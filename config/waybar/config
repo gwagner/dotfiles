@@ -85,7 +85,8 @@
     "format": "\uf4bc  {usage:2}%"
   },
   "tray": {
-    "icon-size": 20
+    "icon-size": 20,
+    "spacing": 4,
   },
   "network": {
     "interval": 1,
