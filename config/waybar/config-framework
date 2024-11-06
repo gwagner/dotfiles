@@ -59,8 +59,8 @@
   },
   "pulseaudio": {
     "scroll-step": 1,
-    "format": "{icon}    {volume}%",
-    "format-muted": "\ueee8    Muted",
+    "format": "{icon}  {volume}%",
+    "format-muted": "\ueee8  Muted",
     "format-icons": {
       "default": [
         "\uf026",
@@ -74,16 +74,16 @@
   "memory": {
     "interval": 5,
     "on-click": "alacritty -e bashtop",
-    "format": "\uefc5    {}%"
+    "format": "\uefc5 {:2}%"
   },
   "disk": {
     "interval": 60,
-    "format": "\uf0a0  {percentage_used}%"
+    "format": "\uf0a0 {percentage_used:2}%"
   },
   "cpu": {
     "interval": 5,
     "on-click": "alacritty -e bashtop",
-    "format": "\uf4bc  {usage:2}%"
+    "format": "\uf4bc {usage:2}%"
   },
   "tray": {
     "icon-size": 20,
@@ -93,7 +93,7 @@
     "interval": 1,
     "interface": "wlan0",
     "format": "{ifname}",
-    "format-wifi": "    {signalStrength}%",
+    "format-wifi": "\uf1eb  {signalStrength}%",
     "format-ethernet": "{ifname} ",
     "format-disconnected": "{ifname} 󰤫", //An empty format will hide the module.
     "tooltip-format": "{ifname}",
