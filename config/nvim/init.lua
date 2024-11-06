@@ -136,6 +136,12 @@ vim.keymap.set('i', '<C-_>', function() vim.api.nvim_command(":CommentToggle") e
 
 -- Exit terminal and move back to other open window
 vim.keymap.set('t', '<ESC>', "<C-\\><C-N><C-W>w", { silent = true })
+vim.keymap.set('t', '<C-h>', "<C-\\><C-N><C-w>h", { silent = true })
+vim.keymap.set('t', '<C-j>', "<C-\\><C-N><C-w>j", { silent = true })
+vim.keymap.set('t', '<C-k>', "<C-\\><C-N><C-w>k", { silent = true })
+vim.keymap.set('t', '<C-l>', "<C-\\><C-N><C-w>l", { silent = true })
+
+-- Remove Line Numbers in the Terminal
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
   pattern = { "*" },
   callback = function()
@@ -154,6 +160,20 @@ vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
     end
   end
 })
+
+
+-- Allow for ESC to leave quick fix window
+function LeaveQuickfixOnEscape()
+  local buf_type = vim.bo.filetype
+  if buf_type == "qf" then
+    vim.api.nvim_command("bd")
+  end
+end
+
+vim.keymap.set('n', '<ESC>', function()
+  LeaveQuickfixOnEscape()
+end, { silent = true })
+
 
 -- Auto format LUA
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
