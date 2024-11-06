@@ -74,16 +74,16 @@
   "memory": {
     "interval": 5,
     "on-click": "alacritty -e bashtop",
-    "format": "\uefc5 {:2}%"
+    "format": "\uefc5  {:2}%"
   },
   "disk": {
     "interval": 60,
-    "format": "\uf0a0 {percentage_used:2}%"
+    "format": "\uf0a0  {percentage_used:2}%"
   },
   "cpu": {
     "interval": 5,
     "on-click": "alacritty -e bashtop",
-    "format": "\uf4bc {usage:2}%"
+    "format": "\uf4bc  {usage:2}%"
   },
   "tray": {
     "icon-size": 20,
