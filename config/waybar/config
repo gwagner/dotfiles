@@ -15,7 +15,6 @@
     "memory",
     "disk",
     "network",
-    "battery",
     "pulseaudio",
     "tray",
     "custom/notification"
