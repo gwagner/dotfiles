@@ -2,7 +2,8 @@
 
 /* Global */
 * {
-  font-family: Iosevka Nerd Font, madness;
+  font-family: JetBrainsMono NF, mono;
+  font-weight: bold;
   font-size: .9rem;
   border-radius: 1rem;
   transition-property: background-color;
