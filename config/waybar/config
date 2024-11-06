@@ -1,142 +1,153 @@
-// -*- mode: json -*-
-
 {
-	"layer": "top",
-	"position": "bottom",
+  "layer": "top",
+  "position": "bottom",
   "margin-bottom": 8,
-  "margin-left": 8,
-  "margin-right": 8,
-
-	"modules-left": [
-		"hyprland/workspaces",
-		"custom/right-arrow-dark",
-    "custom/right-arrow-light",
-    "hyprland/window",
-    "custom/right-arrow-dark"
-	],
-	"modules-center": [
-		"custom/left-arrow-dark",
-		"clock#1",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"clock#2",
-		"custom/right-arrow-dark",
-		"custom/right-arrow-light",
-		"clock#3",
-		"custom/right-arrow-dark"
-	],
-	"modules-right": [
-		"custom/left-arrow-dark",
-		"cpu",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"memory",
-    "custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"disk",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"network",
-    "custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"pulseaudio",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"tray",
-	],
-    "hyprland/workspaces": {
-      "format": "{name}",
-      "on-click": "activate",
-      "persistent-workspaces": {
-        "*": 5
-      },
-      "sort-by-number": true
+  "margin-left": 0,
+  "margin-right": 0,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "disk",
+    "network",
+    "pulseaudio",
+    "tray",
+    "custom/notification"
+  ],
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "*": 5
     },
-
-    "hyprland/window": {
-        "max-length": 200,
-        "rewrite": {
-          "(.*) — Mozilla Firefox": "🌎 $1"
-      },
-        "separate-outputs": true
+    "format": "<span size=\"x-large\">{icon}</span>",
+    "format-icons": {
+      "1": "➊",
+      "2": "➋",
+      "3": "➌",
+      "4": "➍",
+      "5": "➎",
+      "6": "➏",
+      "7": "➐",
+      "8": "➑",
+      "9": "➒",
+      "10": "➓",
+      "urgent": "",
+      "focused": "󪤰"
     },
-	"custom/left-arrow-dark": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/left-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/right-arrow-dark": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/right-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
-
-	"sway/workspaces": {
-		"disable-scroll": true,
-		"format": "{name}"
-	},
-
-	"clock#1": {
-		"format": "{:%a} ",
-		"tooltip": false
-	},
-	"clock#2": {
-		"format": "{:%H:%M}",
-		"tooltip": false
-	},
-	"clock#3": {
-		"format": " {:%m-%d}",
-		"tooltip": false
-	},
-
-	"pulseaudio": {
-		"format": "{icon} {volume:2}%",
-		"format-bluetooth": "{icon}  {volume}%",
-		"format-muted": "MUTE",
-		"format-icons": {
-			"headphones": "",
-			"default": [
-				"",
-				""
-			]
-		},
-		"scroll-step": 5,
-		"on-click": "pavucontrol",
-		"on-click-right": "pamixer -t"	
-	},
-	"memory": {
-		"interval": 5,
-		"format": "Mem {}%"
-	},
-    "disk": {
-		"interval": 60,
-		"format": "Disk {percentage_used}%"
-	},
-	"cpu": {
-		"interval": 5,
-		"on-click": "emacsclient -c -e '(proced)'",
-		"format": "CPU {usage:2}%"
-	},
-	"tray": {
-		"icon-size": 20
-	},
-	"network": {
-		"interface": "wlan0",
-		"format": "{ifname}",
-		"format-wifi": "({signalStrength}%) ",
-		"format-ethernet": "{ifname} ",
-		"format-disconnected": "{ifname} 󰤫", //An empty format will hide the module.
-		"tooltip-format": "{ifname}",
-		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-		"tooltip-format-ethernet": "{ifname} ",
-		"tooltip-format-disconnected": "Disconnected",
-		"on-click": "emacsclient -c -e '(view-file \"~/Documents/tech-personal-notes/nmcli-help.org\")'",
-		"max-length": 50
-	},
+    "icon-size": 32,
+    "sort-by-number": true
+  },
+  "clock": {
+    "interval": 1,
+    "format": "{:%I:%M %p  %A %b %d}",
+    "tooltip": true,
+    "tooltip-format": "{:%A, %d %B %Y}\n<tt>{calendar}</tt>",
+    "calendar": {
+      "format": {
+        "months": "<span color='#BB9AF7'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "{icon}    {volume}%",
+    "format-muted": "\ueee8    Muted",
+    "format-icons": {
+      "default": [
+        "\uf026",
+        "\uf027",
+        "\uf028"
+      ]
+    },
+    "on-click": "sleep 0.1 && pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip": false
+  },
+  "memory": {
+    "interval": 5,
+    "on-click": "alacritty -e bashtop",
+    "format": "\uefc5    {}%"
+  },
+  "disk": {
+    "interval": 60,
+    "format": "\uf0a0  {percentage_used}%"
+  },
+  "cpu": {
+    "interval": 5,
+    "on-click": "alacritty -e bashtop",
+    "format": "\uf4bc  {usage:2}%"
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 4,
+  },
+  "network": {
+    "interval": 1,
+    "interface": "wlan0",
+    "format": "{ifname}",
+    "format-wifi": "    {signalStrength}%",
+    "format-ethernet": "{ifname} ",
+    "format-disconnected": "{ifname} 󰤫", //An empty format will hide the module.
+    "tooltip-format": "{ifname}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "emacsclient -c -e '(view-file \"~/Documents/tech-personal-notes/nmcli-help.org\")'",
+    "max-length": 50
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󰂚<span foreground='#F7768E'><sup></sup></span>",
+      "none": "󰂚",
+      "dnd-notification": "󰂛<span foreground='#F7768E'><sup></sup></span>",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "󰂚<span foreground='#F7768E'><sup></sup></span>",
+      "inhibited-none": "󰂚",
+      "dnd-inhibited-notification": "󰂛<span foreground='#F7768E'><sup></sup></span>",
+      "dnd-inhibited-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "sleep 0.1 && swaync-client -swb",
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+    "escape": true
+  },
+  "custom/weather": {
+    "format": "{}°",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar -m --fahrenheit --location Minneapolis --custom-indicator \"{ICON} {temp_F}\"",
+    "return-type": "json"
+  },
+  "battery": {
+    "states": {
+      "critical": 15,
+      "warning": 30
+    },
+    "interval": 5,
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+    "format-charging": "󰚥 {capacity}%"
+  }
 }
