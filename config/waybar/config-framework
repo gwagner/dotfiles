@@ -72,7 +72,7 @@
     "tooltip": false
   },
   "memory": {
-    "interval": 5,
+    "interval": 30,
     "on-click": "alacritty -e bashtop",
     "format": "\uefc5  {:2}%"
   },
@@ -86,11 +86,11 @@
     "format": "\uf4bc  {usage:2}%"
   },
   "tray": {
-    "icon-size": 20,
+    "icon-size": 16,
     "spacing": 4
   },
   "network": {
-    "interval": 1,
+    "interval": 30,
     "interface": "wlan0",
     "format": "{ifname}",
     "format-wifi": "\uf1eb  {signalStrength}%",
@@ -123,19 +123,12 @@
     "on-click-right": "sleep 0.1 && swaync-client -d -sw",
     "escape": true
   },
-  "custom/weather": {
-    "format": "{}°",
-    "tooltip": true,
-    "interval": 3600,
-    "exec": "wttrbar -m --fahrenheit --location Minneapolis --custom-indicator \"{ICON} {temp_F}\"",
-    "return-type": "json"
-  },
   "battery": {
     "states": {
-      "critical": 15,
-      "warning": 30
+      "critical": 10,
+      "warning": 15
     },
-    "interval": 5,
+    "interval": 60,
     "format": "{icon} {capacity}%",
     "format-icons": [
       "󰁺",
