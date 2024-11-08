@@ -7,6 +7,7 @@ return {
     "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-media-files.nvim",
     "nvim-tree/nvim-web-devicons",
+    "gbprod/yanky.nvim",
   },
   keys = {
     { "<leader>fo", ":Telescope file_browser path=%:p:h select_buffer=true<CR>",   desc = "Open File Browser" },
@@ -26,5 +27,6 @@ return {
 
     require("telescope").load_extension("file_browser")
     require("telescope").load_extension("media_files")
+    require("telescope").load_extension("yank_history")
   end
 }
