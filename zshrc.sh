@@ -217,7 +217,11 @@ fi
 
 # Startup TMUX
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  tmux attach -t "primary" || tmux new-session -t "primary"
+  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    tmux attach -t "primary" -d || tmux new-session -t "primary"
+  else
+    tmux attach -t "primary" || tmux new-session -t "primary"
+  fi
 fi
 
 fastfetch
