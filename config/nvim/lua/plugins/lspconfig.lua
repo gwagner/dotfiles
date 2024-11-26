@@ -61,7 +61,12 @@ return {
         "tailwindcss", "twiggy_language_server", "ts_ls", "yamlls", "zls" }
     })
 
+    -- Get the local capabilities
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+    -- Add in the cmp capabilities
+    for k, v in pairs(require('cmp_nvim_lsp').default_capabilities()) do capabilities[k] = v end
+
     capabilities.textDocument.completion.completionItem.snippetSupport = true
 
     -- Setup Language Server

@@ -41,6 +41,9 @@ vim.opt.spell = true
 
 require("lazy").setup("plugins")
 
+-- Extra nvim-cmp theme data
+require("includes.cmp-supplemental")
+
 -- always use the system clipboard
 vim.opt.clipboard = "unnamedplus"
 
@@ -377,3 +380,4 @@ vim.api.nvim_create_autocmd("BufEnter", {
 --     end
 --   end,
 -- })
+--
