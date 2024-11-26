@@ -1,20 +1,55 @@
 return {
   "hrsh7th/nvim-cmp",
+  event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-emoji",
+    { "hrsh7th/cmp-emoji",      ft = "md" },
     "hrsh7th/cmp-nvim-lsp-signature-help",
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    'saadparwaiz1/cmp_luasnip',
+    -- 'saadparwaiz1/cmp_luasnip',
     'windwp/nvim-autopairs',
-    "Snikimonkd/cmp-go-pkgs",
+    'onsails/lspkind.nvim',
+    { "Snikimonkd/cmp-go-pkgs", ft = "go" }
   },
   cond = not os.getenv("NVIM_DIFF"),
   config = function()
+    local lspkind = require("lspkind")
     local cmp = require("cmp")
+    local sources = {
+      { name = "nvim_lsp" },
+      { name = "nvim_lua" },
+      { name = "nvim_lsp_signature_help" },
+      { name = "buffer" },
+      { name = "path" },
+      -- { name = "luasnip" },
+    }
+
+    if (vim.bo.filetype == "go") then
+      table.insert(sources, { name = "go_pkgs" })
+    end
+
+    if (vim.bo.filetype == "lua") then
+      table.insert(sources, {
+        name = "lazydev",
+        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+      })
+    end
+
     cmp.setup({
+      formatting = {
+        expandable_indicator = false,
+        format = lspkind.cmp_format({
+          mode = "symbol_text",
+          menu = ({
+            buffer = "[Buffer]",
+            nvim_lsp = "[LSP]",
+            luasnip = "[LuaSnip]",
+            nvim_lua = "[Lua]",
+            latex_symbols = "[Latex]",
+          }),
+        }),
+      },
       preselect = cmp.PreselectMode.None,
       snippet = {
         expand = function(args)
@@ -28,17 +63,10 @@ return {
       experimental = {
         ghost_text = true,
       },
-      sources = {
-        { name = "nvim_lsp" },
-        { name = "nvim_lua" },
-        { name = "nvim_lsp_signature_help" },
-        { name = "buffer" },
-        { name = "path" },
-        { name = "luasnip" },
-        { name = "go_pkgs" },
-      },
+      sources = sources,
       mapping = {
         ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
         ['<Tab>'] = cmp.mapping(function(fallback)
           local col = vim.fn.col('.') - 1
 
