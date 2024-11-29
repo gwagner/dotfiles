@@ -47,14 +47,13 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    --    'simrat39/inlay-hints.nvim'
   },
   config = function()
     local lspconfig = require("lspconfig")
     local mason = require("mason")
     local masonLspConfig = require("mason-lspconfig")
     local util = require("lspconfig.util")
-    --local ih = require("inlay-hints")
+
     mason.setup()
     masonLspConfig.setup({
       ensure_installed = { "ansiblels", "clangd", "dockerls", "emmet_language_server", "eslint", "gopls",
@@ -62,7 +61,12 @@ return {
         "tailwindcss", "twiggy_language_server", "ts_ls", "yamlls", "zls" }
     })
 
+    -- Get the local capabilities
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+    -- Add in the cmp capabilities
+    for k, v in pairs(require('cmp_nvim_lsp').default_capabilities()) do capabilities[k] = v end
+
     capabilities.textDocument.completion.completionItem.snippetSupport = true
 
     -- Setup Language Server
@@ -77,9 +81,6 @@ return {
     }
     lspconfig.gopls.setup {
       capabilities = capabilities,
-      --on_attach = function(c, b)
-      --  ih.on_attach(c, b)
-      --end,
       filetypes = { "go", "gomod", "gowork", "gotmpl" },
       settings = {
         gopls = {
@@ -111,9 +112,6 @@ return {
       filetypes = { 'html', 'templ', 'twig' },
       root_dir = util.root_pattern('composer.json', 'package.json', '.git'),
     }
-    --    lspconfig.emmet_language_server.setup {
-    --     capabilities = capabilities,
-    --   }
     lspconfig.eslint.setup {
       capabilities = capabilities,
     }
