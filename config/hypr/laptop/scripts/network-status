@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Check if iwd is running
+if systemctl is-active --quiet iwd; then
+  status=$(iwctl station wlan0 show | grep State | tr -s ' ' | awk '{print $2}' )
+else
+  status="disconnected"
+fi
+
+if [[ "$status" == "disconnected" ]]; then
+  echo "󰤮 "
+elif [[ "$status" == "connecting" ]]; then
+  echo "󱍸 "
+elif [[ "$status" == "connected" ]]; then
+  # strength="$(nmcli -f IN-USE,SIGNAL device wifi | grep '*' | awk '{print $2}')"
+  strength="$($HOME/.config/hypr/scripts/wifi-conn-strength)"
+  if [[ "$?" == "0" ]]; then
+    if [[ "$strength" -eq "0" ]]; then
+      echo "󰤯 "
+    elif [[ ("$strength" -ge "0") && ("$strength" -le "25") ]]; then
+      echo "󰤟 "  
+    elif [[ ("$strength" -ge "25") && ("$strength" -le "50") ]]; then
+      echo "󰤢 "
+    elif [[ ("$strength" -ge "50") && ("$strength" -le "75") ]]; then
+      echo "󰤥 "
+    elif [[ ("$strength" -ge "75") && ("$strength" -le "100") ]]; then
+      echo "󰤨 "
+    fi
+  else
+    echo "󰈀 "
+  fi
+fi
