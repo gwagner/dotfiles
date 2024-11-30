@@ -1,12 +1,14 @@
+
+
 [Unit]
 Description=User suspend actions
-Before=sleep.target
+After=suspend.target
 
 [Service]
-Type=forking
-ExecStart=/bin/bash --login /home/gwagner/scripts/screen-locker.sh
+Type=simple
+ExecStart=/usr/bin/hyprlock
 TimeoutSec=infinity
+ExecStartPost=/usr/bin/sleep 1
 
 [Install]
 WantedBy=suspend.target
-
