@@ -8,8 +8,10 @@ return {
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     -- 'saadparwaiz1/cmp_luasnip',
+    "chrisgrieser/cmp_yanky",
     'windwp/nvim-autopairs',
     'onsails/lspkind.nvim',
+    'ray-x/cmp-treesitter',
     { "Snikimonkd/cmp-go-pkgs", ft = "go" }
   },
   cond = not os.getenv("NVIM_DIFF"),
@@ -21,8 +23,9 @@ return {
       { name = "nvim_lua" },
       { name = "nvim_lsp_signature_help" },
       { name = "buffer" },
+      { name = "cmp_yanky",              options = { onlyCurrentFiletype = true, minLength = 3 } },
+
       { name = "path" },
-      -- { name = "luasnip" },
     }
 
     if (vim.bo.filetype == "go") then
