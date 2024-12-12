@@ -18,6 +18,11 @@ return {
   },
   config = function()
     require("telescope").setup {
+      defaults = {
+        file_ignore_patterns = {
+          ".*node_modules.*", ".*images.*",
+        },
+      },
       extensions = {
         file_browser = {
           -- hijack_netrw = true,

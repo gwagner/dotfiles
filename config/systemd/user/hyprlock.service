@@ -2,7 +2,7 @@
 
 [Unit]
 Description=User suspend actions
-After=suspend.target
+Before=suspend.target
 
 [Service]
 Type=simple

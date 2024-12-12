@@ -10,4 +10,4 @@ TimeoutSec=infinity
 Restart=always
 
 [Install]
-WantedBy=graphical.target
+WantedBy=hyprland-session.target

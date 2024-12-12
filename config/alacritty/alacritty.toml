@@ -82,4 +82,5 @@ action = "ReceiveChar"
 [window]
 decorations = "none"
 opacity = 0.95
+padding.x = 10
 
