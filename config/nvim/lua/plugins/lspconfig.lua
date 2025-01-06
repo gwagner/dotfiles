@@ -110,13 +110,24 @@ return {
     lspconfig.html.setup {
       capabilities = capabilities,
       filetypes = { 'html', 'templ', 'twig' },
+      provideFormatter = false,
       root_dir = util.root_pattern('composer.json', 'package.json', '.git'),
     }
     lspconfig.eslint.setup {
       capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          command = "EslintFixAll",
+        })
+      end,
     }
     lspconfig.ts_ls.setup {
       capabilities = capabilities,
+      settings = {
+        diagnostics = { ignoredCodes = { 2604 } }
+      },
+      root_dir = util.root_pattern(".git"),
     }
     lspconfig.intelephense.setup {
       capabilities = capabilities,

@@ -10,7 +10,17 @@ return {
     -- 'saadparwaiz1/cmp_luasnip',
     "chrisgrieser/cmp_yanky",
     'windwp/nvim-autopairs',
-    'onsails/lspkind.nvim',
+    {
+      'onsails/lspkind.nvim',
+      config = function()
+        local symbol_map = require('lspkind').symbol_map
+        symbol_map["Codeium"] = ""
+        symbol_map["Copilot"] = ""
+        require('lspkind').init({
+          symbol_map = symbol_map,
+        })
+      end
+    },
     'ray-x/cmp-treesitter',
     { "Snikimonkd/cmp-go-pkgs", ft = "go" }
   },
@@ -20,11 +30,13 @@ return {
     local cmp = require("cmp")
     local sources = {
       { name = "nvim_lsp" },
+
+      -- { name = "codeium" },
+      { name = "copilot",                group_index = 2 },
       { name = "nvim_lua" },
       { name = "nvim_lsp_signature_help" },
       { name = "buffer" },
       { name = "cmp_yanky",              options = { onlyCurrentFiletype = true, minLength = 3 } },
-
       { name = "path" },
     }
 
