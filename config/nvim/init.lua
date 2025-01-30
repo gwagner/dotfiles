@@ -114,12 +114,13 @@ end, { silent = true })
 
 local lua_pattern = { '*.lua' }
 local markdown_pattern = { '*.md' }
-local typescript_pattern = { '*.js', '*.tsx' }
+local markup_pattern = { "*.json", "*.yml", "*.yaml" }
+local typescript_pattern = { '*.js', '*.ts', '*.tsx' }
 local zig_pattern = { '*.zig', '*.zon' }
 
 -- Format on write
 local format_on_save_pattern = {}
-tableMerge(format_on_save_pattern, lua_pattern, typescript_pattern, zig_pattern)
+tableMerge(format_on_save_pattern, lua_pattern, markup_pattern, typescript_pattern, zig_pattern)
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = format_on_save_pattern,
   callback = function()
