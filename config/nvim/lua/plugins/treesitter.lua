@@ -6,8 +6,8 @@ return {
       auto_install = true,
       ensure_installed = {
         "go", "gomod", "gowork", "css", "html", "javascript", "typescript", "jsdoc", "json", "c", "java", "toml", "tsx",
-        "lua", "cpp", "python", "rust", "jsonc", "dart", "css", "yaml", "vue", "markdown", "php", "php_only", "blade",
-        "zig"
+        "lua", "cpp", "python", "rust", "jsonc", "dart", "css", "yaml", "vue", "markdown", "markdown_inline", "php",
+        "php_only", "blade", "latex", "typst", "zig"
       },
       highlight = {
         enable = true,
