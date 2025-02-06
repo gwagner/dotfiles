@@ -194,6 +194,18 @@ function symfony-cli {
     chrisshennan/symfony-cli $@
 }
 
+## Command to help yay
+function yay {
+  echo "Activate pyenv venv"
+  pyenv activate venv
+
+  echo "Update Yay"
+  /usr/bin/yay $@
+  
+  echo "Deacivate pyenv venv"
+  pyenv deactivate venv
+}
+
 if [ -n "$TMUX" ]; then                                                                               
   function refresh { 
     TMUX_HYPRLAND_INSTANCE_SIGNATURE=$(tmux show-environment | grep "^HYPRLAND_INSTANCE_SIGNATURE" | cut -f2 -d=)

@@ -25,6 +25,9 @@ return {
     { "Snikimonkd/cmp-go-pkgs", ft = "go" }
   },
   cond = not os.getenv("NVIM_DIFF"),
+  opts = {
+    completion = { completeopt = 'menu,menuone,noselect' },
+  },
   config = function()
     local lspkind = require("lspkind")
     local cmp = require("cmp")
