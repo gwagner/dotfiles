@@ -58,7 +58,7 @@ return {
     masonLspConfig.setup({
       automatic_installation = true,
       ensure_installed = { "ansiblels", "clangd", "dockerls", "emmet_language_server", "eslint", "gopls",
-        "html", "intelephense", "jsonls", "lua_ls", "marksman", "nginx-language-server", "pylsp",
+        "html", "intelephense", "jsonls", "lua_ls", "marksman", "nginx_language_server", "pylsp",
         "tailwindcss", "twiggy_language_server", "ts_ls", "yamlls", "zls" }
     })
 
