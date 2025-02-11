@@ -4,6 +4,15 @@ return {
   dependencies = {
     'rafamadriz/friendly-snippets',
     "xzbdmw/colorful-menu.nvim",
+    {
+      "folke/lazydev.nvim",
+      ft = "lua",
+    },
+    {
+      'Kaiser-Yang/blink-cmp-dictionary',
+      ft = "md",
+      dependencies = { 'nvim-lua/plenary.nvim' },
+    },
   },
 
   -- use a release tag to download pre-built binaries
@@ -67,8 +76,31 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = function(ctx)
+        local success, node = pcall(vim.treesitter.get_node)
+        if vim.bo.filetype == 'lua' then
+          return { 'lazydev', 'lsp', 'path' }
+        elseif vim.bo.filetype == 'md' then
+          return { 'dictionary' }
+        elseif success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
+          return { "buffer" }
+        else
+          return { 'lsp', 'path', 'snippets', 'buffer' }
+        end
+      end,
       cmdline = {},
+      providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          score_offset = 100,
+        },
+        dictionary = {
+          module = "blink-cmp-dictionary",
+          name = "Dict",
+          min_keyword_length = 3,
+        },
+      },
     },
     signature = { enabled = true },
   },
