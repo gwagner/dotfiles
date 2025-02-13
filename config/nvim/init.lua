@@ -147,19 +147,19 @@ vim.api.nvim_create_autocmd('BufLeave', {
 
 
 -- Setup some markdown specific commands
-vim.api.nvim_create_autocmd('BufEnter', {
-  pattern = markdown_pattern,
-  callback = function()
-    require('cmp').setup.buffer { enabled = false }
-  end,
-})
-
-vim.api.nvim_create_autocmd('BufLeave', {
-  pattern = markdown_pattern,
-  callback = function()
-    require('cmp').setup.buffer { enabled = true }
-  end,
-})
+-- vim.api.nvim_create_autocmd('BufEnter', {
+--   pattern = markdown_pattern,
+--   callback = function()
+--     require('cmp').setup.buffer { enabled = false }
+--   end,
+-- })
+--
+-- vim.api.nvim_create_autocmd('BufLeave', {
+--   pattern = markdown_pattern,
+--   callback = function()
+--     require('cmp').setup.buffer { enabled = true }
+--   end,
+-- })
 
 
 -- Recenter the screen on entering insert

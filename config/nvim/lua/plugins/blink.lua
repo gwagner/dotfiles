@@ -80,7 +80,7 @@ return {
         local success, node = pcall(vim.treesitter.get_node)
         if vim.bo.filetype == 'lua' then
           return { 'lazydev', 'lsp', 'path' }
-        elseif vim.bo.filetype == 'md' then
+        elseif vim.bo.filetype == 'md' or vim.bo.filetype == "markdown" then
           return { 'dictionary' }
         elseif success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
           return { "buffer" }

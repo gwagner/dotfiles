@@ -58,7 +58,7 @@ return {
     masonLspConfig.setup({
       automatic_installation = true,
       ensure_installed = { "ansiblels", "clangd", "dockerls", "emmet_language_server", "eslint", "gopls",
-        "html", "intelephense", "jsonls", "lua_ls", "marksman", "nginx_language_server", "pylsp",
+        "html", "intelephense", "jsonls", "lua_ls", "marksman", "pylsp",
         "tailwindcss", "twiggy_language_server", "ts_ls", "yamlls", "zls" }
     })
 
@@ -144,9 +144,6 @@ return {
         local root_files = { '.marksman.toml' }
         return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
       end,
-    }
-    lspconfig.nginx_language_server.setup {
-      capabilities = capabilities,
     }
     lspconfig.jsonls.setup {
       capabilities = capabilities,

@@ -6,7 +6,7 @@ return {
   lazy = false,
   opts = {
     preview = {
-      icon_provider = "devicons"
-    }
+      icon_provider = "devicons",
+    },
   }
 };
