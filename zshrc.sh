@@ -196,14 +196,18 @@ function symfony-cli {
 
 ## Command to help yay
 function yay {
-  echo "Activate pyenv venv"
-  pyenv activate venv
+  if [ -f "/usr/bin/pyenv" ]; then
+    echo "Activate pyenv venv"
+    pyenv activate venv
 
-  echo "Update Yay"
-  /usr/bin/yay $@
-  
-  echo "Deacivate pyenv venv"
-  pyenv deactivate venv
+    echo "Update Yay"
+    /usr/bin/yay $@
+    
+    echo "Deacivate pyenv venv"
+    pyenv deactivate venv
+  else
+    /usr/bin/yay $@
+  fi
 }
 
 if [ -n "$TMUX" ]; then                                                                               
