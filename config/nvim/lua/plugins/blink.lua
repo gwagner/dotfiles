@@ -16,7 +16,7 @@ return {
   },
 
   -- use a release tag to download pre-built binaries
-  version = 'v0.11.0',
+  version = 'v0.12.4',
   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
   -- build = 'cargo build --release',
   -- If you use nix, you can build from source using latest nightly rust with:
@@ -45,6 +45,9 @@ return {
       -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
       nerd_font_variant = 'mono'
+    },
+    cmdline = {
+      enabled = false,
     },
     completion = {
       list = { selection = { preselect = false, auto_insert = true } },
@@ -76,6 +79,7 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
+
       default = function(ctx)
         local success, node = pcall(vim.treesitter.get_node)
         if vim.bo.filetype == 'lua' then
@@ -88,7 +92,6 @@ return {
           return { 'lsp', 'path', 'snippets', 'buffer' }
         end
       end,
-      cmdline = {},
       providers = {
         lazydev = {
           name = "LazyDev",

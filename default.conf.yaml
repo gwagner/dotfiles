@@ -31,6 +31,7 @@
     ~/.Xmodmap: Xmodmap
     ~/.xsessionrc: xsessionrc
     ~/.zshrc: zshrc.sh
+    ~/.oh-my-zsh/themes/tokyo-night.zsh-theme: tokyo-night.zsh-theme
     
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
