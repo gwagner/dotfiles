@@ -210,6 +210,11 @@ function yay {
   fi
 }
 
+## Since the hyprland deps are a bit all over the place, this command will make sure all the correct things get updated
+function update_hyprland {
+  pacman -Qq | grep hypr | grep -v hyprland-qt | grep -v debug | yay -S aquamarine-git -
+}
+
 if [ -n "$TMUX" ]; then                                                                               
   function refresh { 
     TMUX_HYPRLAND_INSTANCE_SIGNATURE=$(tmux show-environment | grep "^HYPRLAND_INSTANCE_SIGNATURE" | cut -f2 -d=)
