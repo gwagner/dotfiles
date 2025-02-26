@@ -16,6 +16,8 @@ rclone sync $SOURCE ${DEST}/${HOSTNAME} \
     --exclude "**/*.deb" \
     --exclude "**/*.exe" \
     --exclude "**/*.iso" \
+    --exclude "Arduino/**" \
+    --exclude ".arduino*/**" \
     --exclude "Audio/**" \
     --exclude ".bash_history" \
     --exclude ".cache/**" \
@@ -97,9 +99,11 @@ rclone sync $SOURCE ${DEST}/${HOSTNAME} \
     --progress \
     -v 
 
+if [ -d "/opt/scanner/" ]; then
+
 rclone sync /opt/scanner/ ${DEST}/scanned_documents \
     --fast-list \
     --skip-links \
     --progress \
     -v 
-
+fi
