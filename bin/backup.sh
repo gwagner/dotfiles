@@ -16,6 +16,7 @@ rclone sync $SOURCE ${DEST}/${HOSTNAME} \
     --exclude "**/*.deb" \
     --exclude "**/*.exe" \
     --exclude "**/*.iso" \
+    --exclude ".ansible/**" \
     --exclude "Arduino/**" \
     --exclude ".arduino*/**" \
     --exclude "Audio/**" \
