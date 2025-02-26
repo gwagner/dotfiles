@@ -11,6 +11,7 @@
 - link:
     ~/.bashrc: bashrc
     ~/.bin: bin
+    /var/spool/cron/gwagner: crontab/gwagner
     ~/.config/:
       glob: true
       path: config/*
