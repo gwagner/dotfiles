@@ -215,6 +215,14 @@ function update_hyprland {
   pacman -Qq | grep hypr | grep -v hyprland-qt | grep -v debug | yay -Sy aquamarine-git -
 }
 
+function update_dotfiles {
+  FUNC_CWD=`pwd`
+  cd ~/code/github.com/gwagner/arch-automation/
+  git pull
+  ./dotfiles.sh
+  cd $FUNC_CWD
+}
+
 if [ -n "$TMUX" ]; then                                                                               
   function refresh { 
     TMUX_HYPRLAND_INSTANCE_SIGNATURE=$(tmux show-environment | grep "^HYPRLAND_INSTANCE_SIGNATURE" | cut -f2 -d=)
