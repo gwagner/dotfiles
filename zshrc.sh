@@ -212,7 +212,7 @@ function yay {
 
 ## Since the hyprland deps are a bit all over the place, this command will make sure all the correct things get updated
 function update_hyprland {
-  pacman -Qq | grep hypr | grep -v hyprland-qt | grep -v debug | yay -S aquamarine-git -
+  pacman -Qq | grep hypr | grep -v hyprland-qt | grep -v debug | yay -Sy aquamarine-git -
 }
 
 if [ -n "$TMUX" ]; then                                                                               
