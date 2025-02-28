@@ -96,6 +96,8 @@ rclone sync $SOURCE ${DEST}/${HOSTNAME} \
     --exclude "*.wav" \
     --exclude ".var/**" \
     --exclude "valewood.org/**" \
+    --exclude ".wget-hsts" \
+    --exclude ".zcompdump*" \
     --delete-excluded \
     --progress \
     -v 

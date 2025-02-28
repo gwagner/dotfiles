@@ -16,7 +16,7 @@ return {
   },
 
   -- use a release tag to download pre-built binaries
-  version = 'v0.12.4',
+  version = 'v0.13.0',
   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
   -- build = 'cargo build --release',
   -- If you use nix, you can build from source using latest nightly rust with:
@@ -79,11 +79,10 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-
       default = function(ctx)
         local success, node = pcall(vim.treesitter.get_node)
         if vim.bo.filetype == 'lua' then
-          return { 'lazydev', 'lsp', 'path' }
+          return { 'lazydev', 'path', 'snippets', 'lsp', 'path' }
         elseif vim.bo.filetype == 'md' or vim.bo.filetype == "markdown" then
           return { 'dictionary' }
         elseif success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
