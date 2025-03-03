@@ -126,6 +126,10 @@ export GOPATH=$HOME/go/
 export GOBIN=$GOPATH/bin/
 export GOPROXY=direct
 
+if [ -f "$HOME/.obsidian-api-key" ]; then
+  source $HOME/.obsidian-api-key
+fi
+
 # work aliases
 alias dowork="ffplay -f v4l2 -framerate 60  -fflags nobuffer -flags low_delay -sync ext -input_format mjpeg -video_size 1920x1080 -i /dev/video0 -vf \"tblend\" -vf framerate=fps=60 -stats -infbuf -loglevel error"
 
@@ -212,7 +216,14 @@ function yay {
 
 ## Since the hyprland deps are a bit all over the place, this command will make sure all the correct things get updated
 function update_hyprland {
-  pacman -Qq | grep hypr | grep -v hyprland-qt | grep -v debug | yay -S aquamarine-git -
+  pacman -Qq | grep hypr | grep -v hyprland-qt | grep -v debug | yay -Sy aquamarine-git -
+}
+
+function update_dotfiles {
+  FUNC_CWD=`pwd`
+  cd ~/code/github.com/gwagner/arch-automation/
+  ./dotfiles.sh
+  cd $FUNC_CWD
 }
 
 if [ -n "$TMUX" ]; then                                                                               

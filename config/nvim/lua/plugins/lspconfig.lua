@@ -54,7 +54,11 @@ return {
     local masonLspConfig = require("mason-lspconfig")
     local util = require("lspconfig.util")
 
-    mason.setup()
+    mason.setup({
+      ensure_installed = {
+        "ansible-lint"
+      }
+    });
     masonLspConfig.setup({
       automatic_installation = true,
       ensure_installed = { "ansiblels", "clangd", "dockerls", "emmet_language_server", "eslint", "gopls",
