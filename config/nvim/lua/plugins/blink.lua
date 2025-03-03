@@ -1,9 +1,24 @@
+local function is_in_obsidian_project()
+  local current_file = vim.api.nvim_buf_get_name(0)
+  if current_file == "" then
+    return false
+  end
+  -- Get the directory of the current file
+  local current_dir = vim.fn.fnamemodify(current_file, ":p:h")
+  -- Search upward for a directory named ".obsidian"
+  local obsidian_marker = vim.fn.finddir(".obsidian", current_dir .. ";")
+  return obsidian_marker ~= ""
+end
+
+
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
   dependencies = {
     'rafamadriz/friendly-snippets',
     "xzbdmw/colorful-menu.nvim",
+    "saghen/blink.compat",
+    "ahmedkhalf/project.nvim",
     {
       "folke/lazydev.nvim",
       ft = "lua",
@@ -83,13 +98,21 @@ return {
         local success, node = pcall(vim.treesitter.get_node)
         if vim.bo.filetype == 'lua' then
           return { 'lazydev', 'path', 'snippets', 'lsp', 'path' }
-        elseif vim.bo.filetype == 'md' or vim.bo.filetype == "markdown" then
-          return { 'dictionary' }
-        elseif success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
-          return { "buffer" }
-        else
-          return { 'lsp', 'path', 'snippets', 'buffer' }
         end
+
+        if vim.bo.filetype == 'md' or vim.bo.filetype == "markdown" then
+          if is_in_obsidian_project() then
+            return { 'obsidian', 'obsidian_new', 'obsidian_tags', "dictionary" }
+          end
+
+          return { 'dictionary' }
+        end
+
+        if success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
+          return { "buffer" }
+        end
+
+        return { 'lsp', 'path', 'snippets', 'buffer' }
       end,
       providers = {
         lazydev = {
@@ -101,6 +124,18 @@ return {
           module = "blink-cmp-dictionary",
           name = "Dict",
           min_keyword_length = 3,
+        },
+        obsidian = {
+          name = "obsidian",
+          module = "blink.compat.source",
+        },
+        obsidian_new = {
+          name = "obsidian_new",
+          module = "blink.compat.source",
+        },
+        obsidian_tags = {
+          name = "obsidian_tags",
+          module = "blink.compat.source",
         },
       },
     },
