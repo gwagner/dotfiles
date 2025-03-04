@@ -1,5 +1,8 @@
 vim.opt.conceallevel = 2
 vim.opt_local.conceallevel = 2
+vim.opt.title = true
+vim.opt.titlelen = 0 -- do not shorten title
+vim.opt.titlestring = 'Obsidian - nvim'
 
 local function file_exists(filename)
   local f = io.open(filename, "r")
