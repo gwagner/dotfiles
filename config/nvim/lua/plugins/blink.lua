@@ -19,6 +19,7 @@ return {
     "xzbdmw/colorful-menu.nvim",
     "saghen/blink.compat",
     "ahmedkhalf/project.nvim",
+    "MahanRahmati/blink-nerdfont.nvim",
     {
       "folke/lazydev.nvim",
       ft = "lua",
@@ -102,7 +103,7 @@ return {
 
         if vim.bo.filetype == 'md' or vim.bo.filetype == "markdown" then
           if is_in_obsidian_project() then
-            return { 'obsidian', 'obsidian_new', 'obsidian_tags', "dictionary" }
+            return { 'obsidian', 'obsidian_new', 'obsidian_tags', 'nerdfont', "dictionary" }
           end
 
           return { 'dictionary' }
@@ -136,6 +137,12 @@ return {
         obsidian_tags = {
           name = "obsidian_tags",
           module = "blink.compat.source",
+        },
+        nerdfont = {
+          module = "blink-nerdfont",
+          name = "nerdfont",
+          score_offset = 15,        -- Tune by preference
+          opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
         },
       },
     },
