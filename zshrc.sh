@@ -65,12 +65,17 @@ ZSH_THEME="tokyo-night"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+
+if [ ! -d $ZSH/plugins/zsh-vi-mode ]; then
+  git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH/plugins/zsh-vi-mode
+fi
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ansible git vscode)
+plugins=(ansible git vscode zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,6 +109,7 @@ source $ZSH/oh-my-zsh.sh
 if [ ! -d $ZSH/themes/nord-extended ]; then
   git clone https://github.com/fxbrit/nord-extended $ZSH/themes/nord-extended
 fi
+
 
 alias yt="mpv --autofit=\"25%x25%\""
 alias kb="/bin/bash ~/.xsessionrc"
@@ -257,5 +263,3 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
 fi
 
 fastfetch
-
-
