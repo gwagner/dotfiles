@@ -73,6 +73,10 @@ return {
       -- Display a preview of the selected item on the current line
       ghost_text = { enabled = true },
 
+      trigger = {
+        prefetch_on_insert = false,
+      },
+
       menu = {
         draw = {
           -- We don't need label_description now because label and label_description are already
