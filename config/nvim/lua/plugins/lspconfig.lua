@@ -75,18 +75,13 @@ return {
 
     capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-    -- Setup Language Server
-    lspconfig.ansiblels.setup {
+
+    vim.lsp.config('*', {
       capabilities = capabilities,
-    }
-    lspconfig.dockerls.setup {
-      capabilities = capabilities,
-    }
-    lspconfig.clangd.setup {
-      capabilities = capabilities,
-    }
-    lspconfig.gopls.setup {
-      capabilities = capabilities,
+    })
+
+
+    vim.lsp.config('gopls', {
       filetypes = { "go", "gomod", "gowork", "gotmpl" },
       settings = {
         gopls = {
@@ -108,61 +103,42 @@ return {
           },
         }
       }
-    }
-    lspconfig.bashls.setup {
-      capabilities = capabilities,
-    }
+    })
 
-    lspconfig.html.setup {
-      capabilities = capabilities,
+    vim.lsp.config('html', {
       filetypes = { 'html', 'templ', 'twig' },
       provideFormatter = false,
       root_dir = util.root_pattern('composer.json', 'package.json', '.git'),
-    }
-    lspconfig.eslint.setup {
-      capabilities = capabilities,
+    })
+
+    vim.lsp.config('eslint', {
       on_attach = function(client, bufnr)
         vim.api.nvim_create_autocmd("BufWritePre", {
           buffer = bufnr,
           command = "EslintFixAll",
         })
       end,
-    }
-    lspconfig.ts_ls.setup {
-      capabilities = capabilities,
+    })
+
+    vim.lsp.config('ts_ls', {
       settings = {
         diagnostics = { ignoredCodes = { 2604 } }
       },
       root_dir = util.root_pattern(".git"),
-    }
-    lspconfig.intelephense.setup {
-      capabilities = capabilities,
-    }
-    lspconfig.twiggy_language_server.setup {
-      capabilities = capabilities,
-    }
-    lspconfig.marksman.setup {
-      capabilities = capabilities,
-      root_dir = function(fname)
-        local util = require 'lspconfig.util'
-        local root_files = { '.marksman.toml' }
-        return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
-      end,
-    }
-    lspconfig.jsonls.setup {
-      capabilities = capabilities,
-    }
-    lspconfig.lua_ls.setup {
-      capabilities = capabilities,
-    }
-    lspconfig.tailwindcss.setup {
-      capabilities = capabilities,
-    }
-    lspconfig.yamlls.setup {
-      capabilities = capabilities,
-    }
-    lspconfig.zls.setup {
-      capabilities = capabilities,
-    }
+    })
+
+    vim.lsp.enable("ansiblels")
+    vim.lsp.enable("bashls")
+    vim.lsp.enable("clangd")
+    vim.lsp.enable("dockerls")
+    vim.lsp.enable("eslint")
+    vim.lsp.enable("gopls")
+    vim.lsp.enable("html")
+    vim.lsp.enable("jsonls")
+    vim.lsp.enable("lua_ls")
+    vim.lsp.enable("tailwindcss")
+    vim.lsp.enable("ts_ls")
+    vim.lsp.enable("yamlls")
+    vim.lsp.enable("zls")
   end,
 }
