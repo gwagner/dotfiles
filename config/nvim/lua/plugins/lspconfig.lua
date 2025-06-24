@@ -45,26 +45,19 @@ return {
     }
   },
   dependencies = {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    {
+      "williamboman/mason-lspconfig.nvim",
+      dependencies = { "mason-org/mason.nvim", opts = {} },
+      opt = {
+        automatic_installation = true,
+        ensure_installed = { "ansiblels", "clangd", "dockerls", "emmet_language_server", "eslint", "gopls",
+          "html", "intelephense", "jsonls", "lua_ls", "marksman", "pylsp",
+          "tailwindcss", "twiggy_language_server", "ts_ls", "yamlls", "zls" }
+      }
+    },
   },
   config = function()
-    local lspconfig = require("lspconfig")
-    local mason = require("mason")
-    local masonLspConfig = require("mason-lspconfig")
     local util = require("lspconfig.util")
-
-    mason.setup({
-      ensure_installed = {
-        "ansible-lint"
-      }
-    });
-    masonLspConfig.setup({
-      automatic_installation = true,
-      ensure_installed = { "ansiblels", "clangd", "dockerls", "emmet_language_server", "eslint", "gopls",
-        "html", "intelephense", "jsonls", "lua_ls", "marksman", "pylsp",
-        "tailwindcss", "twiggy_language_server", "ts_ls", "yamlls", "zls" }
-    })
 
     -- Get the local capabilities
     local capabilities = vim.lsp.protocol.make_client_capabilities()
