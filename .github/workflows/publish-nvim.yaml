@@ -11,6 +11,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: my-packaged-folder # Name of the artifact
+          name: neovim-latest
           path: config/nvim # Path to the folder you want to package
 
