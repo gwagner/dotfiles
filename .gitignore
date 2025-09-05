@@ -1,6 +1,5 @@
 # Ensure the IDE is not pushed
 .idea
-.github
 
 # Target specific directories
 config/Arduino*

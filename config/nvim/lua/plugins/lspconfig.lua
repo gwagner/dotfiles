@@ -127,6 +127,11 @@ return {
       root_dir = util.root_pattern(".git"),
     })
 
+    vim.lsp.config("zls", {
+      settings = {
+        enable_build_on_save = true,
+      },
+    })
     vim.lsp.enable("ansiblels")
     vim.lsp.enable("bashls")
     vim.lsp.enable("clangd")

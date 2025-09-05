@@ -1,0 +1,16 @@
+name: publish-nvim
+run-name: ${{ github.actor }} pushed a change
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Ensure code is checked out
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: neovim-latest
+          path: config/nvim/ # Path to the folder you want to package
+
