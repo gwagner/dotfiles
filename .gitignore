@@ -61,3 +61,4 @@ local/share/rofi/rofi_calc_history
 config/composer
 config/gtk-3.0
 config/cubocore
+config/nvim/.github

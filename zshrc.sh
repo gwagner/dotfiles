@@ -79,6 +79,8 @@ plugins=(ansible git vscode zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
+bindkey -v
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"

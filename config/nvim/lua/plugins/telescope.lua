@@ -15,6 +15,7 @@ return {
     { "<leader>fg", ":Telescope live_grep select_buffer=true<CR>",                 desc = "Find Files (Grep)" },
     { "<leader>ob", ":Telescope buffers select_buffer=true<CR>",                   desc = "Open Buffer" },
     { "<leader>fb", ":Telescope current_buffer_fuzzy_find select_buffer=true<CR>", desc = "Fuzzy Find in Buffer" },
+    { "<leader>fr", ":Telescope lsp_references select_buffer=true<CR>",            desc = "LSP References" },
   },
   config = function()
     require("telescope").setup {

@@ -58,6 +58,7 @@ return {
       -- Useful for when your theme doesn't support blink.cmp
       -- Will be removed in a future release
       use_nvim_cmp_as_default = true,
+
       -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
       nerd_font_variant = 'mono'
@@ -68,7 +69,10 @@ return {
     completion = {
       list = { selection = { preselect = false, auto_insert = true } },
       -- Show documentation when selecting a completion item
-      documentation = { auto_show = true, auto_show_delay_ms = 200 },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 200
+      },
 
       -- Display a preview of the selected item on the current line
       ghost_text = { enabled = true },

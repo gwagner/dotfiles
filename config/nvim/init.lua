@@ -145,6 +145,41 @@ vim.api.nvim_create_autocmd('BufLeave', {
   end,
 })
 
+-- Show Func Signature in normal mode
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local bufnr = args.buf
+    vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help,
+      { buffer = bufnr, desc = 'LSP Signature Help' })
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help,
+      { buffer = bufnr, desc = 'LSP Signature Help' })
+    vim.keymap.set('i', '<C-j>', vim.lsp.buf.definition,
+      { buffer = bufnr, desc = 'LSP Signature Help' })
+    vim.keymap.set('n', '<C-j>', vim.lsp.buf.definition,
+      { buffer = bufnr, desc = 'LSP Signature Help' })
+  end
+})
+
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--   pattern = zig_pattern,
+--   callback = function(ev)
+--     vim.lsp.buf.code_action({
+--       context = { only = { "source.fixAll" } },
+--       apply = true,
+--     })
+--   end
+-- })
+--
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--   pattern = zig_pattern,
+--   callback = function(ev)
+--     vim.lsp.buf.code_action({
+--       context = { only = { "source.organizeImports" } },
+--       apply = true,
+--     })
+--   end
+-- })
+
 
 -- Setup some markdown specific commands
 -- vim.api.nvim_create_autocmd('BufEnter', {
