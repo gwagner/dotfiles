@@ -26,7 +26,6 @@ config/go/**
 config/godot
 config/google-chrome
 config/grammarly-languageserver/**
-config/lazygit
 config/lutris/
 config/microsoft*
 config/miopen
@@ -62,3 +61,4 @@ config/composer
 config/gtk-3.0
 config/cubocore
 config/nvim/.github
+config/lazygit/state.yml
