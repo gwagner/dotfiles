@@ -71,12 +71,6 @@ vim.keymap.set("i", "<C-l>", "<Right>", { silent = true, nowait = true })
 vim.keymap.set("i", "<C-w>", "<C-o>w", { silent = true, nowait = true })
 vim.keymap.set("i", "<C-b>", "<C-o>b", { silent = true, nowait = true })
 
--- Exit terminal and move back to other open window
-vim.keymap.set('t', '<ESC>', "<C-\\><C-N><C-W>w", { silent = true })
-vim.keymap.set('t', '<C-h>', "<C-\\><C-N><C-w>h", { silent = true })
-vim.keymap.set('t', '<C-j>', "<C-\\><C-N><C-w>j", { silent = true })
-vim.keymap.set('t', '<C-k>', "<C-\\><C-N><C-w>k", { silent = true })
-vim.keymap.set('t', '<C-l>', "<C-\\><C-N><C-w>l", { silent = true })
 
 -- Remove Line Numbers in the Terminal
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
