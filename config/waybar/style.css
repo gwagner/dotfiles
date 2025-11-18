@@ -29,9 +29,10 @@
 #mode, #clock, #memory, #temperature, #cpu, #custom-weather,
 #mpd, #idle_inhibitor, #backlight, #pulseaudio, #network, 
 #battery, #custom-powermenu, #custom-cava-internal,
-#custom-launcher, #tray, #disk, #custom-pacman, #custom-pomodoro, #custom-dexcom, #custom-notification{
+#custom-launcher, #tray, #disk, #custom-pacman, #custom-pomodoro, #custom-dexcom, #custom-notification, #custom-idle_state {
   padding-left: .6rem;
   padding-right: .6rem;
+  color: @text;
 }
 
 /* Bar */

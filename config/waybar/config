@@ -8,7 +8,8 @@
     "hyprland/workspaces"
   ],
   "modules-center": [
-    "clock"
+    "clock",
+    "custom/idle_state"
   ],
   "modules-right": [
     "cpu",
@@ -44,7 +45,7 @@
   },
   "clock": {
     "interval": 1,
-    "format": "<b>{:%I:%M %p  %a %b %d}</b>",
+    "format": "<b>{:%I:%M %p %a %b %d}</b>",
     "tooltip": true,
     "tooltip-format": "{:%A, %d %B %Y}\n<tt>{calendar}</tt>",
     "calendar": {
@@ -55,6 +56,13 @@
         "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
       }
     }
+  },
+  "custom/idle_state": {
+    "format": "{}",
+    "interval": 2,
+    "tooltip": "true",
+    "exec": "/home/gwagner/scripts/waybar-idle-state.sh",
+    "return-type": "json"
   },
   "pulseaudio": {
     "scroll-step": 1,
@@ -99,7 +107,6 @@
     "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
-    "on-click": "emacsclient -c -e '(view-file \"~/Documents/tech-personal-notes/nmcli-help.org\")'",
     "max-length": 50
   },
   "custom/notification": {
