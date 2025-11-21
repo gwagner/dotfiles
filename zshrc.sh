@@ -140,7 +140,7 @@ export GOPROXY=direct
 
 # work aliases
 #alias dowork="ffplay -f v4l2 -framerate 60  -fflags nobuffer -flags low_delay -sync ext -input_format rawvideo -video_size 1920x1080 -i /dev/video10 -vf \"tblend\" -vf framerate=fps=60 -stats -infbuf -loglevel error"
-alias dowork="ffplay -f v4l2 -framerate 60  -fflags nobuffer -flags low_delay -sync ext -input_format rawvideo -video_size 1920x1080 -i /dev/video10  -stats -loglevel error"
+alias dowork="ffplay -f v4l2 -framerate 60  -fflags nobuffer -flags low_delay -vf setpts=0 -framedrop -sync ext -input_format rawvideo -video_size 1920x1080 -i /dev/video10  -stats -loglevel error"
 
 # Setup node for global install
 export npm_config_prefix="$HOME/.local"
