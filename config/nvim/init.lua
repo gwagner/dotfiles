@@ -27,6 +27,9 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.bo.softtabstop = 2
 
+-- New line at end of file
+vim.opt.endofline = true
+
 -- Soft line breaks
 vim.o.linebreak = true
 
@@ -53,9 +56,16 @@ require("includes.funcs")
 -- always use the system clipboard
 vim.opt.clipboard = "unnamedplus"
 
+-- Fix the way that neovim deals with yank and put
+vim.keymap.set("v", "p", '"_dp', { silent = true, nowait = true })
+vim.keymap.set("v", "P", '"_dP', { silent = true, nowait = true })
+
 -- set ignorecase/smartcase for searching
 vim.opt.ignorecase = true -- Ignore case letters when search
 vim.opt.smartcase = true  -- Ignore lowercase for the whole pattern
+
+-- disable mouse interactions other than scrolling
+vim.opt.mouse = "nv"
 
 -- enable shift-tab to outdent
 vim.keymap.set("i", "<S-Tab>", "<C-d>")

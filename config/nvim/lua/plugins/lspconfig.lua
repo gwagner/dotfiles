@@ -56,7 +56,7 @@ return {
 
     mason.setup({
       ensure_installed = {
-        "ansible-lint"
+        "ansible-lint", "prettier",
       }
     });
     masonLspConfig.setup({
@@ -79,7 +79,6 @@ return {
     vim.lsp.config('*', {
       capabilities = capabilities,
     })
-
 
     vim.lsp.config('gopls', {
       filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -106,7 +105,7 @@ return {
     })
 
     vim.lsp.config('html', {
-      filetypes = { 'html', 'templ', 'twig' },
+      filetypes = { 'html', 'templ', 'tmpl', 'twig' },
       provideFormatter = false,
       root_dir = util.root_pattern('composer.json', 'package.json', '.git'),
     })
@@ -132,6 +131,7 @@ return {
         enable_build_on_save = true,
       },
     })
+
     vim.lsp.enable("ansiblels")
     vim.lsp.enable("bashls")
     vim.lsp.enable("clangd")
