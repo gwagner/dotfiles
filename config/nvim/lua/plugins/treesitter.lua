@@ -11,7 +11,8 @@ return {
       sync_install = false,
       ignore_install = {},
       ensure_installed = {
-        "go", "gomod", "gowork", "css", "html", "javascript", "typescript", "jsdoc", "json", "c", "java", "toml", "tsx",
+        "go", "gomod", "gowork", "gotmpl", "css", "html", "javascript", "typescript", "jsdoc", "json", "c", "java",
+        "toml", "tsx",
         "lua", "cpp", "python", "rust", "jsonc", "dart", "css", "yaml", "vue", "markdown", "markdown_inline", "php",
         "php_only", "latex", "typst", "zig", "sql", "comment"
       },

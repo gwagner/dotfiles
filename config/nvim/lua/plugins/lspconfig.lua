@@ -81,7 +81,7 @@ return {
     })
 
     vim.lsp.config('gopls', {
-      filetypes = { "go", "gomod", "gowork", "gotmpl" },
+      filetypes = { "go", "gomod", "gowork", "gotmpl", "gohtmltmpl", "gotexttmpl" },
       settings = {
         gopls = {
           usePlaceholders = true,
