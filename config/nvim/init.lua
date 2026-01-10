@@ -19,6 +19,16 @@ vim.g.maplocalleader = ' '
 -- Setup a python provider
 vim.g.python3_host_prog = "$HOME/.pyenv/versions/venv/bin/python"
 
+vim.filetype.add({
+  extension = {
+    gotmpl = 'gotmpl',
+    gohtmltmpl = 'gohtmltmpl',
+  },
+  pattern = {
+    [".*/templates/.*%.tmpl"] = "html",
+  },
+})
+
 -- Setup tabs to only be 2 spaces instead of 4-5
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -57,8 +67,8 @@ require("includes.funcs")
 vim.opt.clipboard = "unnamedplus"
 
 -- Fix the way that neovim deals with yank and put
-vim.keymap.set("v", "p", '"_dp', { silent = true, nowait = true })
-vim.keymap.set("v", "P", '"_dP', { silent = true, nowait = true })
+vim.keymap.set("x", "p", 'P', { silent = true, nowait = true, noremap = true })
+vim.keymap.set("x", "dd", '"_dd', { silent = true, nowait = true, noremap = true })
 
 -- set ignorecase/smartcase for searching
 vim.opt.ignorecase = true -- Ignore case letters when search
@@ -120,6 +130,7 @@ local lua_pattern = { '*.lua' }
 local markdown_pattern = { '*.md' }
 local markup_pattern = { "*.json", "*.yml", "*.yaml" }
 local typescript_pattern = { '*.js', '*.ts', '*.tsx' }
+local sql_pattern = { '*.sql' }
 local zig_pattern = { '*.zig', '*.zon' }
 
 -- Format on write
@@ -129,6 +140,22 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = format_on_save_pattern,
   callback = function()
     vim.lsp.buf.format()
+  end,
+})
+
+-- Autocmd to run :!sqlc generate in the current file's directory
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  pattern = { "*.sql", "*.sqlc.yaml", "*.sqlc.yml" },
+  callback = function(data)
+    -- Check if the file is a sql or sqlc config file
+    local file_path = vim.api.nvim_buf_get_name(data.buf)
+    if file_path:match("%.sql$") or file_path:match("sqlc%.ya?ml$") then
+      print("Running sqlc generate...")
+      vim.cmd("silent !sqlc generate &")
+
+      print("Restarting LSP due to sqlc genrate")
+      vim.cmd("LspRestart")
+    end
   end,
 })
 

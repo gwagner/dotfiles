@@ -30,6 +30,15 @@ return {
         return
       end
 
+      local no_fallback = { "javascript" }
+
+      if vim.tbl_contains(no_fallback, vim.bo[bufnr].filetype) then
+        return {
+          timeout_ms = 2500,
+          lsp_fallback = false,
+        }
+      end
+
       return {
         timeout_ms = 2500,
         lsp_fallback = true,
@@ -41,7 +50,7 @@ return {
           if vim.endswith(ctx.filename, ".tmpl") then
             return { "--parser", "html" }
           end
-          return { "" }
+          return {}
         end,
       },
     },
