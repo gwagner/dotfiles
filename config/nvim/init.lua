@@ -55,6 +55,11 @@ vim.opt.signcolumn = "yes"
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
 
+-- Enable folding by expression
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevelstart = 99
+
 require("lazy").setup("plugins")
 
 -- Extra nvim-cmp theme data
@@ -68,7 +73,7 @@ vim.opt.clipboard = "unnamedplus"
 
 -- Fix the way that neovim deals with yank and put
 vim.keymap.set("x", "p", 'P', { silent = true, nowait = true, noremap = true })
-vim.keymap.set("x", "dd", '"_dd', { silent = true, nowait = true, noremap = true })
+vim.keymap.set("n", "dd", '"_dd', { silent = true, nowait = true, noremap = true })
 
 -- set ignorecase/smartcase for searching
 vim.opt.ignorecase = true -- Ignore case letters when search
@@ -153,8 +158,8 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
       print("Running sqlc generate...")
       vim.cmd("silent !sqlc generate &")
 
-      print("Restarting LSP due to sqlc genrate")
-      vim.cmd("LspRestart")
+      -- print("Restarting LSP due to sqlc genrate")
+      -- vim.cmd("LspRestart")
     end
   end,
 })

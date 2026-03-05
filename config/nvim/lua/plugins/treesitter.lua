@@ -7,6 +7,9 @@ return {
   config = function()
     local configs = require("nvim-treesitter.configs")
     configs.setup({
+      folds = {
+        enable = true,
+      },
       auto_install = true,
       sync_install = false,
       ignore_install = {},

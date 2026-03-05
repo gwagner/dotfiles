@@ -223,6 +223,22 @@ function yay {
   fi
 }
 
+
+function podman-compose {
+  if [ -f "/usr/bin/pyenv" ]; then
+    echo "Activate pyenv venv"
+    pyenv activate venv
+
+    echo "Update Yay"
+    /usr/bin/podman-compose $@
+    
+    echo "Deacivate pyenv venv"
+    pyenv deactivate venv
+  else
+    /usr/bin/podman-compose $@
+  fi
+}
+
 ## Since the hyprland deps are a bit all over the place, this command will make sure all the correct things get updated
 function update_hyprland {
   pacman -Qq | grep hypr | grep -v hyprland-qt | grep -v debug | yay -Sy --noconfirm aquamarine-git -
