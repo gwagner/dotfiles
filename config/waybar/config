@@ -62,7 +62,7 @@
     "interval": 2,
     "tooltip": "true",
     "exec": "/home/gwagner/scripts/waybar-idle-state.sh",
-    "on-click": "sleep 0.3 && hyprctl dispatch dpms off && hyprlock &",
+    "on-click": "sleep 1 && hyprctl dispatch dpms off && hyprlock &",
     "return-type": "json"
   },
   "pulseaudio": {
