@@ -62,3 +62,4 @@ config/gtk-3.0
 config/cubocore
 config/nvim/.github
 config/lazygit/state.yml
+/config/systemd/user/sockets.target.wants/podman.socket
