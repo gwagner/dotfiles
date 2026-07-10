@@ -123,6 +123,11 @@ alias vi="nvim"
 alias vim="nvim"
 alias nano="nvim"
 
+## TUI Aliases
+alias audio="wiremix"
+alias bt="bluetui"
+alias wifi="impala"
+
 ## Virtualization Configs
 export VIRSH_DEFAULT_CONNECT_URI='qemu:///system'
 
