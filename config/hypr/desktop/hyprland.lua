@@ -149,7 +149,7 @@ hl.window_rule({
   no_blur      = false,
   idle_inhibit = "always",
   opacity      = "1.0 override 0.5 override",
-  tile         = false,
+  tile         = true,
   workspace    = 1,
   match        = {
     class = "ffplay",

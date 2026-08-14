@@ -8,6 +8,7 @@ return {
     "nvim-telescope/telescope-media-files.nvim",
     "nvim-tree/nvim-web-devicons",
     "gbprod/yanky.nvim",
+    "jemag/telescope-diff.nvim",
   },
   keys = {
     { "<leader>fo", ":Telescope file_browser path=%:p:h select_buffer=true<CR>",   desc = "Open File Browser" },
@@ -16,6 +17,14 @@ return {
     { "<leader>ob", ":Telescope buffers select_buffer=true<CR>",                   desc = "Open Buffer" },
     { "<leader>fb", ":Telescope current_buffer_fuzzy_find select_buffer=true<CR>", desc = "Fuzzy Find in Buffer" },
     { "<leader>fr", ":Telescope lsp_references select_buffer=true<CR>",            desc = "LSP References" },
+    { "<leader>fi", ":Telescope lsp_implementations select_buffer=true<CR>",       desc = "LSP Implementations" },
+    {
+      "<leader>fd",
+      function()
+        require("telescope").extensions.diff.diff_files({ hidden = true })
+      end,
+      desc = "Diff 2 files"
+    },
   },
   config = function()
     require("telescope").setup {
@@ -34,5 +43,6 @@ return {
     require("telescope").load_extension("file_browser")
     require("telescope").load_extension("media_files")
     require("telescope").load_extension("yank_history")
+    require("telescope").load_extension("diff")
   end
 }
