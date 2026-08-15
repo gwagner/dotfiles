@@ -87,31 +87,31 @@ hl.config({
 hl.workspace_rule({
   workspace = 1,
   persistent = true,
-  monitor = "DP-4",
+  monitor = "DP-1",
 })
 
 hl.workspace_rule({
   workspace = 2,
   persistent = true,
-  monitor = "DP-4",
+  monitor = "DP-1",
 })
 
 hl.workspace_rule({
   workspace = 3,
   persistent = true,
-  monitor = "DP-4",
+  monitor = "DP-1",
 })
 
 hl.workspace_rule({
   workspace = 4,
   persistent = true,
-  monitor = "DP-4",
+  monitor = "DP-1",
 })
 
 hl.workspace_rule({
   workspace = 5,
   persistent = true,
-  monitor = "DP-4",
+  monitor = "DP-1",
 })
 
 hl.window_rule({

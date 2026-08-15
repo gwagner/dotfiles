@@ -2,7 +2,9 @@
 
 /* Global */
 * {
-  font-family: JetBrainsMono NF, mono;
+  font-family:
+    JetBrainsMono NF,
+    mono;
   font-weight: bold;
   font-size: 1.5rem;
   border-radius: 1rem;
@@ -17,12 +19,16 @@
   }
 }
 
-.modules-right, .modules-left, .modules-center {
+.modules-right,
+.modules-left,
+.modules-center {
   border: none;
   background-color: shade(@base, 0.9);
 }
 
-.warning, .critical, .urgent {
+.warning,
+.critical,
+.urgent {
   animation-name: blink_red;
   animation-duration: 1s;
   animation-timing-function: linear;
@@ -30,12 +36,30 @@
   animation-direction: alternate;
 }
 
-#mode, #clock, #memory, #temperature, #cpu, #custom-weather,
-#mpd, #idle_inhibitor, #backlight, #pulseaudio, #network, 
-#battery, #custom-powermenu, #custom-cava-internal,
-#custom-launcher, #tray, #disk, #custom-pacman, #custom-pomodoro, #custom-dexcom, #custom-notification{
-  padding-left: .6rem;
-  padding-right: .6rem;
+#mode,
+#clock,
+#memory,
+#temperature,
+#cpu,
+#custom-weather,
+#mpd,
+#idle_inhibitor,
+#backlight,
+#pulseaudio,
+#network,
+#battery,
+#custom-powermenu,
+#custom-cava-internal,
+#custom-launcher,
+#tray,
+#disk,
+#custom-pacman,
+#custom-pomodoro,
+#custom-dexcom,
+#custom-notification,
+#custom-idle_state {
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
 }
 
 /* Bar */
@@ -45,49 +69,48 @@ window#waybar {
 
 window > box {
   background-color: transparent;
-  margin: .6rem;
+  margin: 0.6rem;
   margin-bottom: 0;
 }
 
-
 /* Workspaces */
 #workspaces button {
-    min-width: 32px;
-    min-height: 32px;
-    padding: 0;
-    margin: 3px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  margin: 3px;
 
-    border-radius: 50%;
+  border-radius: 50%;
 
-    font-size: 14px;
+  font-size: 14px;
 }
 
 #workspaces button label {
-    background: transparent;
-    padding: 0;
-    margin: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
 }
 
 #workspaces button.active {
-    border: 2px solid @blue;
-    border-radius: 16px;
+  border: 2px solid @blue;
+  border-radius: 16px;
 
-    background: none;
-    box-shadow: inset 0 0 0 20px @blue;
+  background: none;
+  box-shadow: inset 0 0 0 20px @blue;
 
-    background-image: none;
-    background: @blue;
+  background-image: none;
+  background: @blue;
 
-    color: @base;
+  color: @base;
 }
 
 #workspaces button:hover {
-    background: @green;
-    color: @base;
+  background: @green;
+  color: @base;
 }
 
 #workspaces button.urgent {
-    background: #f38ba8;
+  background: #f38ba8;
 }
 
 /* Tooltip */
@@ -95,7 +118,7 @@ tooltip {
   background-color: @base;
   border-width: 3px;
   border-style: solid;
-  border-color: #7DCFFF;
+  border-color: #7dcfff;
 }
 
 tooltip label {
@@ -109,7 +132,7 @@ tooltip label {
 #battery.full {
   color: @green;
 }
-#battery.charging{
+#battery.charging {
   color: @teal;
 }
 #battery.discharging {
@@ -137,10 +160,10 @@ tooltip label {
 }
 
 /* Extra */
-#custom-notification{
+#custom-notification {
   color: @yellow;
 }
-#custom-cava-internal{
+#custom-cava-internal {
   color: @mauve;
   padding-right: 1rem;
 }
@@ -167,22 +190,22 @@ tooltip label {
   color: @yellow;
 }
 #pulseaudio {
-  color: @green;  /* not active */
+  color: @green; /* not active */
 }
 #network {
   color: @lavender; /* not active */
 }
 #network.disconnected {
-  color: @foreground;  /* not active */
+  color: @foreground; /* not active */
 }
 #disk {
   color: @teal;
 }
-#custom-pacman{
+#custom-pacman {
   color: @mauve;
 }
 #custom-scratchpad-indicator {
-  color: @yellow
+  color: @yellow;
 }
 #custom-weather {
   color: @red;

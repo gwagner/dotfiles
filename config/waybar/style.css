@@ -2,13 +2,14 @@
 
 /* Global */
 * {
-  font-family: JetBrainsMono NF, mono;
+  font-family:
+    JetBrainsMono NF,
+    mono;
   font-weight: bold;
-  font-size: .9rem;
+  font-size: 1.5rem;
   border-radius: 1rem;
   transition-property: background-color;
   transition-duration: 0.5s;
-  background-color: shade(@base, 0.9);
 }
 
 @keyframes blink_red {
@@ -18,7 +19,16 @@
   }
 }
 
-.warning, .critical, .urgent {
+.modules-right,
+.modules-left,
+.modules-center {
+  border: none;
+  background-color: shade(@base, 0.9);
+}
+
+.warning,
+.critical,
+.urgent {
   animation-name: blink_red;
   animation-duration: 1s;
   animation-timing-function: linear;
@@ -26,13 +36,30 @@
   animation-direction: alternate;
 }
 
-#mode, #clock, #memory, #temperature, #cpu, #custom-weather,
-#mpd, #idle_inhibitor, #backlight, #pulseaudio, #network, 
-#battery, #custom-powermenu, #custom-cava-internal,
-#custom-launcher, #tray, #disk, #custom-pacman, #custom-pomodoro, #custom-dexcom, #custom-notification, #custom-idle_state {
-  padding-left: .6rem;
-  padding-right: .6rem;
-  color: @text;
+#mode,
+#clock,
+#memory,
+#temperature,
+#cpu,
+#custom-weather,
+#mpd,
+#idle_inhibitor,
+#backlight,
+#pulseaudio,
+#network,
+#battery,
+#custom-powermenu,
+#custom-cava-internal,
+#custom-launcher,
+#tray,
+#disk,
+#custom-pacman,
+#custom-pomodoro,
+#custom-dexcom,
+#custom-notification,
+#custom-idle_state {
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
 }
 
 /* Bar */
@@ -42,32 +69,40 @@ window#waybar {
 
 window > box {
   background-color: transparent;
-  margin: .6rem;
+  margin: 0.6rem;
   margin-bottom: 0;
 }
 
 /* Workspaces */
-#workspaces:hover {
-  background-color: @green;
+#workspaces button {
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  margin: 3px;
+
+  border-radius: 50%;
+
+  font-size: 14px;
 }
 
-#workspaces button {
-  padding-right: .4rem;
-  padding-left: .4rem;
-  padding-top: .1rem;
-  padding-bottom: .1rem;
-  color: @blue;
-  /* border: .2px solid transparent; */
+#workspaces button label {
   background: transparent;
+  padding: 0;
+  margin: 0;
 }
 
 #workspaces button.active {
-  color: @red;
+  background: @blue;
+  color: @base;
 }
 
 #workspaces button:hover {
-  /* border: .2px solid transparent; */
-  color: @subtext0;
+  background: @green;
+  color: @base;
+}
+
+#workspaces button.urgent {
+  background: @red;
 }
 
 /* Tooltip */
@@ -75,7 +110,7 @@ tooltip {
   background-color: @base;
   border-width: 3px;
   border-style: solid;
-  border-color: #7DCFFF;
+  border-color: #7dcfff;
 }
 
 tooltip label {
@@ -89,7 +124,7 @@ tooltip label {
 #battery.full {
   color: @green;
 }
-#battery.charging{
+#battery.charging {
   color: @teal;
 }
 #battery.discharging {
@@ -117,10 +152,10 @@ tooltip label {
 }
 
 /* Extra */
-#custom-notification{
+#custom-notification {
   color: @yellow;
 }
-#custom-cava-internal{
+#custom-cava-internal {
   color: @mauve;
   padding-right: 1rem;
 }
@@ -147,22 +182,22 @@ tooltip label {
   color: @yellow;
 }
 #pulseaudio {
-  color: @green;  /* not active */
+  color: @green; /* not active */
 }
 #network {
   color: @lavender; /* not active */
 }
 #network.disconnected {
-  color: @foreground;  /* not active */
+  color: @foreground; /* not active */
 }
 #disk {
   color: @teal;
 }
-#custom-pacman{
+#custom-pacman {
   color: @mauve;
 }
 #custom-scratchpad-indicator {
-  color: @yellow
+  color: @yellow;
 }
 #custom-weather {
   color: @red;
